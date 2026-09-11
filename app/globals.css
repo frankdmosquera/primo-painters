@@ -79,9 +79,22 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
   background-position: 0% 100%;
   background-size: 0% 100%;
-  animation: bgReveal 2s ease-out forwards;
+  animation: bgReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   color: white;
-  padding: 0 4px;
+  /* em, so the padding grows with the heading instead of staying 4px */
+  padding: 0.08em 0.3em;
+  border-radius: 0.08em;
+  /* Without this, a phrase that wraps gets ONE rectangle stretched across
+     both lines. With it, each line gets its own box and its own padding. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-reveal {
+    animation: none;
+    background-size: 100% 100%;
+  }
 }
 .embla__slide.is-selected {
   opacity: 1 !important;

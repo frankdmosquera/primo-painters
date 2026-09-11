@@ -69,10 +69,13 @@ export const siteConfig = {
     // an inert shape rather than a link, so nothing is ever broken or fake.
     // Fill the URL in here and it becomes a real link everywhere at once.
 
-    // TODO: confirm the channel handle. The business is Primo Painters, but
-    // this says Painting. Changing it blind would create a dead link, so it
-    // stays until the real handle is checked on YouTube.
-    youtube: "https://www.youtube.com/@Primo-Painting",
+    // Emptied on purpose. The old value was
+    // https://www.youtube.com/@Primo-Painting, but the business is Primo
+    // Painters, so that handle is wrong or does not exist. An empty string
+    // makes the footer icon inert and drops the entry from the JSON-LD
+    // sameAs array, which is better than telling Google about a channel that
+    // is not there. Paste the real URL back here once it is confirmed.
+    youtube: "",
 
     facebook: "",
 

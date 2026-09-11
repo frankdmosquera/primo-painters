@@ -5,6 +5,7 @@ import { buttonVariants } from "../ui/button";
 // import { HeroForm } from "../HeroForm";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/data/siteConfig";
 import { HeroCalendarImage } from "./HeroCalendarImage";
 import { HeroForm } from "./HeroForm";
 // import { HeroCalendarImage } from "./HeroCalendarImage";
@@ -14,8 +15,7 @@ export function HeroHomeButtons() {
   const [showFormCallWrapper, setShowFormCallWrapper] = useState(false);
   return (
     <>
-      <div className="">
-        {/* ////// */}
+      <div className="flex flex-col items-center">
         <HeroCalendarImage />
         {!showFormCallWrapper && (
           <div
@@ -37,7 +37,7 @@ export function HeroHomeButtons() {
               )}
             >
               <PhoneCall />
-              <a href="tel:123456789">Call</a>
+              <a href={`tel:${siteConfig.business.phone}`}>Call</a>
             </div>
             <Sheet>
               <SheetTrigger
