@@ -60,7 +60,7 @@ export function Header() {
           <Image
             src={logoImg.src}
             alt={logoImg.alt}
-            title="Primo Painting"
+            title={siteConfig.business.name}
             width={130}
             height={60}
             priority

@@ -65,6 +65,13 @@ export const siteConfig = {
     googleBusiness:
       "https://www.google.com/maps/place/Primo+Painters+Calgary/@50.8550013,-113.9955408,17z/data=!4m6!3m5!1s0x53719da9a4980f5d:0xcdb54d98d20b7521!8m2!3d50.8550013!4d-113.9955408!16s%2Fg%2F11nr1d01rz",
 
+    // An empty string means "no account yet". The footer renders that icon as
+    // an inert shape rather than a link, so nothing is ever broken or fake.
+    // Fill the URL in here and it becomes a real link everywhere at once.
+
+    // TODO: confirm the channel handle. The business is Primo Painters, but
+    // this says Painting. Changing it blind would create a dead link, so it
+    // stays until the real handle is checked on YouTube.
     youtube: "https://www.youtube.com/@Primo-Painting",
 
     facebook: "",
