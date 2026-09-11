@@ -74,10 +74,15 @@ export default function SmallGalleryWrapper({
             className="relative h-5 w-5 tn:h-6 tn:w-6 xsm:h-7 xsm:w-7 "
             key={index}
           >
+            {/* These render at 20 to 28px. Without `sizes`, next/image assumes
+                a full viewport width image and fetches the 1080px variant, so
+                each fingernail sized thumbnail was pulling roughly 63KB instead
+                of 0.6KB. */}
             <Image
               src={img.src}
               alt={img.alt}
               fill
+              sizes="32px"
               className={`object-cover transition-opacity duration-300 rounded-xl ${
                 index === currentStep ? "opacity-100" : "opacity-40"
               }`}

@@ -1,4 +1,4 @@
-import ServiceSection from "./service-section";
+// import ServiceSection from "./service-section";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import { services } from "@/data/serviceData";
@@ -38,8 +38,13 @@ export default function OurServices() {
           <TabsContent
             key={cat.type}
             value={cat.type}
-            // forceMount
-            className="w-full  border-none shadow-none "
+            // Renders all six panels instead of only the active one, so every
+            // service title and description is in the HTML. Radix hides the
+            // inactive ones with display:none, and a lazy image inside a
+            // display:none panel is never fetched, so the extra five tabs cost
+            // markup but no image downloads until someone opens them.
+            forceMount
+            className="w-full border-none shadow-none data-[state=inactive]:hidden"
           >
             <div className=" pb-2 mb-0 w-full flex justify-center border-none shadow-none">
               {services
