@@ -95,20 +95,20 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
 
       {/* Sits above Calendly's overlay (9999) until the calendar reports in.
           Calendly shows only a faint three dot mark on a white panel, which on
-          a slow connection reads as a broken modal. */}
+          a slow connection reads as a broken modal.
+
+          Same hourglass and wording as the inline embed on /booking, so the
+          popup and the page say the same thing the same way. */}
       {isOpen && !isReady && (
         <div
-          className="pointer-events-none fixed inset-0 z-[10000] flex flex-col items-center justify-center gap-4"
+          className="pointer-events-none fixed inset-0 z-[10000] flex flex-col items-center justify-center text-white"
           role="status"
           aria-live="polite"
         >
-          <span
-            className="h-9 w-9 rounded-full border-[3px] border-white/25 border-t-white motion-safe:animate-spin"
-            aria-hidden="true"
-          />
-          <span className="text-sm font-medium tracking-wide text-white/90">
-            Loading the calendar…
-          </span>
+          <div className="mb-4 text-3xl motion-safe:animate-spin" aria-hidden="true">
+            ⏳
+          </div>
+          <p className="text-lg font-medium">Loading calendar, please wait…</p>
         </div>
       )}
     </CalendlyContext.Provider>

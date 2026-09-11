@@ -1,18 +1,20 @@
 "use client";
 
 import { InlineWidget } from "react-calendly";
+import { siteConfig } from "@/data/siteConfig";
 
 export default function Calendly() {
   return (
-    <div className="relative h-[calc(100vh-4rem)] calendly-widget">
-      <div className="absolute inset-0 flex flex-col items-center justify-center   text-white">
-        <div className="animate-spin text-3xl mb-4">⏳</div>
+    <div className="calendly-widget relative h-[calc(100vh-4rem)]">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+        <div className="mb-4 text-3xl motion-safe:animate-spin" aria-hidden="true">
+          ⏳
+        </div>
         <p className="text-lg font-medium">Loading calendar, please wait…</p>
       </div>
-      <div className="h-full relative z-2">
+      <div className="relative z-2 h-full">
         <InlineWidget
-          // url='https://calendly.com/alberta-colour-painting/booking?hide_gdpr_banner=1'
-          url="https://calendly.com/primo-painting/30min?hide_gdpr_banner=1"
+          url={siteConfig.booking.calendlyUrl}
           styles={{ minWidth: "320px", height: "100%" }}
         />
       </div>
