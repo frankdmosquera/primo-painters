@@ -35,7 +35,11 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-[99999] bg-white px-4 motion-safe:transition-shadow motion-safe:duration-300 md:px-8 xl:px-16 ${
+      // z-50, not the old z-[99999]. Nothing else on the site goes above 50,
+      // so that number was only ever winning an argument it did not need to
+      // have, and it beat Calendly's own 9999, which left the menu button
+      // clickable on top of an open booking modal.
+      className={`sticky top-0 z-50 bg-white px-4 motion-safe:transition-shadow motion-safe:duration-300 md:px-8 xl:px-16 ${
         compact
           ? "shadow-[0_1px_0_rgba(13,55,141,0.10),0_10px_24px_-14px_rgba(13,55,141,0.55)]"
           : "shadow-[0_1px_0_rgba(13,55,141,0.08)]"
