@@ -8,6 +8,7 @@ import { Poppins, Roboto } from "next/font/google";
 import { jsonLd } from "@/data/jsonLd";
 import ScrollingBannerA from "@/components/scrolling-banner-a";
 import { Header } from "@/components/Header";
+import { CalendlyProvider } from "@/components/calendly-provider";
 
 // Body text. 500 is here because globals.css sets the body to that weight.
 const roboto = Roboto({
@@ -99,13 +100,18 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${poppins.variable} antialiased`}
       >
-        <main className="text-[17px] 3xl:text-base ">
-          <ScrollingBannerA />
-          <Header />
-          {children}
-        </main>
-        <Toaster />
-        <Footer />
+        {/* One Calendly modal for the site. Wrapping {children} rather than
+            rendering the page means every server component inside stays a
+            server component. */}
+        <CalendlyProvider>
+          <main className="text-[17px] 3xl:text-base ">
+            <ScrollingBannerA />
+            <Header />
+            {children}
+          </main>
+          <Toaster />
+          <Footer />
+        </CalendlyProvider>
       </body>
     </html>
   );

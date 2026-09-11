@@ -4,28 +4,18 @@ import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { PopupModal } from "react-calendly";
 import { Phone } from "lucide-react";
 import { logoImg } from "@/data/images";
 import { siteConfig } from "@/data/siteConfig";
 import { navigationItemsData } from "@/data/navigationData";
-
-const CALENDLY_URL =
-  "https://calendly.com/primo-painting/30min?hide_gdpr_banner=1";
+import { useCalendly } from "./calendly-provider";
 
 export function Header() {
   // usePathname is already reactive. Mirroring it into state only delayed the
   // active link by a render, so nothing was highlighted on first paint.
   const currentPath = usePathname();
 
-  // Same pattern as the hero CTA: PopupModal needs document.body, so it only
-  // renders after mount.
-  const [isCalendlyOpen, setIsCalendlyOpen] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const openCalendly = useCalendly();
 
   // Shrinks once the promo ticker has scrolled away, so the sticky header
   // gives the page back some height. Hysteresis, 60 down and 20 up, stops it
@@ -111,24 +101,15 @@ export function Header() {
 
           <button
             type="button"
-            onClick={() => setIsCalendlyOpen(true)}
+            onClick={openCalendly}
             className="aj-button cursor-pointer whitespace-nowrap rounded-full bg-[#0D378D] px-7 py-2.5 text-base font-medium text-white shadow-[0_6px_16px_-6px_rgba(13,55,141,0.65)] motion-safe:transition-colors hover:bg-[#0a2c72]"
           >
             Book Now
           </button>
         </div>
 
-        <MobileMenu onBookClick={() => setIsCalendlyOpen(true)} />
+        <MobileMenu />
       </div>
-
-      {mounted && (
-        <PopupModal
-          url={CALENDLY_URL}
-          open={isCalendlyOpen}
-          onModalClose={() => setIsCalendlyOpen(false)}
-          rootElement={document.body}
-        />
-      )}
     </header>
   );
 }

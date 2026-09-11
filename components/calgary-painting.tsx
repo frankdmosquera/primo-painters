@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import paintingCompany from "@/public/paintingCompany.webp";
+import BookNowTrigger from "./BookNowTrigger";
 
 export const CalgaryPainting = () => {
   return (
@@ -33,13 +34,12 @@ export const CalgaryPainting = () => {
             </div>
 
             <div className="flex lg:mt-10 mt-5">
-              <Link
-                href="/booking"
+              <BookNowTrigger
                 className="flex items-center gap-2 border-2 border-white rounded-full pl-3 pr-1.5 py-2 text-base md:text-sm font-medium hover:bg-blue-800 transition-colors cursor-pointer"
               >
                 Book Your Free Estimate
                 {/* Keep your SVG exactly as it is */}
-              </Link>
+              </BookNowTrigger>
             </div>
           </div>
         </div>

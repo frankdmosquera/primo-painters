@@ -36,6 +36,13 @@ export const siteConfig = {
     ogImage: "/og-image.png",
   },
 
+  booking: {
+    // The slug really is primo-painting, not painters. That is the actual
+    // Calendly account, so it cannot be "corrected" here without breaking
+    // booking. It would have to be changed in Calendly first.
+    calendlyUrl: "https://calendly.com/primo-painting/30min?hide_gdpr_banner=1",
+  },
+
   location: {
     address: {
       street: "217 Legacy Reach Cres SE",

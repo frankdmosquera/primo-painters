@@ -20,6 +20,7 @@ import {
   navigationItemsData,
   type NavigationIcon,
 } from "@/data/navigationData";
+import { useCalendly } from "./calendly-provider";
 
 // Names in navigationData map to components here, so the data file never has
 // to import React. lucide renders inline <svg>, nothing extra is fetched.
@@ -30,17 +31,10 @@ const NAV_ICONS: Record<NavigationIcon, typeof House> = {
   projects: Images,
 };
 
-type MobileMenuProps = {
-  /**
-   * Opens the Calendly popup. The modal itself lives in the Header so that
-   * closing this menu cannot unmount it mid-booking.
-   */
-  onBookClick: () => void;
-};
-
-export default function MobileMenu({ onBookClick }: MobileMenuProps) {
+export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const currentPath = usePathname();
+  const openCalendly = useCalendly();
 
   // Escape closes the panel. The old click-outside listener was removed: the
   // panel covers the whole viewport now, so there is no outside left to click.
@@ -160,7 +154,7 @@ export default function MobileMenu({ onBookClick }: MobileMenuProps) {
                 // Close this panel first so only the Calendly overlay is left.
                 // Otherwise the visitor has to dismiss two things to back out.
                 setIsOpen(false);
-                onBookClick();
+                openCalendly();
               }}
               className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#0D378D] px-9 py-4 text-lg font-semibold text-white shadow-[0_14px_30px_-10px_rgba(13,55,141,0.8)] motion-safe:transition-all hover:bg-[#0a2c72] hover:shadow-[0_18px_36px_-10px_rgba(13,55,141,0.9)]"
             >

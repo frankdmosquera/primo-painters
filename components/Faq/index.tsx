@@ -4,6 +4,7 @@ import { Accordion, AccordionItem } from "@heroui/react";
 import { Plus, Minus } from "lucide-react";
 import Link from "next/link";
 import { faqItems } from "@/data/faqData";
+import BookNowTrigger from "../BookNowTrigger";
 
 const FaqSection = () => {
   return (
@@ -49,12 +50,11 @@ const FaqSection = () => {
                   </p>
                   {item?.bookOption && (
                     <div className="mt-4">
-                      <Link
-                        href="/booking"
+                      <BookNowTrigger
                         className="inline-block bg-[#0D378D] text-white py-2 px-4 rounded-full hover:bg-[#0A2A6B] transition-colors"
                       >
                         Book Your Estimate
-                      </Link>
+                      </BookNowTrigger>
                     </div>
                   )}
                 </AccordionItem>

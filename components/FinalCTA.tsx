@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BookNowTrigger from "./BookNowTrigger";
 
 export default function FinalCTA() {
   return (
@@ -14,12 +15,11 @@ export default function FinalCTA() {
           meticulous workmanship, honest communication, and free estimates.
         </p>
 
-        <Link
-          href="/booking"
+        <BookNowTrigger
           className="inline-flex items-center justify-center rounded-full bg-white text-[#0D378D] px-8 py-4 text-lg font-semibold transition hover:scale-[1.02] hover:bg-gray-100"
         >
           Book Your Free Estimate
-        </Link>
+        </BookNowTrigger>
 
         <div className="mt-10 text-white/80 space-y-1 text-sm md:text-base">
           <p>📞 (587) 735-2312</p>

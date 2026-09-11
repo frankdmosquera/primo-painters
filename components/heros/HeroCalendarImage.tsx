@@ -1,10 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { PopupModal } from "react-calendly";
-
-const CALENDLY_URL =
-  "https://calendly.com/primo-painting/30min?hide_gdpr_banner=1";
+import { useCalendly } from "../calendly-provider";
 
 const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
 
@@ -15,18 +11,13 @@ const DAYS = Array.from({ length: 30 }, (_, i) => i + 1);
 const AVAILABLE = [18, 19];
 
 export function HeroCalendarImage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const openCalendly = useCalendly();
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={openCalendly}
         aria-label="Book a free interior painting estimate"
         className="group animate-book-pulse w-[14rem] cursor-pointer overflow-hidden rounded-2xl bg-white text-left shadow-[0_18px_40px_-12px_rgba(0,0,0,0.55)] will-change-transform [backface-visibility:hidden] motion-safe:transition-shadow hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.65)]"
       >
@@ -74,14 +65,6 @@ export function HeroCalendarImage() {
         </div>
       </button>
 
-      {mounted && (
-        <PopupModal
-          url={CALENDLY_URL}
-          open={isOpen}
-          onModalClose={() => setIsOpen(false)}
-          rootElement={document.body}
-        />
-      )}
     </>
   );
 }

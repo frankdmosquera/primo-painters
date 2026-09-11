@@ -22,7 +22,7 @@ export default function OurServices() {
             finishes.
           </p>
           <div className="hidden lg:block mt-8">
-            <ButtonBlue href={"/booking"} linkText="Book Your Free Estimate!" />
+            <ButtonBlue linkText="Book Your Free Estimate!" />
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ export default function OurServices() {
           ))}
         </TabsList>
         <CardFooter className="pt-12  lg:w- lg:flex lg:justify-center lg:hidden">
-          <ButtonBlue href={"/booking"} linkText="Book Your Free Estimate" />
+          <ButtonBlue linkText="Book Your Free Estimate" />
         </CardFooter>
       </Tabs>
     </section>
