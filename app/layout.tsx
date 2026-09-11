@@ -1,35 +1,27 @@
 import { siteConfig } from "@/data/siteConfig";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/Footer";
-import { Roboto } from "next/font/google";
+import { Poppins, Roboto } from "next/font/google";
 import { jsonLd } from "@/data/jsonLd";
 import ScrollingBannerA from "@/components/scrolling-banner-a";
 import { Header } from "@/components/Header";
 
+// Body text. 500 is here because globals.css sets the body to that weight.
 const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Headings only, so it needs the two weights headings actually use.
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["600", "700"],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// export const metadata: Metadata = {
-//   title: "Calgary Interior Painters | Primo Painters",
-//   description:
-//     "Primo Painters provides professional interior painting services in Calgary. We paint walls, ceilings, trim, doors, cabinets and more for homeowners, delivering clean workmanship and free estimates.",
-// };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.business.website),
@@ -97,21 +89,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <meta name="msvalidate.01" content="DBD9A18509B447FAF5F19EC3C4B5BFC4" /> */}
-        <meta name="robots" content="index, follow" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -120,7 +97,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
+        className={`${roboto.variable} ${poppins.variable} antialiased`}
       >
         <main className="text-[17px] 3xl:text-base ">
           <ScrollingBannerA />

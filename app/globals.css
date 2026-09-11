@@ -9,8 +9,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,12 +47,18 @@
 html, body{
  margin: 0;
 }
+/* Fonts are decided here and nowhere else. The layout only loads them and
+   exposes them as --font-roboto and --font-poppins. */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-roboto), sans-serif;
   font-weight: 500;
   font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), sans-serif;
 }
 
 

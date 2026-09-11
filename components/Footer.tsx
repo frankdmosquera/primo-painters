@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import logo from "@/public/logo.svg";
 import { Facebook, Instagram, Youtube } from "lucide-react";
+import { navigationItemsData } from "@/data/navigationData";
 
 export default function Footer() {
   return (
@@ -70,26 +70,13 @@ export default function Footer() {
               <h3 className="font-medium mb-4 text-[20px]">Quick Links</h3>
               <nav>
                 <ul className="space-y-5">
-                  {[
-                    "Home",
-                    "About",
-                    // "Services",
-                    "Gallery",
-                    // "Blog",
-                    "Contact",
-                  ].map((item) => (
-                    <li key={item}>
+                  {navigationItemsData.map(({ title, href }) => (
+                    <li key={href}>
                       <Link
-                        href={
-                          item === "Home"
-                            ? "/"
-                            : item === "Blog"
-                              ? "/blogs"
-                              : `/${item.toLowerCase()}`
-                        }
-                        className="text-white hover:text-white transition-colors"
+                        href={href}
+                        className="text-white/80 transition-colors hover:text-white"
                       >
-                        {item}
+                        {title}
                       </Link>
                     </li>
                   ))}
