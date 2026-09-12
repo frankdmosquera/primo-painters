@@ -90,6 +90,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <meta name="msvalidate.01" content="DBD9A18509B447FAF5F19EC3C4B5BFC4" /> */}
+        {/* Calendly is reachable from every page: the inline embed sits on
+            home, about, contact and booking, and the Book Now popup is
+            provided site wide, so any page can open it. Warming the
+            connection here means DNS, TCP and TLS are already done when the
+            fetch starts, instead of being the front half of it.
+            crossOrigin is required for an iframe origin, otherwise the
+            browser opens a connection the frame cannot reuse. */}
+        <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
