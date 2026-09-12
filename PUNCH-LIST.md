@@ -148,9 +148,15 @@ does not want the heading removed.
 **6. The service tabs wrap** into two ragged rows on mobile. A single
 horizontally scrollable row would read as intentional.
 
-**7. Footer contact block.** Phone, email and address from siteConfig. Blocked
-on Frank deciding whether `217 Legacy Reach Cres SE` goes public, since it may
-be his home address.
+**7. Footer contact block.** Phone and email from siteConfig.
+
+**The street address is deferred, not rejected.** Decided 2026-09-11: leave
+`217 Legacy Reach Cres SE` out for now and revisit later. It may be his home
+address, which is the reason for the pause. Worth knowing when it comes back
+up: a consistent name, address and phone across the site and the Google
+Business Profile is one of the few genuine local ranking signals, so adding it
+later is a real improvement rather than cosmetics. The block can be built with
+phone and email now and the address dropped in when he decides.
 
 **8. Then the about page, contact page, and the six service pages.**
 
@@ -179,7 +185,8 @@ be his home address.
 ## 10. Questions waiting on Frank
 
 1. Where is primopainters.ca hosted, and does `main` auto deploy?
-2. Does the street address go in the footer?
+2. ~~Does the street address go in the footer?~~ Answered 2026-09-11: not for
+   now, revisit later. See item 7.
 3. Is the YouTube channel really `@Primo-Painting`? `siteConfig.social.youtube`
    is empty with a note, because the handle looked wrong and a dead link is
    worse than no link.
