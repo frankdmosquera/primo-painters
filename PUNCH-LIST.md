@@ -64,8 +64,14 @@ headings. Convert as you touch a file, not in a sweep, and tell him which file.
 
 ## 4. Repo state
 
-- Branch **`design-pass`**, cut from `78b5867`. Eight commits as of
-  2026-09-11. Working tree clean.
+- Branch **`design-pass-2`**, cut from `design-pass`, which was cut from
+  `78b5867`. Four branches now: `main` and `claude` at `78b5867`, `design-pass`
+  with the first nine commits, `design-pass-2` with eleven more from the second
+  session on 2026-09-11. Working tree clean.
+- **`DESIGN-PLAN.md` is the companion to this file.** It covers how the site
+  gets a modern look without moving rankings, in six phases, after a read of
+  `../the-latam-painters`. Live version:
+  https://claude.ai/code/artifact/d10b308f-670c-4f83-8cf9-5e01ca0dff95
 - `main` and `claude` are both still at `78b5867`, untouched, in sync with
   GitHub. `78b5867` is the live site.
 - **Nothing has been pushed.** Never push or commit unless asked.
@@ -76,8 +82,8 @@ headings. Convert as you touch a file, not in a sweep, and tell him which file.
   deliberate; see the workspace `ai-web-agency/CLAUDE.md`. Do not seed one.
 - `stash@{0}` is "image fixes 2026-09-10, abandoned". Do not restore it.
 
-**Unanswered and it matters: nobody has confirmed where primopainters.ca is
-hosted.** If a host builds from `main`, merging there is deploying. Settle that
+**Unanswered and it still blocks shipping: nobody has confirmed where
+primopainters.ca is hosted.** If a host builds from `main`, merging there is deploying. Settle that
 before anything reaches `main`.
 
 ## 5. Before any edit
@@ -111,6 +117,20 @@ All committed on `design-pass`.
 | Calendly | One modal for the site via `components/calendly-provider.tsx`. Was three. URL lives only in `siteConfig.booking.calendlyUrl`. Every Book Now opens it; `/booking` links on the home page went 5 to 0 |
 | Loader | The hourglass from `/booking` now also covers the popup, cleared by Calendly's own event, the iframe load, or a 6 second ceiling |
 | Fixes | `tel:123456789` placeholder was live. Duplicate robots meta contradicted noindex on `/thank-you`. `<button>` nested in a `<Link>`. Dead `hero.css` shipped on every homepage |
+
+**Second session, 2026-09-11, on `design-pass-2`.** Hero phone pill replacing
+the Questions? toggle. Why choose us: two capped columns, left aligned to match
+the rest of the page, icons normalised. Reviews: hidden keyword span deleted,
+one width, soft wash and a dot grid in the margins. FAQ: questions moved from
+h2 to h3 via HeadingComponent, sticky booking panel beside them. Closing CTA:
+before and after slider ported from latam, duplicate contact block dropped.
+Calendly now mounts within 1200px of the viewport with a preconnect in the
+layout. Home images all interior now, the exterior shot is off the page but
+still on disk. Desktop gallery `sizes` corrected and `bg-red-200` removed.
+
+**Snapshot has NOT been run against any of that.** Phase 00 of DESIGN-PLAN.md.
+It should show exactly three changes: the hidden span, two alt attributes, and
+the FAQ panel copy. Anything else in that diff is unintended.
 
 ## 7. What is open
 
