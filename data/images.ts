@@ -15,9 +15,12 @@ export const BgBackgroundImg = {
 
 // HERO IMAGES
 // HERO IMAGES
+// The after shot of the living room in tnd-img-9, which now sits behind the
+// service banner. Exterior siding used to sit here, under an H1 reading
+// INTERIOR HOUSE PAINTERS.
 export const HeroHomeImg = {
-  src: "/heros/hero-home-showcase-img.webp",
-  alt: "hero showcase image - house painting calgary",
+  src: "/interior-painting/trim-and-door-painting/tnd-img-10.jpg",
+  alt: "Living room built-ins and mantel painted cream - interior painting Calgary",
 };
 
 export const AboutUsImg = {

@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import paintingCompany from "@/public/paintingCompany.webp";
+// A finished kitchen, not the exterior shot that used to sit here. This block
+// names walls, ceilings, trim, doors and cabinets, and the old photo was blue
+// siding and a porch while the alt text claimed it showed an interior job. The
+// masked mid prep shots stay where they belong, in the cabinet painting
+// sequence, which already walks through mask, prime, paint and protect.
+import paintingCompany from "@/public/interior-painting/cabinet-painting/cab-img-8.jpg";
 import BookNowTrigger from "./BookNowTrigger";
 
 export const CalgaryPainting = () => {
@@ -48,7 +53,7 @@ export const CalgaryPainting = () => {
         <div className="md:w-1/2 h-[300px] md:h-auto relative">
           <Image
             src={paintingCompany}
-            alt="Primo Painters completing an interior house painting project in Calgary"
+            alt="Kitchen cabinets painted cream with granite counters - cabinet painting Calgary"
             fill
             className="object-cover"
             style={{ objectPosition: "center 50%" }}
