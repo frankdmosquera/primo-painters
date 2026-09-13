@@ -45,6 +45,12 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
+        }}
+      />
       <HomeHero />
       <OurServices />
       <WhyChooseUs />
@@ -55,12 +61,7 @@ export default async function Home() {
         </div>
         <ServiceBanner />
         <CalgaryPainting />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqJsonLd),
-          }}
-        />
+
         <FaqSection />
         <div className="relative ">
           <BgLines />
