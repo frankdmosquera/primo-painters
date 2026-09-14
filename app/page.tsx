@@ -1,6 +1,8 @@
 import { faqJsonLd } from "@/data/faqJsonLd";
 import type { Metadata, Viewport } from "next";
 import HomeHero from "@/components/heros/HomeHero";
+import WhyChooseUs from "@/components/whyChooseUs";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -44,11 +46,38 @@ export default async function Home() {
         }}
       />
       <HomeHero />
-      {/* Kept so there is something to scroll past while the hero image pins.
-          Remove it once the next real section lands. */}
-      <div className="h-400">Test H1</div>
       {/* <OurServices /> */}
-      {/* <WhyChooseUs /> */}
+      <WhyChooseUs />
+
+      {/*
+        The before and after slider, placed where the-latam-painters puts
+        theirs: directly after their WhyUs section.
+
+        No background on purpose, so it reads as a continuation of Why Choose
+        Us rather than as a separate block. Theirs sits on bg-services-bg with
+        floating paint icons behind it; the icons need motion, which is not
+        installed.
+
+        Same images FinalCTA uses. When FinalCTA comes back, one of the two
+        has to change or the page shows the same kitchen twice.
+      */}
+      {/* bg-background is not a colour choice, it is opacity. The hero image
+          is sticky with the page as its parent, so it sits behind the whole
+          document and every section below has to cover it. Leave this
+          transparent and the hero photo shows through the slider. */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSlider
+            beforeImage="/visualisations/kitchen-colour-before-oak.jpg"
+            afterImage="/visualisations/kitchen-colour-after-black.png"
+            beforeAlt="Kitchen with light oak cabinets before a colour change"
+            afterAlt="The same kitchen with the cabinets in black"
+            beforeLabel="Before"
+            afterLabel="After"
+            aspectClassName="aspect-[16/10]"
+          />
+        </div>
+      </section>
       {/* <div className="flex flex-col "> */}
       {/* <Reviews /> */}
       {/* <div className="relative top-[100px]">
