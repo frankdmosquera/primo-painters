@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "@/components/icons/SocialIcons";
 import { navigationItemsData } from "@/data/navigationData";
 import { siteConfig } from "@/data/siteConfig";
 
