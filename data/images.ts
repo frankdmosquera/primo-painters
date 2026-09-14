@@ -115,35 +115,35 @@ export const GalleryInteriorImages = [
 export const wallPaintingImages = [
   {
     src: "/interior-painting/wall-painting/wall-img-1.jpg",
-    alt: "",
+    alt: "wall patched and sanded ready for paint - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-2.jpg",
-    alt: "",
+    alt: "freshly painted white walls in an open plan kitchen and dining area - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-3.jpg",
-    alt: "",
+    alt: "wall part painted with outlets and trim masked off - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-4.webp",
-    alt: "",
+    alt: "stairwell walls painted white beside a black iron railing - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-5.jpg",
-    alt: "",
+    alt: "kitchen wall filled and patched before painting - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-6.jpg",
-    alt: "",
+    alt: "the same kitchen wall after painting, smooth and evenly covered - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-7.jpg",
-    alt: "",
+    alt: "wall repaired and sanded beside a window before painting - wall painting calgary",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-8.jpg",
-    alt: "",
+    alt: "bedroom wall painted soft grey with clean baseboard lines - wall painting calgary",
   },
 ];
 

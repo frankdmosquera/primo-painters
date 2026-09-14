@@ -4,6 +4,7 @@ import HomeHero from "@/components/heros/HomeHero";
 import WhyChooseUs from "@/components/whyChooseUs";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import OurServices from "@/components/our-services";
+import GoogleReviewsCarousel from "@/components/GoogleReviewCarousel3";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -80,7 +81,13 @@ export default async function Home() {
         </div>
       </section>
       {/* <div className="flex flex-col "> */}
-      {/* <Reviews /> */}
+      {/* LATAM's reviews carousel, brought over on 2026-09-14 with its own
+          20 generated reviews. Boilerplate on purpose: it is here so there is
+          something real to look at while the layout is built. The Google API
+          swap comes after. */}
+      {/* ⚠ FABRICATED REVIEWS. Boilerplate only, must not reach main.
+          See the warning at the top of GoogleReviewCarousel3.tsx. */}
+      <GoogleReviewsCarousel />
       {/* <div className="relative top-[100px]">
           <BgLines />
         </div> */}

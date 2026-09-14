@@ -12,14 +12,8 @@ import {
   ArrowRight as ArrowRightIcon,
 } from "lucide-react";
 
-/**
- * One definition for all three controls, so they cannot drift apart. The
- * hover fills the circle rather than nudging the icon's blue a shade darker,
- * which is what the old hover:text-blue-800 did - technically a hover, but
- * invisible in practice.
- */
-const CONTROL =
-  "inline-flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-card text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none active:scale-95";
+import { CONTROL } from "@/lib/controlClasses";
+
 
 interface ProjectSliderWrapperProps {
   children: ReactNode[];
