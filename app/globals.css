@@ -84,6 +84,22 @@
   --site-max: 80rem; /* 1280px */
 
   /**
+   * A section tint, for blocks that need to separate from the page without
+   * becoming a coloured panel.
+   *
+   * Taken from the-latam-painters, who use oklch(97% 0.008 51) on their
+   * services section. Same recipe - 97% lightness, 0.008 chroma, the brand
+   * hue - with ours at 262 rather than their 51, because their primary is
+   * orange and Primo's is blue. Theirs reads warm for the same reason ours
+   * reads cool: it is their own logo colour, turned almost all the way down.
+   *
+   * Deliberately faint. At 0.008 chroma it is a tint, not a colour, and the
+   * page still reads as one surface. Primo's old #E2E7F1 was far stronger and
+   * made that section look like a separate panel bolted on.
+   */
+  --services-bg: oklch(97% 0.008 262);
+
+  /**
    * How tall the header is. The header is sticky, which means it sits in the
    * normal flow and pushes everything below it down.
    *
@@ -202,6 +218,7 @@
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
+  --color-services-bg: var(--services-bg);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-popover-foreground: var(--popover-foreground);

@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import HomeHero from "@/components/heros/HomeHero";
 import WhyChooseUs from "@/components/whyChooseUs";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
+import OurServices from "@/components/our-services";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -46,7 +47,7 @@ export default async function Home() {
         }}
       />
       <HomeHero />
-      {/* <OurServices /> */}
+      <OurServices />
       <WhyChooseUs />
 
       {/*
