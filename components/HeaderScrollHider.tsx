@@ -16,7 +16,7 @@ export function HeaderScrollHider({ children }: { children: React.ReactNode }) {
       // padding on the container inside it, which pushed the header's content
       // 12px further in than every section below it. The inner container owns
       // the gutter, so the page has one edge.
-      className={`sticky top-0 z-50 flex w-full items-center justify-center border-b bg-background/80 py-4 backdrop-blur motion-safe:transition-transform motion-safe:duration-300 ${
+      className={`sticky top-0 z-50 flex w-full items-center justify-center border-b bg-white py-4 motion-safe:transition-transform motion-safe:duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
