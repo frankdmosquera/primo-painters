@@ -10,6 +10,7 @@ import { OurProcessHome } from "@/components/home/OurProcessHome";
 import FaqSection from "@/components/Faq";
 import { ProjectGalleryGrid } from "@/components/projects/project-gallery-grid";
 import { getProjects } from "@/data/projectsData";
+import FinalCTA from "@/components/FinalCTA";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -113,7 +114,7 @@ export default async function Home() {
           <BgLines />
         </div> */}
       {/* <ContactFormSection /> */}
-      {/* <FinalCTA /> */}
+      <FinalCTA />
       {/* </div> */}
     </>
   );
