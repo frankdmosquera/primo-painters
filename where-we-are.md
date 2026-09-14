@@ -15,76 +15,100 @@ moved.
 
 ## Where we are
 
-Feature 1, the header, is built and the build is green again.
+Three features done and committed. The build is green and the home page now
+renders the hero, Why Choose Us, and the before and after slider.
 
-The component layer is back, on Base UI this time. `shadcn init` ran with
-`-b base -p nova`, which writes `"style": "base-nova"` into components.json,
-the same style the-latam-painters uses. Four components were added: button,
-sheet, navigation-menu and accordion. Accordion is not imported anywhere yet,
-it came in because LATAM's mobile nav uses it for dropdown sections and ours
-has none.
+    67b138b  feat: port why choose us and add the before and after slider
+    39ef26c  feat: port the home hero with the pinned image
+    324c471  feat: port the header from the-latam-painters
+    4f62c3e  chore: remove the shadcn component layer and align the next packages
 
-Installed this session: @base-ui/react 1.8.0, react-hook-form 7.88.0,
-@hookform/resolvers 5.9.1, and lucide-react moved 0.477 to 1.46.0. zod 4.6.5
-was already present. All at latest, nothing hand pinned.
+Pushed up to 39ef26c. 67b138b is not pushed yet.
 
-## Feature 1, the header
+## Branches
 
-Five files, matching LATAM component for component:
+    main               78b5867   the live site, publishes on merge
+    main-live-backup   78b5867   was `claude`, renamed. A pin on the live commit
+    design-pass-2      67b138b   current work
 
-    Header.tsx             server component, LATAM's layout
-    HeaderScrollHider.tsx  LATAM's hide on scroll down, show on scroll up
-    NavBar.tsx             LATAM's NavigationMenu, flat
-    MobileNav.tsx          LATAM's Sheet menu
-    HeaderBookNow.tsx      LATAM's Button, Primo's Calendly
+design-pass and design-pass-3 were deleted on 2026-09-14, local and GitHub,
+against the workspace never-delete-a-branch rule and at Frank's explicit
+instruction. Nothing was lost: both were strict ancestors of design-pass-2.
 
-Only the scroll wrapper, the nav's active link and the CTA are client
-components. Everything else stays on the server.
+## The theme
 
-Content is Primo's throughout: the same three links with the same hrefs and
-the same words, Primo's logo with its alt and title, Primo's phone number,
-and "Book Now" opening Calendly rather than LATAM's "Get a Free Quote".
-Colours stay Primo's blue. Two new tokens carry it, `--primary-dark` and
-`--primary-light`, both #0D378D family rather than LATAM's orange.
+Three colours chosen, everything else derived. The full explanation is at the
+top of app/globals.css and should be read before reaching for a colour.
 
-The old Header.tsx and mobile-menu.tsx are replaced. mobile-menu.tsx is still
-on disk and still imports cleanly, it is simply no longer referenced.
+    blue    #0D378D   identity. From the logo, which cannot change
+    amber   #E09A3C   action. The CTA, and nothing else
+    green   #2F6B4F   trust marks
+    ground  #FBFAF7   warm, not pure white
 
-### The gate
+Amber is a surface and never text: 2.27:1 on the page ground, which fails.
 
-The SEO snapshot was run against a production build on port 3005. The header
-introduced nothing outside the approved list in scripts/README.md. The two
-lines it did move are both already approved: Booking leaving the nav, and the
-phone number arriving.
+## Two tokens every section needs
 
-One trap worth recording. `diff -ru` against the baseline reports every file
-as entirely changed, because the baseline is CRLF and a fresh snapshot is LF.
-Use `--strip-trailing-cr` or the diff is unreadable:
+    --site-max    80rem. Content width. NOT Tailwind's `container`, which
+                  sizes itself from the largest breakpoint
+    --header-h    the header's height. The header is sticky and therefore in
+                  the flow, so a full-height section must subtract it:
+                  min-h-[calc(100svh-var(--header-h))]
+
+## Three traps that already cost time
+
+**The hero image sits behind the whole page.** It is sticky with the page as
+its parent, so it never stops pinning. Any section left transparent shows the
+hero photo through it. Every section needs an opaque background, which is what
+bg-background is doing on the slider section - opacity, not colour.
+
+**The SEO diff lies unless carriage returns are stripped.** The baseline is
+CRLF and a fresh snapshot is LF, so a plain `diff -ru` reports all five files
+as entirely rewritten. Use:
 
     diff -ru --strip-trailing-cr scripts/seo-baseline <new snapshot dir>
 
+**npm install follows the branch you are standing on.** Installing while on
+design-pass-2 rebuilds its packages, not the live site's. Check out first,
+then install.
+
+## Breakpoints
+
+No custom breakpoints. Tailwind's defaults, matching LATAM. The old scale -
+sm 600, md 760, lg 920, xl 1040, plus tn, xsm, 3xl and 4xl - came out on
+2026-09-14 because the same class copied from LATAM meant two different
+widths. The 22 uses of the custom names were converted to inline arbitrary
+widths rather than deleted.
+
 ## What is still down
 
-The rest of the diff is teardown state, not regression:
-
-- Footer is commented out in app/layout.tsx line 123, since commit 4f62c3e
+- Footer is commented out in app/layout.tsx, so every page has no bottom
 - ScrollingBannerA is commented out in the same place
-- The home page still renders only Test H1, every section commented out
-- Components importing the removed shadcn files still do not typecheck:
-  carousel, card, tabs, field, hero-highlight
-
-The build passes anyway, because nothing reachable imports them.
+- OurServices, Reviews, ServiceBanner, CalgaryPainting, FaqSection,
+  ContactFormSection and FinalCTA are still commented out on the home page
+- Components importing removed shadcn files still do not typecheck: carousel,
+  card, tabs, field, hero-highlight. The build passes because nothing
+  reachable imports them.
 
 ## Next step
 
-Feature 2 from the plan in the artifact.
+Feature 4, OurServices, working top to bottom down the home page.
+
+It is the first section where "same as LATAM" and "content holds still" truly
+collide. Primo's is a Tabs interface over six service types, each with a photo
+GallerySection, and forceMount so every title and description is in the HTML.
+LATAM's is four stacked cards with no images and the data hardcoded in the
+component. Their layout has nowhere to put the galleries, and those image alts
+are in the baseline.
 
 ## Working agreements
 
 One step at a time, each with a gate that has to pass before the next starts.
-Nav stays flat, since Primo's four items have no children and adding some
-would be a content change. The CTA stays "Book Now" and opens Calendly, since
-"Get a Free Quote" is LATAM's content, not Primo's.
+One commit per feature, at the feature boundary rather than afterwards.
 
-Note on that line: navigationData.ts holds three items, not four. Home, About
-and Contact. Booking is deliberately excluded and the file explains why.
+Nav stays flat, since Primo's items have no children and adding some would be
+a content change. navigationData.ts holds three, not four: Home, About and
+Contact. Booking is deliberately excluded and the file explains why.
+
+The CTA stays "Book Now" and opens Calendly, since "Get a Free Quote" is
+LATAM's content, not Primo's.

@@ -61,6 +61,29 @@ next ships.
 10. components/mobile-menu.tsx is superseded by MobileNav.tsx and is no longer
     referenced. Still on disk, still compiles.
 
+11. The hero alt text does not describe the hero image. The image is now
+    the-latam-painters' photo; the alt still reads "Living room built-ins and
+    mantel painted cream", which was Primo's own. Alt is tracked by
+    scripts/seo-baseline on a ranking page, so this is a content decision:
+    either rewrite the alt with approval, or put Primo's image back. Primo's
+    photo is still on disk, path recorded in data/images.ts.
+
+12. Why Choose Us runs four cards across at xl, about 30 characters a line.
+    Comfortable reading is 45 to 75. It looks tidier and reads harder, and
+    that trade has not been called either way.
+
+13. FinalCTA uses the same kitchen before and after images as the new slider
+    section on the home page. When FinalCTA comes back, one of the two has to
+    change or the page shows the same kitchen twice.
+
+14. The 780 area code is Edmonton; Calgary is 403, 587 and 825. Frank
+    confirmed 780-695-2631 twice, so this is recorded rather than questioned.
+    The number is NAP data in the LocalBusiness JSON-LD, so the Google
+    Business Profile needs the same number or local rankings take a hit.
+
+15. The git remote is stale. `origin` points at primo-painting.git and GitHub
+    redirects to primo-painters.git. Pushes work and print a notice each time.
+
 ## Calendly
 
 To be replaced eventually. Not decided what with.
