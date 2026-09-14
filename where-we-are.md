@@ -47,10 +47,29 @@ moved.
 
 ## Where we are
 
-Five features done and committed. The build is green and the home page renders
-the hero, the services tabs, Why Choose Us, the before and after slider, and
-the reviews carousel.
+Sixteen commits on this branch, all pushed. Head is 86814a8. The build is
+green and typecheck is clean on everything touched.
 
+The home page now renders, in order: the ticker, the header, the hero, the
+services tabs, Why Choose Us, the before and after slider, the reviews
+carousel, Interior Painting Done Right, the process section, the project
+gallery, the FAQ, the final CTA, the ticker again, and the footer.
+
+The about page renders the hero, Our Story, the process section, Our Promise,
+Serving Calgary, and the footer.
+
+    86814a8  feat: let the about texture image carry its section
+    06c3893  feat: rebuild the about page
+    c15d7ef  feat: run the discount ticker top and bottom and load roboto 300
+    38e9af1  feat: restore the final cta above the footer
+    442c59a  feat: restore the footer and replace the dropped lucide brand icons
+    ab483ec  fix: make the header white so the logo stops showing a box
+    4125005  feat: bring the project gallery over from the-latam-painters
+    fad572a  chore: remove the dead tailwind config
+    b76185a  feat: rebuild the faq on shadcn's base ui accordion
+    69eb7d0  feat: bring the process section over from the-latam-painters
+    25b8dd3  feat: restore the calgary painting section on the home page
+    edec46a  docs: record feature 5, the merge blocker, and how to work here
     87b24f3  feat: bring the reviews carousel over from the-latam-painters
     570abc6  feat: restore the services section on base ui and tidy its detail
     67b138b  feat: port why choose us and add the before and after slider
@@ -58,7 +77,23 @@ the reviews carousel.
     324c471  feat: port the header from the-latam-painters
     4f62c3e  chore: remove the shadcn component layer and align the next packages
 
-Pushed up to 9e82e5c. 570abc6 and 87b24f3 are not pushed yet.
+Nothing is unpushed.
+
+## ⚠ MERGE BLOCKER: the gallery projects are placeholder
+
+The project gallery renders 40 invented projects: invented titles, invented
+descriptions claiming work that was never done, and photos served from
+picsum.photos, a random image service.
+
+It is server rendered, so all of it is in the HTML Google reads, on a site
+that ranks in Calgary. This is the same class of problem as the fabricated
+reviews below, and it arrived the same way: placeholder content so the design
+could be built against something realistic.
+
+**Before this branch goes near main:** replace every entry in
+data/projectsData.ts with Primo's real projects and real photos, or take the
+section off the page. The warning is repeated at the top of that file and at
+the call site in app/page.tsx.
 
 ## ⚠ MERGE BLOCKER: the reviews are fabricated
 
@@ -122,7 +157,7 @@ classes first is faster than guessing at overrides.
 
     main               78b5867   the live site, publishes on merge
     main-live-backup   78b5867   was `claude`, renamed. A pin on the live commit
-    design-pass-2      67b138b   current work
+    design-pass-2      86814a8   current work, pushed
 
 design-pass and design-pass-3 were deleted on 2026-09-14, local and GitHub,
 against the workspace never-delete-a-branch rule and at Frank's explicit
@@ -175,21 +210,57 @@ widths rather than deleted.
 
 ## What is still down
 
-- Footer is commented out in app/layout.tsx, so every page has no bottom
-- ScrollingBannerA is commented out in the same place
-- Reviews, ServiceBanner, CalgaryPainting, FaqSection, ContactFormSection and
-  FinalCTA are still commented out on the home page
+- ContactFormSection is still commented out on the home page
+- ServiceBanner is parked on the home page at Frank's request, and was taken
+  off the about page entirely on 2026-09-14. That removal drops
+  "Ready to Transform Your Interior Space?" from /about, which the live site
+  has at scripts/seo-baseline/about.txt line 147. It is commented out, not
+  deleted.
 - `our-services copy.tsx` and `GallerySectionHome.tsx` do not typecheck. Both
   are dead, nothing imports them, and the build passes because of it.
-- carousel, field and hero-highlight are still missing from components/ui, so
-  the components importing them stay broken until their sections come up
+- field and hero-highlight are still missing from components/ui. carousel,
+  accordion, dialog and pagination are all present now.
+
+## Parked, not dropped
+
+Every one of these is a decision Frank made to defer, not something missed:
+
+- The FAQ's "Still have questions?" aside is not in the live baseline at all.
+  Bringing the section up added a new h3 and two sentences the live page has
+  never had.
+- The process copy renders on both / and /about. The words now live in one
+  file, data/processSteps.ts, but both pages still show them.
+- A full heading and content scan, to be run once the pages are finished
+  rather than section by section.
+- The logo PNG carries an opaque white background, measured at 255,255,255 in
+  all four corners. The header was made white to hide it; anywhere the logo
+  sits on a dark ground, such as the footer, it shows again.
+- The home page renders kitchen-colour-before-oak.jpg and
+  kitchen-colour-after-black.png twice each, once in the standalone slider and
+  once in FinalCTA. app/page.tsx line 68 predicted this.
+- About's text contrast drifted while the texture band was darkened. The
+  intro paragraph is grey on blue and needs fixing before this ships.
 
 ## Next step
 
-Feature 6, working top to bottom. ServiceBanner is next on the home page,
-then CalgaryPainting, FaqSection, ContactFormSection and FinalCTA.
+The home page and the about page are both built out. What is left is not new
+sections but the two merge blockers, the parked list above, and the gate.
 
-Running alongside that, and arguably first: swap the fabricated reviews for
+**The gate has not been run since 2026-09-14's work.** It will show changes
+that are deliberate, and they need checking against this list rather than
+being assumed:
+
+- "Ready to Transform Your Interior Space?" removed from /about
+- ServingCalgary's two paragraphs joined into one, same words, same order
+- The FAQ questions render as h2, matching the live baseline. The HeroUI
+  version forced h3, but that section was commented out so the h3 never
+  shipped.
+- New text on /: the process section's heading and four steps, and the
+  gallery's placeholder project titles
+
+Anything beyond that is a regression.
+
+First, though: swap the fabricated reviews for
 real ones. app/api/getReviews already calls the Google Places API and returns
 `result.reviews`. Three things to do there:
 
