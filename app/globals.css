@@ -1,21 +1,220 @@
+/**
+ * ============================================================================
+ * PRIMO PAINTERS - THE THEME
+ * ============================================================================
+ *
+ * Read this before reaching for a colour. Three hues are chosen, everything
+ * else is derived from them. Adding a fourth hue is a decision, not a detail.
+ *
+ * WHY THESE THREE
+ *
+ *   The logo is blue and the logo cannot change. So the blue is the fixed
+ *   point and the palette is built around it, rather than the other way round.
+ *
+ *   blue    #0D378D   identity   the logo, links, nav, anything structural
+ *   amber   #E09A3C   action     the one thing you want clicked on a screen
+ *   green   #2F6B4F   trust      ratings, free-estimate marks, guarantees
+ *
+ *   Amber sits opposite blue on the colour wheel, so a CTA reads as a CTA
+ *   without fighting the logo next to it. Green exists so trust marks stop
+ *   borrowing the blue, which was diluting the one colour that means "Primo".
+ *
+ * WHICH CLASS FOR WHICH JOB
+ *
+ *   bg-primary  text-primary-foreground     primary button, white text
+ *   text-primary-dark                       headings and links in blue
+ *   text-primary-light  fill="var(--primary)"   icon pairs, see the header
+ *   bg-primary/10                           a blue wash behind something
+ *   bg-accent  text-accent-foreground       the CTA. Book Now.
+ *   text-success  bg-success/10             stars, ticks, "Free Estimates"
+ *   bg-background                           the page
+ *   bg-card                                 anything that should lift off it
+ *   text-muted-foreground                   secondary copy
+ *   border-border                           every rule and divider
+ *
+ * ⚠ AMBER IS A SURFACE, NEVER TEXT
+ *
+ *   On the page ground amber measures 2.27:1, which fails WCAG AA. It is a
+ *   button or a badge carrying dark text, never coloured type on the page.
+ *   Dark text on amber is 7.69:1 and passes comfortably.
+ *   White text on amber is 2.37:1 and fails. Do not use it.
+ *
+ * SHADES ARE NOT NEW COLOURS
+ *
+ *   bg-primary/10, /20, /85 and so on are tints of the same blue. One hue
+ *   covers six jobs that way, with no new decision and no new token. Reach
+ *   for an opacity before reaching for another colour.
+ *
+ * THE GROUND IS WARM ON PURPOSE
+ *
+ *   --background is #FBFAF7, not #FFFFFF. Pure white makes a deep blue look
+ *   cold and flat. The warm paper is a large part of what separates a page
+ *   that looks designed from one that looks like an untouched default, and it
+ *   costs nothing. Cards stay pure white so they lift off it.
+ *
+ * MEASURED, NOT GUESSED, against --background:
+ *
+ *   foreground        17.46:1        white on primary   10.78:1
+ *   primary           10.33:1        dark on accent      7.69:1
+ *   success            6.03:1        white on success    6.29:1
+ *   muted-foreground   5.32:1        accent on ground    2.27:1  FAIL
+ *
+ * ============================================================================
+ */
+
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* The theme itself. The block at the top of this file explains it. */
+:root {
+  --blueButtonColor: #2f60ab;
+
+  /**
+   * How wide the site's content is allowed to get. Every section uses this,
+   * so the page has one edge rather than each block choosing its own.
+   *
+   * Do NOT use Tailwind's `container` for this. It derives its max-widths
+   * from the breakpoints, and this project defines a custom scale ending at
+   * --breakpoint-4xl: 120rem. That made `container` 1881px wide on a 1920
+   * monitor, which is why the header looked like it had no container at all.
+   */
+  --site-max: 80rem; /* 1280px */
+
+  /**
+   * How tall the header is. The header is sticky, which means it sits in the
+   * normal flow and pushes everything below it down.
+   *
+   * So a hero asking for 100svh starts at --header-h and ends at
+   * 100svh + --header-h, overflowing the screen by exactly the header's
+   * height. That is what pushed the trust badges off the bottom. Any
+   * full-height section has to subtract this:
+   *
+   *   min-h-[calc(100svh-var(--header-h))]
+   *
+   * The values track the logo: h-16 through lg:h-24, plus py-4 top and
+   * bottom, plus the 1px bottom border. Change the logo size and change these.
+   */
+  --header-h: 6.1rem; /* 97px  - logo h-16 */
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --header-h: 6.6rem; /* 105px - logo sm:h-18 */
+  }
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --header-h: 7.1rem; /* 113px - logo md:h-20 */
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --header-h: 8.1rem; /* 129px - logo lg:h-24 */
+  }
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #ffffff;
-  --blueButtonColor: #2f60ab;
+
+  /* the three chosen */
+  --primary: oklch(37% 0.15 262.3);
+  --accent: oklch(73.9% 0.135 70.4);
+  --success: oklch(47.9% 0.078 161.1);
+
+  /* blue, darker and lighter. Both already existed in the components. */
+  --primary-dark: oklch(32% 0.127 262.4);
+  --primary-light: oklch(49.5% 0.131 258.8);
+
+  /* warm ground. Pure white makes a deep blue look cold and flat, and a warm
+     paper is most of what separates a designed page from a default one. */
+  --background: oklch(98.5% 0.004 91.4);
+  --foreground: oklch(19.7% 0.007 78.2);
+
+  /* cards sit above the ground, so they stay pure white for lift */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(19.7% 0.007 78.2);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(19.7% 0.007 78.2);
+
+  --primary-foreground: oklch(1 0 0);
+  --accent-foreground: oklch(19.7% 0.007 78.2);
+  --success-foreground: oklch(1 0 0);
+
+  --secondary: oklch(95.5% 0.008 91.5);
+  --secondary-foreground: oklch(19.7% 0.007 78.2);
+  --muted: oklch(95.5% 0.008 91.5);
+  --muted-foreground: oklch(51.8% 0.01 84.6);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(91% 0.013 91.5);
+  --input: oklch(91% 0.013 91.5);
+  /* focus rings are branded rather than grey */
+  --ring: oklch(49.5% 0.131 258.8);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #ededed;
-  }
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 @theme {
@@ -30,15 +229,26 @@
     }
   }
 
-  --breakpoint-tn: 22rem;   /* 350px */
-  --breakpoint-xsm: 25rem;   /* 400px */
-  --breakpoint-sm: 37.5rem;   /* 600px */
-  --breakpoint-md: 47.5rem;   /* 760px */
-  --breakpoint-lg: 57.5rem;   /* 920px */
-  --breakpoint-xl: 65rem;   /* 1040px */
-  --breakpoint-2xl: 80rem;   /* 1280px */
-  --breakpoint-3xl: 96rem;  /* 1536px */
-  --breakpoint-4xl: 120rem;  /* 1920px   */
+  /**
+   * No custom breakpoints. Tailwind's defaults are deliberate:
+   *
+   *   sm 40rem / 640    md 48rem / 768    lg 64rem / 1024
+   *   xl 80rem / 1280   2xl 96rem / 1536
+   *
+   * This project used to define its own scale - sm 600, md 760, lg 920,
+   * xl 1040, plus tn, xsm, 3xl and 4xl. It came out on 2026-09-14 because the
+   * design is being ported from the-latam-painters, which runs the defaults.
+   * With two different scales the same copied class means two different
+   * widths, so `hidden lg:block` flipped at 920 here and 1024 there. The
+   * markup matched and the behaviour did not.
+   *
+   * The old 4xl at 120rem was also what made Tailwind's `container` grow to
+   * 1881px on a 1920 monitor, since `container` sizes itself from the largest
+   * breakpoint. Content width is now --site-max instead.
+   *
+   * Need a one-off width? Use an inline arbitrary variant, min-[25rem]:, and
+   * keep it local to the component that needs it.
+   */
 }
 
 .text-blue {
@@ -50,8 +260,6 @@ html, body{
 /* Fonts are decided here and nowhere else. The layout only loads them and
    exposes them as --font-roboto and --font-poppins. */
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-roboto), sans-serif;
   font-weight: 500;
   font-style: normal;
@@ -60,7 +268,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), sans-serif;
 }
-
 
 @keyframes bgReveal {
   0% {
@@ -119,4 +326,50 @@ h1, h2, h3, h4, h5, h6 {
 .calendly-popup-close svg {
   fill: white !important;
   stroke: white !important;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

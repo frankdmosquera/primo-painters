@@ -4,11 +4,15 @@ import "./globals.css";
 
 // import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/Footer";
-import { Poppins, Roboto } from "next/font/google";
+import { Poppins, Roboto, Geist } from "next/font/google";
 import { jsonLd } from "@/data/jsonLd";
 import ScrollingBannerA from "@/components/scrolling-banner-a";
 import { Header } from "@/components/Header";
 import { CalendlyProvider } from "@/components/calendly-provider";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 // Body text. 500 is here because globals.css sets the body to that weight.
 const roboto = Roboto({
@@ -87,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
         {/* <meta name="msvalidate.01" content="DBD9A18509B447FAF5F19EC3C4B5BFC4" /> */}
         {/* Calendly is reachable from every page: the inline embed sits on
@@ -110,7 +114,7 @@ export default function RootLayout({
             rendering the page means every server component inside stays a
             server component. */}
         <CalendlyProvider>
-          <main className="text-[17px] 3xl:text-base ">
+          <main className="text-[17px] 2xl:text-base ">
             {/* <ScrollingBannerA /> */}
             <Header />
             {children}

@@ -73,5 +73,5 @@ git stash
 git checkout 78b5867
 npm run build && npx next start -p 3005
 # capture as above, into scripts/seo-baseline
-git checkout design-pass && git stash pop
+git checkout design-pass-2 && git stash pop
 ```

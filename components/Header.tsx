@@ -1,119 +1,61 @@
-"use client";
-import * as React from "react";
-import Link from "next/link";
-import MobileMenu from "./mobile-menu";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Phone } from "lucide-react";
+import Link from "next/link";
+import { PhoneIcon } from "lucide-react";
+import NavBar from "./NavBar";
+import MobileNav from "./MobileNav";
+import HeaderBookNow from "./HeaderBookNow";
+import { HeaderScrollHider } from "./HeaderScrollHider";
 import { logoImg } from "@/data/images";
 import { siteConfig } from "@/data/siteConfig";
-import { navigationItemsData } from "@/data/navigationData";
-import { useCalendly } from "./calendly-provider";
 
+/**
+ * Layout ported from the-latam-painters. Content is Primo's: same three links,
+ * same hrefs, same logo alt and title, same phone number, and the CTA stays
+ * "Book Now" opening Calendly.
+ *
+ * Server component. The only client pieces are the scroll wrapper, the nav's
+ * active link and the CTA, each isolated in its own file.
+ */
 export function Header() {
-  // usePathname is already reactive. Mirroring it into state only delayed the
-  // active link by a render, so nothing was highlighted on first paint.
-  const currentPath = usePathname();
-
-  const openCalendly = useCalendly();
-
-  // Shrinks once the promo ticker has scrolled away, so the sticky header
-  // gives the page back some height. Hysteresis, 60 down and 20 up, stops it
-  // flickering when a scroll lands right on the threshold.
-  const [compact, setCompact] = React.useState(false);
-
-  React.useEffect(() => {
-    const onScroll = () => {
-      setCompact((wasCompact) =>
-        wasCompact ? window.scrollY > 20 : window.scrollY > 60,
-      );
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      // z-50, not the old z-[99999]. Nothing else on the site goes above 50,
-      // so that number was only ever winning an argument it did not need to
-      // have, and it beat Calendly's own 9999, which left the menu button
-      // clickable on top of an open booking modal.
-      className={`sticky top-0 z-50 bg-white px-4 motion-safe:transition-shadow motion-safe:duration-300 md:px-8 xl:px-16 ${
-        compact
-          ? "shadow-[0_1px_0_rgba(13,55,141,0.10),0_10px_24px_-14px_rgba(13,55,141,0.55)]"
-          : "shadow-[0_1px_0_rgba(13,55,141,0.08)]"
-      }`}
-    >
-      <div
-        className={`mx-auto flex items-center justify-between gap-6 motion-safe:transition-all motion-safe:duration-300 ${
-          compact ? "py-0.5" : "py-2"
-        }`}
-      >
-        <Link href="/" className="shrink-0">
+    <HeaderScrollHider>
+      {/* --site-max, not Tailwind's `container`. See the note in globals.css:
+          this project's custom breakpoints make `container` 1881px wide. */}
+      <div className="mx-auto flex w-full max-w-[var(--site-max)] items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src={logoImg.src}
             alt={logoImg.alt}
             title={siteConfig.business.name}
-            width={130}
-            height={60}
+            width={300}
+            height={100}
             priority
-            className={`h-auto motion-safe:transition-all motion-safe:duration-300 ${
-              compact ? "w-[92px]" : "w-[130px]"
-            }`}
+            className="h-16 w-auto sm:h-18 md:h-20 lg:h-24"
           />
         </Link>
 
-        <nav
-          className="menubar hidden items-center gap-9 xl:flex"
-          aria-label="Primary navigation"
-        >
-          {navigationItemsData.map(({ href, title }) => {
-            const isActive = currentPath === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                aria-current={isActive ? "page" : undefined}
-                // The underline is a CSS pseudo-element that scales from the
-                // left. No library, no JS, nothing to load.
-                className={`relative py-1 text-base after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:rounded-full after:bg-[#0D378D] motion-safe:transition-colors motion-safe:after:transition-transform motion-safe:after:duration-300 ${
-                  isActive
-                    ? "font-semibold text-[#0D378D] after:scale-x-100"
-                    : "font-medium text-black/60 after:scale-x-0 hover:text-[#0D378D] hover:after:scale-x-100"
-                }`}
-              >
-                {title}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="hidden lg:block">
+          <NavBar />
+        </div>
+        <div className="lg:hidden">
+          <MobileNav />
+        </div>
 
-        <div className="btn-img-nav hidden items-center gap-5 xl:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           <Link
             href={`tel:${siteConfig.business.phone}`}
             aria-label={`Call ${siteConfig.business.name} at ${siteConfig.business.phoneDisplay}`}
-            className="group flex items-center gap-2 text-base font-semibold text-[#0D378D]"
+            className="flex items-center gap-1 font-semibold"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0D378D]/10 transition-colors group-hover:bg-[#0D378D]/20">
-              <Phone size={15} strokeWidth={2.5} />
-            </span>
-            <span className="whitespace-nowrap group-hover:underline">
+            <PhoneIcon className="text-primary-light" fill="var(--primary)" />
+            <span className="text-primary-dark whitespace-nowrap">
               {siteConfig.business.phoneDisplay}
             </span>
           </Link>
 
-          <button
-            type="button"
-            onClick={openCalendly}
-            className="aj-button cursor-pointer whitespace-nowrap rounded-full bg-[#0D378D] px-7 py-2.5 text-base font-medium text-white shadow-[0_6px_16px_-6px_rgba(13,55,141,0.65)] motion-safe:transition-colors hover:bg-[#0a2c72]"
-          >
-            Book Now
-          </button>
+          <HeaderBookNow />
         </div>
-
-        <MobileMenu />
       </div>
-    </header>
+    </HeaderScrollHider>
   );
 }
