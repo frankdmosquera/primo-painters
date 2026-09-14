@@ -18,8 +18,21 @@ export const BgBackgroundImg = {
 // The after shot of the living room in tnd-img-9, which now sits behind the
 // service banner. Exterior siding used to sit here, under an H1 reading
 // INTERIOR HOUSE PAINTERS.
+/**
+ * The hero photo now points at the-latam-painters' image, copied in on
+ * 2026-09-14 at Frank's request so the hero matches theirs.
+ *
+ * ⚠ The alt below still describes Primo's own photo, which is no longer the
+ * one being shown. It is left untouched on purpose: alt text is tracked by
+ * scripts/seo-baseline on a page that ranks, so changing it is a content
+ * decision rather than something to fix in passing. It has to be either
+ * rewritten with approval, or the image put back.
+ *
+ * Primo's own photo is still on disk at the path below, not deleted.
+ */
 export const HeroHomeImg = {
-  src: "/interior-painting/trim-and-door-painting/tnd-img-10.jpg",
+  src: "/images/home-hero-img.jpg",
+  // previously: "/interior-painting/trim-and-door-painting/tnd-img-10.jpg"
   alt: "Living room built-ins and mantel painted cream - interior painting Calgary",
 };
 

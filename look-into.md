@@ -40,11 +40,26 @@ next ships.
 4. @imagekit/next is installed and imported nowhere, while the stack names
    ImageKit as the image library. Wire it up or take it out.
 
-5. lucide-react here is 0.477. the-latam-painters runs 1.34. A major apart,
-   and the port crosses that gap.
+5. Resolved 2026-09-14. lucide-react is 1.46.0, past the 1.34 LATAM runs.
 
-6. react-hook-form, zod and @hookform/resolvers are not installed, so the
-   forms currently have no library behind them.
+6. Resolved 2026-09-14. react-hook-form 7.88.0 and @hookform/resolvers 5.9.1
+   installed, zod 4.6.5 was already there. Nothing is wired to them yet.
+
+7. tailwind.config.js still does `require('tailwind-scrollbar')` and calls
+   `heroui()`. Both packages came out last session, so every build prints two
+   module-not-found warnings. The build passes regardless. Decide whether the
+   file is edited or deleted, since Tailwind 4 configures in CSS.
+
+8. motion is not installed. LATAM's mobile menu staggers its links in with it,
+   so ours opens without that animation. The workspace rules say motion is
+   never a default, which makes this a deliberate choice rather than a gap.
+
+9. components/ui/accordion.tsx is installed and imported nowhere. It came in
+   because LATAM's mobile nav uses it for dropdown sections and our nav is
+   flat. Keep it for later sections or take it out.
+
+10. components/mobile-menu.tsx is superseded by MobileNav.tsx and is no longer
+    referenced. Still on disk, still compiles.
 
 ## Calendly
 

@@ -1,14 +1,6 @@
 import { faqJsonLd } from "@/data/faqJsonLd";
 import type { Metadata, Viewport } from "next";
-import OurServices from "@/components/our-services";
-import { CalgaryPainting } from "@/components/calgary-painting";
 import HomeHero from "@/components/heros/HomeHero";
-import FaqSection from "@/components/Faq";
-import Reviews from "@/components/Reviews";
-import ServiceBanner from "@/components/ServiceBanner/service-banner";
-import BgLines from "@/components/BgLines";
-import WhyChooseUs from "@/components/whyChooseUs";
-import FinalCTA from "@/components/FinalCTA";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -51,8 +43,10 @@ export default async function Home() {
           __html: JSON.stringify(faqJsonLd),
         }}
       />
-      <div className="">Test H1</div>
-      {/* <HomeHero /> */}
+      <HomeHero />
+      {/* Kept so there is something to scroll past while the hero image pins.
+          Remove it once the next real section lands. */}
+      <div className="h-400">Test H1</div>
       {/* <OurServices /> */}
       {/* <WhyChooseUs /> */}
       {/* <div className="flex flex-col "> */}

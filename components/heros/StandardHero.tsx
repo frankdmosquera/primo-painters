@@ -34,11 +34,11 @@ export default function StandardHero({
 
           <div className="absolute inset-0 bg-black/10"></div>
           {/* here center the content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 mb-9 tn:mb-16 ">
-            <h1 className="  text-3xl xsm:text-4xl  md:text-6xl font-bold text-white mb-2 tn:mb-16">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 mb-9 min-[22rem]:mb-16 ">
+            <h1 className="  text-3xl min-[25rem]:text-4xl  md:text-6xl font-bold text-white mb-2 min-[22rem]:mb-16">
               {title} <span className="bg-reveal">{title2}</span> <br />
             </h1>
-            <p className="text-lg tn:text-xl md:text-2xl text-white mb-8">
+            <p className="text-lg min-[22rem]:text-xl md:text-2xl text-white mb-8">
               {subtitle}
             </p>
             {subtitle2 && (

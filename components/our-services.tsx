@@ -7,13 +7,13 @@ import ButtonBlue from "./ButtonBlue";
 
 export default function OurServices() {
   return (
-    <section className="w-full  text-black overflow-visible py-8  flex flex-col xl:flex-row   items-center lg:justify-center  sm:px-10 md:px-20 xl:px-5 2xl:px-20  3xl:px-40 4xl:px-50 gap-0 ">
+    <section className="w-full  text-black overflow-visible py-8  flex flex-col xl:flex-row   items-center lg:justify-center  sm:px-10 md:px-20 xl:px-5 2xl:px-20  2xl:px-40 min-[120rem]:px-50 gap-0 ">
       {/* left side  */}
       {/* left side  */}
       {/* left side  */}
       <div className=" w-full   xl:w-9/20">
         <div className="text-xl container max-w-7xl mx-auto px-4">
-          <h2 className=" xsm:text-2xl text-black font-medium ">
+          <h2 className=" min-[25rem]:text-2xl text-black font-medium ">
             House Painting Services
           </h2>
 

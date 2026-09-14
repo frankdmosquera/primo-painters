@@ -7,8 +7,8 @@ export const siteConfig = {
 
     email: "info@primopainters.ca",
 
-    phone: "+15877352312",
-    phoneDisplay: "(587) 735-2312",
+    phone: "+17806952631",
+    phoneDisplay: "(780) 695-2631",
 
     priceRange: "$$",
 

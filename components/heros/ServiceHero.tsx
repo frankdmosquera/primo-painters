@@ -124,7 +124,7 @@ export default function ServiceHero({
             {/* <span className=" bg-reveal leading-loose">{title3}</span> */}
           </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 xsm:mb-18 md:mb-0">
+          <div className="flex flex-col sm:flex-row gap-4 min-[25rem]:mb-18 md:mb-0">
             <HeroCallToAction />
           </div>
         </div>

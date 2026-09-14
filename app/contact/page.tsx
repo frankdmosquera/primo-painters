@@ -67,7 +67,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero  */}
-      <section className="relative h-[30rem] tn:h-[28rem] xsm:h-[24rem] lg:h-[28rem]  ">
+      <section className="relative h-[30rem] min-[22rem]:h-[28rem] min-[25rem]:h-[24rem] lg:h-[28rem]  ">
         <Image
           src={siteConfig.branding.ogImage}
           alt={"primo Painters Og-Image"}
@@ -79,13 +79,13 @@ export default function ContactPage() {
 
         <div className="absolute inset-0 bg-black/65"></div>
         {/* here center the content */}
-        <div className=" absolute px-3 tn:px-6 md:px-12 gap-20  xl:gap-24  bottom-4 inset-0 flex  flex-col items-center justify-center text-center ">
+        <div className=" absolute px-3 min-[22rem]:px-6 md:px-12 gap-20  xl:gap-24  bottom-4 inset-0 flex  flex-col items-center justify-center text-center ">
           <div className="">
-            <h1 className="  text-3xl xsm:text-4xl  md:text-5xl lg:text-6xl font-bold text-white ">
+            <h1 className="  text-3xl min-[25rem]:text-4xl  md:text-5xl lg:text-6xl font-bold text-white ">
               Contact
               <span className="bg-reveal ml-2">Primo Painters</span>{" "}
             </h1>
-            <p className="block mt-3  text-white   font-medium   xsm:text-lg ">
+            <p className="block mt-3  text-white   font-medium   min-[25rem]:text-lg ">
               Have questions or ready to get started? We'd love to hear about
               your interior painting project.
             </p>
@@ -139,7 +139,7 @@ export default function ContactPage() {
           <div className="absolute top-[800px] -z-10">
             <Image src={BgBackground2} alt="" aria-hidden="true" />
           </div>
-          <ContactForm showContactInfo={false} />
+          {/* <ContactForm showContactInfo={false} /> */}
         </div>
       </section>
 
