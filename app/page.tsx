@@ -51,24 +51,25 @@ export default async function Home() {
           __html: JSON.stringify(faqJsonLd),
         }}
       />
-      <HomeHero />
-      <OurServices />
-      <WhyChooseUs />
-      <div className="flex flex-col ">
-        <Reviews />
-        <div className="relative top-[100px]">
+      <div className="">Test H1</div>
+      {/* <HomeHero /> */}
+      {/* <OurServices /> */}
+      {/* <WhyChooseUs /> */}
+      {/* <div className="flex flex-col "> */}
+      {/* <Reviews /> */}
+      {/* <div className="relative top-[100px]">
           <BgLines />
-        </div>
-        <ServiceBanner />
-        <CalgaryPainting />
+        </div> */}
+      {/* <ServiceBanner /> */}
+      {/* <CalgaryPainting /> */}
 
-        <FaqSection />
-        <div className="relative ">
+      {/* <FaqSection /> */}
+      {/* <div className="relative ">
           <BgLines />
-        </div>
-        {/* <ContactFormSection /> */}
-        <FinalCTA />
-      </div>
+        </div> */}
+      {/* <ContactFormSection /> */}
+      {/* <FinalCTA /> */}
+      {/* </div> */}
     </>
   );
 }

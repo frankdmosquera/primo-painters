@@ -1,7 +1,9 @@
 # primo-painters
 
-1. Ask != go. A question, a comment, or a paste is not an instruction. Answer in words. No reading, grepping, or editing until we agree.
-2. On point. No story.
+Read where-we-are.md for the current state and look-into.md for open questions.
+
+1. On point. Never drift from what I asked. No story, no side quests, nothing tacked on at the end. Raise something I did not ask about only when it is critical. Never to fill space, never to direct me, never as if I had not thought of it myself.
+2. Ask != go. A question, a comment, or a paste is not an instruction. Answer in words. No reading, grepping, or editing until we agree.
 3. Never delete an image. Repoint the reference, leave the file on disk.
 4. Never push to `main` without full authorization. Merging there publishes the live site.
 5. Never assume. Name the consequence, get approval, then act.
@@ -27,7 +29,7 @@ Images: ImageKit.
 Reviews: reuse the existing widget or the logic from the-latam-painters, wired to Google.
 Server first. "use client" only where needed, isolated behind a wrapper that takes children.
 Dynamic routes: generateStaticParams, prerendered at build.
-Nothing gets uninstalled up front. Migrate section by section as we touch it, so every break has one source. Old packages come out at the end, when nothing imports them.
+The shadcn component layer and Radix come out in one go, then the site is rebuilt on Base UI. This replaces the previous rule of migrating section by section and leaving old packages until the end. Decided 2026-09-14.
 The whole site is a template. All content - copy, headings, service lists, images, contact details, all of it - comes from config and data files. Nothing hardcoded in components. A new client means a new config, not new components.
 Structured data: JSON-LD only. No microdata, no RDFa. Each entity described once, never marked up twice. Split blocks per page and link them by @id rather than redescribing the business.
 Always the latest package versions. No hand-pinning. Latest at install time, then the lockfile holds it. Upgrading later is a deliberate decision, never automatic.

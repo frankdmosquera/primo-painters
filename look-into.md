@@ -3,49 +3,48 @@
 Things we are not sure about yet. Not decisions, not a plan. Anything in here is
 unresolved until it moves out.
 
-## dynamic (npm package)
+## Dependency cleanout, done 2026-09-14
 
-A jQuery plugin, "Declarative DOM behaviour". Nothing to do with next/dynamic.
-Drags jQuery 3.x, expression-eval and microdash into node_modules.
-Zero imports anywhere in the codebase.
-Present since commit 7ddce69, "Initial commit", 2026-05-05.
-Does not reach the browser - cost is install time and supply chain only.
-Safe to remove whenever.
+The old list of overlaps is resolved. Kept as a record of what came out and
+why, so nobody puts it back by accident.
 
-## Dependency overlaps and mismatches
+Removed, packages: dynamic (a jQuery plugin, zero imports, present since the
+initial commit), six @radix-ui packages plus the combined radix-ui, shadcn's
+utility set (class-variance-authority, clsx, tailwind-merge), four @heroui
+packages, @heroicons/react, swiper, embla-carousel-react, react-hot-toast,
+sonner, formik, yup, tailwind-scrollbar, mini-svg-data-uri.
 
-Read straight from package.json. The package pairs below are confirmed present.
-What is NOT checked yet is which of each pair the code actually uses, so nothing
-here says what to remove.
+Removed, files: components/ui (16 files), components.json, lib/utils.ts,
+hooks/use-toast.ts, hooks/use-mobile.tsx. The hooks folder is gone entirely.
 
-1. dynamic - see entry above.
+38 packages down to 23.
 
-2. Three UI systems at once. HeroUI (@heroui/react, accordion, system, theme),
-   Radix (six @radix-ui/* packages), and shadcn's utility set
-   (class-variance-authority, clsx, tailwind-merge). Our stack says shadcn.
+The Next 15 on Next 16 mismatch is fixed. next, @next/env,
+@next/bundle-analyzer and eslint-config-next are all 16.3.5 after a clean
+node_modules and lockfile rebuild. @next/env is no longer a direct
+dependency, and that is what fixed it: pinned at 15.x it shadowed the copy
+next ships.
 
-3. Radix installed twice over. The combined `radix-ui` package (^1.6.7) plus six
-   individual @radix-ui/* packages.
+## Still open
 
-4. Two accordions. @heroui/accordion and @radix-ui/react-accordion.
+1. The "lint" script runs `next lint`, which was removed in Next 16. Still
+   never verified against node_modules/next/dist/docs/.
 
-5. Two icon sets. @heroicons/react and lucide-react.
+2. nodemailer 6.10.0 carries a high severity advisory, four CVEs, including
+   a recipient-domain validation bypass. The fix is nodemailer 10, a
+   breaking change. Our stack says Resend, so the question is whether it is
+   upgraded or replaced.
 
-6. Two carousels. embla-carousel-react and swiper.
+3. axios is installed and used in 3 files. fetch is built in.
 
-7. Two toast libraries. react-hot-toast and sonner.
+4. @imagekit/next is installed and imported nowhere, while the stack names
+   ImageKit as the image library. Wire it up or take it out.
 
-8. Forms contradict the stack decision. formik + yup installed, but Our stack
-   says react-hook-form + zod.
+5. lucide-react here is 0.477. the-latam-painters runs 1.34. A major apart,
+   and the port crosses that gap.
 
-9. Next 15 packages on a Next 16 project.
-   @next/bundle-analyzer ^15.5.2
-   @next/env ^15.2.1
-   eslint-config-next 15.2.1-canary.5  (also a canary build)
-
-Unverified extra: the "lint" script runs `next lint`, which I believe was
-removed in Next 16. Needs checking against node_modules/next/dist/docs/ before
-anyone relies on it.
+6. react-hook-form, zod and @hookform/resolvers are not installed, so the
+   forms currently have no library behind them.
 
 ## Calendly
 

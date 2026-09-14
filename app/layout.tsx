@@ -2,7 +2,7 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Toaster } from "@/components/ui/sonner";
+// import { Toaster } from "@/components/ui/sonner";
 import Footer from "@/components/Footer";
 import { Poppins, Roboto } from "next/font/google";
 import { jsonLd } from "@/data/jsonLd";
@@ -105,20 +105,18 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${roboto.variable} ${poppins.variable} antialiased`}
-      >
+      <body className={`${roboto.variable} ${poppins.variable} antialiased`}>
         {/* One Calendly modal for the site. Wrapping {children} rather than
             rendering the page means every server component inside stays a
             server component. */}
         <CalendlyProvider>
           <main className="text-[17px] 3xl:text-base ">
-            <ScrollingBannerA />
+            {/* <ScrollingBannerA /> */}
             <Header />
             {children}
           </main>
-          <Toaster />
-          <Footer />
+          {/* <Toaster /> */}
+          {/* <Footer /> */}
         </CalendlyProvider>
       </body>
     </html>
