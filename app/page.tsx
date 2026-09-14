@@ -6,6 +6,7 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import OurServices from "@/components/our-services";
 import GoogleReviewsCarousel from "@/components/GoogleReviewCarousel3";
 import { CalgaryPainting } from "@/components/calgary-painting";
+import { OurProcessHome } from "@/components/home/OurProcessHome";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -94,6 +95,7 @@ export default async function Home() {
         </div> */}
       {/* <ServiceBanner /> */}
       <CalgaryPainting />
+      <OurProcessHome />
 
       {/* <FaqSection /> */}
       {/* <div className="relative ">
