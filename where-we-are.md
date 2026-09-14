@@ -6,6 +6,38 @@ The rules are in CLAUDE.md. The open questions are in look-into.md.
 The full log, with diagrams and the feature history, is the build log artifact:
 "Primo Build Log" in Frank's artifact gallery.
 
+## Read this first, so Frank does not have to say it again
+
+These are the things that cost the most time in the sessions so far. Every one
+of them is already a rule in CLAUDE.md. They are repeated here because they
+were broken anyway.
+
+**Answer the question asked, then stop.** The most common failure is answering
+a narrow question correctly and then continuing into the next topic uninvited.
+Frank asked "what comes after the hero" and got three pages about a component
+library. If he wants more, he asks.
+
+**Do not ask him to re-decide what is already written.** Rule 15. If CLAUDE.md
+or this file answers it, act on it and say which line you used. "Design from
+LATAM, content from Primo" already settles most design questions. "Our
+structure holds" already settles the rest.
+
+**Never assert what you have not opened.** Rule 5, and it went wrong twice in
+one session - once claiming a section needed no Base UI after reading one
+component out of four, once calling lucide "not shadcn" when components.json
+sets it as the icon library. Open the file. Run the check. Then speak.
+
+**Look at the page before saying it is done.** Measuring the DOM is not
+looking. Three times a section was handed over as finished while it looked
+broken on screen. If the Browser pane returns blank frames, the Playwright MCP
+runs its own headless browser and works regardless.
+
+**Gate before commit, not after.** Build, typecheck, SEO gate, then commit.
+
+**One thing at a time, then stop.** Rule 8. Do not fix the adjacent thing you
+noticed. Do not refactor the file you were passing through. A request to
+change three button colours is three button colours.
+
 ## What we are doing
 
 Port the-latam-painters' design onto Primo's content. Design from LATAM,
@@ -15,16 +47,51 @@ moved.
 
 ## Where we are
 
-Four features done and committed. The build is green and the home page renders
-the hero, the services tabs, Why Choose Us, and the before and after slider.
+Five features done and committed. The build is green and the home page renders
+the hero, the services tabs, Why Choose Us, the before and after slider, and
+the reviews carousel.
 
+    87b24f3  feat: bring the reviews carousel over from the-latam-painters
     570abc6  feat: restore the services section on base ui and tidy its detail
     67b138b  feat: port why choose us and add the before and after slider
     39ef26c  feat: port the home hero with the pinned image
     324c471  feat: port the header from the-latam-painters
     4f62c3e  chore: remove the shadcn component layer and align the next packages
 
-Pushed up to 81a9e38. 570abc6 is not pushed yet.
+Pushed up to 9e82e5c. 570abc6 and 87b24f3 are not pushed yet.
+
+## ⚠ MERGE BLOCKER: the reviews are fabricated
+
+The reviews carousel renders 20 invented reviews - invented names, invented
+dates and ratings, and stock headshots from pravatar.cc - under a heading
+reading "4.9 · 20+ Google reviews". It is server rendered, so those names are
+in the HTML Google reads, on a site that ranks in Calgary.
+
+It is on the page ON PURPOSE, as boilerplate, so the section could be designed
+against real-looking content. That is the only reason.
+
+**Before this branch goes near main:** wire it to real Google reviews through
+app/api/getReviews, or take the section off the page. The warning is repeated
+at the top of GoogleReviewCarousel3.tsx and at the call site in app/page.tsx.
+
+the-latam-painters carried the same warning in the same file and renders
+GoogleReviewCarousel2 on their live site instead.
+
+## Read the live site, not just the repo
+
+the-latam-painters is deployed at:
+
+    https://the-latam-painters-iota.vercel.app/
+
+The repo checked out locally is on `claude-2` and is behind what is live. The
+live site has dropdown navigation and a full booking calendar in the hero that
+the local files do not. Check the deployed site before concluding what their
+design does.
+
+That mattered once already: the reviews section looks transparent, with the
+hero photo bleeding through it. In the repo that reads like a bug. On the live
+site it is plainly the intended effect, so an "opaque background fix" here
+removed the thing worth copying.
 
 ## Radix names that Base UI ignores silently
 
@@ -119,10 +186,31 @@ widths rather than deleted.
 
 ## Next step
 
-Feature 5, working top to bottom down the home page. Reviews is next.
+Feature 6, working top to bottom. ServiceBanner is next on the home page,
+then CalgaryPainting, FaqSection, ContactFormSection and FinalCTA.
 
-The SEO gate has not run since Why Choose Us, the slider or the services
-section. It should before any of this merges.
+Running alongside that, and arguably first: swap the fabricated reviews for
+real ones. app/api/getReviews already calls the Google Places API and returns
+`result.reviews`. Three things to do there:
+
+1. The API key is hardcoded in app/api/getReviews/route.ts line 6 and is in
+   git history. Move it to an env var and rotate the key. The correct pattern
+   is already in the repo at app/api/place-details.ts, which reads
+   process.env.GOOGLE_MAPS_API_KEY - though that file is a Pages Router
+   handler sitting in an App Router folder, so it is dead code.
+2. Fetch server side with revalidation rather than in the browser. The
+   component that used to do this fetched client side behind a cookie and
+   localStorage cache, so the review text never reached the HTML at all.
+3. Handle one review, a few, and many. Google returns at most five.
+
+## Gate before commit, not after
+
+The order is build, typecheck, gate, then commit. Feature 4 was committed on a
+green build and a clean typecheck, and the gate afterwards immediately found
+eight images with no alt text. A bad commit was in history before anyone knew
+it was bad, on a branch that merges to a live ranking site.
+
+"Done" does not get said until the gate has run.
 
 ## What the services section settled
 

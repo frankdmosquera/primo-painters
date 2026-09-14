@@ -102,6 +102,26 @@ next ships.
 19. our-services copy.tsx and GallerySectionHome.tsx do not typecheck. Both
     are dead and nothing imports them. Delete or fix.
 
+20. js-cookie is orphaned. It existed only for ReviewComponent, which was
+    deleted with the rest of the old reviews tree. js-cookie and
+    @types/js-cookie are still in package.json and imported nowhere.
+
+21. The Google API key is hardcoded in app/api/getReviews/route.ts line 6 and
+    is in git history and on GitHub. It is server side so it is not shipped to
+    browsers, but it should move to an env var and be rotated. The correct
+    pattern already exists at app/api/place-details.ts, which reads
+    process.env.GOOGLE_MAPS_API_KEY - though that file is a Pages Router
+    handler in an App Router folder, so it never runs.
+
+22. Alberta Colour Painting, a different company, is named in six places:
+    alberta-carousel.tsx, full-width-carousel.tsx, promotional-slider.tsx,
+    SpecilaOfferContent.tsx (commented), and twice in an iframe title. Left
+    over from whatever this site was built from. None is known to render
+    today, but it has not been checked.
+
+23. tailwind.config.js still prints two module-not-found warnings on every
+    build, for tailwind-scrollbar and heroui(). Same as item 7, still open.
+
 
 ## Calendly
 
