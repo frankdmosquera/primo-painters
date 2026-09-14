@@ -5,12 +5,11 @@ import blogsBanner from "@/public/banners/blogs-banner.webp";
 import BgBackground2 from "@/public/SVGs/above-gallery-bg-line.svg";
 
 import Calendly from "@/components/calendly";
-import ContactForm from "./ContactForm";
+import { ContactForm } from "@/components/forms/ContactForm";
 import GoogleMap from "./GoogleMap";
 import StandardHero from "@/components/heros/StandardHero";
 import { siteConfig } from "@/data/siteConfig";
 import HeroCallToAction from "@/components/heros/HeroCallToAction";
-import { HeroHomeButtons } from "@/components/heros/HeroHomeButtons";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -67,7 +66,13 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero  */}
-      <section className="relative h-[30rem] min-[22rem]:h-[28rem] min-[25rem]:h-[24rem] lg:h-[28rem]  ">
+      {/* Heights are minimums, not fixed, and the content sits in normal flow.
+          It was a fixed height section with the content in an absolutely
+          positioned inset-0 box, so anything taller than the box overflowed it
+          both ways, justify-center split the overflow, and the top half slid
+          under the sticky header. Measured at 20px of the h1 hidden. Same bug
+          and same fix as AboutHero. */}
+      <section className="relative flex min-h-[30rem] min-[22rem]:min-h-[28rem] min-[25rem]:min-h-[24rem] lg:min-h-[28rem]">
         <Image
           src={siteConfig.branding.ogImage}
           alt={"primo Painters Og-Image"}
@@ -79,8 +84,8 @@ export default function ContactPage() {
 
         <div className="absolute inset-0 bg-black/65"></div>
         {/* here center the content */}
-        <div className=" absolute px-3 min-[22rem]:px-6 md:px-12 gap-20  xl:gap-24  bottom-4 inset-0 flex  flex-col items-center justify-center text-center ">
-          <div className="">
+        <div className="relative z-10 flex w-full flex-col items-center justify-center gap-8 px-3 py-14 text-center min-[22rem]:px-6 md:px-12">
+          <div>
             <h1 className="  text-3xl min-[25rem]:text-4xl  md:text-5xl lg:text-6xl font-bold text-white ">
               Contact
               <span className="bg-reveal ml-2">Primo Painters</span>{" "}
@@ -90,7 +95,14 @@ export default function ContactPage() {
               your interior painting project.
             </p>
           </div>
-          <HeroHomeButtons />
+          {/* No HeroHomeButtons here, unlike the home and about heroes.
+              This page embeds Calendly twice below, carries a contact form and
+              a map, and the header shows the phone number on every page. The
+              hero would have been a fourth route to the same outcome.
+
+              That is the same reasoning recorded at the top of
+              components/heros/HeroHomeButtons.tsx, which already dropped the
+              form link from the hero for this page for this reason. */}
         </div>
       </section>
 
@@ -139,7 +151,7 @@ export default function ContactPage() {
           <div className="absolute top-[800px] -z-10">
             <Image src={BgBackground2} alt="" aria-hidden="true" />
           </div>
-          {/* <ContactForm showContactInfo={false} /> */}
+          <ContactForm />
         </div>
       </section>
 
