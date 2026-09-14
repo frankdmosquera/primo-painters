@@ -39,7 +39,7 @@ export default function OurProcess() {
     //
     // So the pair rhymes through treatment, not texture: this section is about
     // its cards, Promise is about its surface.
-    <section className="relative overflow-hidden bg-linear-to-b from-background/80 via-primary/5 to-background/80 px-4 py-24">
+    <section className="relative overflow-hidden bg-linear-to-b from-background/40 via-primary/20 to-background/45 px-4 py-24">
 
       <div
         aria-hidden

@@ -61,7 +61,7 @@ export default function page() {
           aria-hidden
           fill
           sizes="100vw"
-          className="pointer-events-none object-cover opacity-15"
+          className="pointer-events-none object-cover opacity-30"
         />
         <div className="relative">
           <OurProcess />

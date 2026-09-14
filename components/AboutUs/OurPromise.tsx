@@ -33,7 +33,7 @@ import {
 
 export default function OurPromise() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-background/80 via-primary/5 to-background/80 py-24">
+    <section className="relative overflow-hidden bg-linear-to-b from-background/40 via-primary/20 to-background/45 py-24">
 
       {/* Two soft blue glows, the same motif the step cards use, sized large
           and blurred hard so they read as light rather than as shapes. */}
