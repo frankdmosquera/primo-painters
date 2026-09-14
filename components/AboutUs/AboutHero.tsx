@@ -5,7 +5,13 @@ import { HeroHomeButtons } from "../heros/HeroHomeButtons";
 
 export default function AboutHero() {
   return (
-    <section className="relative h-[30rem] min-[22rem]:h-[32rem] min-[25rem]:h-[24rem] lg:h-[28rem]  ">
+    // Heights are minimums, not fixed. They were fixed, with the content in an
+    // absolutely positioned inset-0 box, so any content taller than the box
+    // overflowed it in both directions - justify-center splits the overflow -
+    // and the top half slid underneath the sticky header. It measured 34px of
+    // the h1 hidden at 1280 and 20px at 768. Content in normal flow inside a
+    // min-height section cannot do that, at any width or font size.
+    <section className="relative flex min-h-[30rem] min-[22rem]:min-h-[32rem] min-[25rem]:min-h-[24rem] lg:min-h-[28rem]">
       <Image
         src={AboutUsImg.src}
         alt={AboutUsImg.alt}
@@ -17,7 +23,7 @@ export default function AboutHero() {
 
       <div className="absolute inset-0 bg-black/50"></div>
       {/* here center the content */}
-      <div className=" absolute px-3 min-[22rem]:px-6 md:px-12 gap-20  xl:gap-24  bottom-4 inset-0 flex  flex-col items-center justify-center text-center ">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center gap-8 px-3 py-14 text-center min-[22rem]:px-6 md:px-12 xl:gap-10">
         <div className="">
           <h1 className="  text-3xl min-[25rem]:text-4xl  md:text-5xl lg:text-6xl font-bold text-white ">
             About

@@ -41,6 +41,24 @@ export const AboutUsImg = {
   alt: "calgary painters",
 };
 
+/**
+ * Our Story's photo, separate from the hero's.
+ *
+ * Both sections used to import AboutUsImg, so /about/AboutUs.webp rendered
+ * twice on the same page - full bleed behind the hero, then again 500px down
+ * as the Our Story image. The hero darkens it with brightness-70 and a black
+ * overlay, which is the only reason it was not obvious.
+ *
+ * This is a real Primo job rather than a staged shot, and it shows the crisp
+ * trim and clean lines the Our Story copy claims. The same photo appears in
+ * GalleryInteriorImages below, so it is reused across the site but no longer
+ * twice on one page.
+ */
+export const OurStoryImg = {
+  src: "/interior-painting/strathmoore-railing-after-painting.jpg",
+  alt: "Curved staircase with white risers and crisp white trim against a blue feature wall, after painting - interior painting Calgary",
+};
+
 // GallerySection Images
 // GallerySection Images
 // GallerySection Images
