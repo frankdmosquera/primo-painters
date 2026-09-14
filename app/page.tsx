@@ -5,6 +5,7 @@ import WhyChooseUs from "@/components/whyChooseUs";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import OurServices from "@/components/our-services";
 import GoogleReviewsCarousel from "@/components/GoogleReviewCarousel3";
+import { CalgaryPainting } from "@/components/calgary-painting";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -92,7 +93,7 @@ export default async function Home() {
           <BgLines />
         </div> */}
       {/* <ServiceBanner /> */}
-      {/* <CalgaryPainting /> */}
+      <CalgaryPainting />
 
       {/* <FaqSection /> */}
       {/* <div className="relative ">

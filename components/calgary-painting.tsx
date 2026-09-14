@@ -10,7 +10,7 @@ import BookNowTrigger from "./BookNowTrigger";
 
 export const CalgaryPainting = () => {
   return (
-    <div className="my-6">
+    <div>
       <div className="flex flex-col md:flex-row">
         {/* Left Section */}
         <div className="bg-[#0D378D] text-white p-8 md:p-12 py-30 max-sm:py-10 lg:p-16 flex flex-col justify-center md:w-1/2">
