@@ -18,7 +18,7 @@ const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["300", "400", "500", "700"],
 });
 
 // Headings only, so it needs the two weights headings actually use.
@@ -115,11 +115,15 @@ export default function RootLayout({
             server component. */}
         <CalendlyProvider>
           <main className="text-[17px] 2xl:text-base ">
-            {/* <ScrollingBannerA /> */}
+            <ScrollingBannerA />
             <Header />
             {children}
           </main>
           {/* <Toaster /> */}
+          {/* Second run of the ticker, directly above the footer. It is here
+              rather than in each page so every page gets the same pair, top
+              and bottom, with nothing to keep in sync by hand. */}
+          <ScrollingBannerA />
           <Footer />
         </CalendlyProvider>
       </body>
