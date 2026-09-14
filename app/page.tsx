@@ -8,6 +8,8 @@ import GoogleReviewsCarousel from "@/components/GoogleReviewCarousel3";
 import { CalgaryPainting } from "@/components/calgary-painting";
 import { OurProcessHome } from "@/components/home/OurProcessHome";
 import FaqSection from "@/components/Faq";
+import { ProjectGalleryGrid } from "@/components/projects/project-gallery-grid";
+import { getProjects } from "@/data/projectsData";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -97,6 +99,14 @@ export default async function Home() {
       {/* <ServiceBanner /> */}
       <CalgaryPainting />
       <OurProcessHome />
+
+      {/* ⚠ PLACEHOLDER PROJECTS. Invented titles, descriptions and photos.
+          Must not reach main. See data/projectsData.ts. */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <ProjectGalleryGrid projects={getProjects()} />
+        </div>
+      </section>
 
       <FaqSection />
       {/* <div className="relative ">
