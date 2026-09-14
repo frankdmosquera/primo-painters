@@ -140,3 +140,21 @@ than leaving ambiguous.
 Related and already handled: the same file shows two conflicting robots tags,
 "index, follow" and "noindex, nofollow". The README lists removing the first as
 an approved change, so that one is done.
+
+16. The services section h2 is black while its standfirst is blue, so the
+    supporting line carries more brand colour than the heading it supports.
+    Same pattern in Why Choose Us. Deliberate or not, it is consistent, so
+    changing it is a decision about both sections rather than one.
+
+17. --services-bg reads more lavender than intended. It is LATAM's recipe at
+    Primo's hue, 97% lightness and 0.008 chroma, but a cool tint on a warm
+    page ground is a bigger contrast than those numbers suggest.
+
+18. Two service galleries lead with a before or prep shot. INTERIORS opens on
+    "stained oak railing prior to being painted white" and CEILINGS on
+    "Ceiling preparation for spray painting". INTERIORS is the default tab, so
+    the first photo of Primo's work anyone sees is an unpainted railing with
+    tools on the floor. Frank is reordering these himself.
+
+19. our-services copy.tsx and GallerySectionHome.tsx do not typecheck. Both
+    are dead and nothing imports them. Delete or fix.

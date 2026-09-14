@@ -15,15 +15,41 @@ moved.
 
 ## Where we are
 
-Three features done and committed. The build is green and the home page now
-renders the hero, Why Choose Us, and the before and after slider.
+Four features done and committed. The build is green and the home page renders
+the hero, the services tabs, Why Choose Us, and the before and after slider.
 
+    570abc6  feat: restore the services section on base ui and tidy its detail
     67b138b  feat: port why choose us and add the before and after slider
     39ef26c  feat: port the home hero with the pinned image
     324c471  feat: port the header from the-latam-painters
     4f62c3e  chore: remove the shadcn component layer and align the next packages
 
-Pushed up to 39ef26c. 67b138b is not pushed yet.
+Pushed up to 81a9e38. 570abc6 is not pushed yet.
+
+## Radix names that Base UI ignores silently
+
+The teardown swapped Radix for Base UI. Props and data attributes that came
+across with the old names do not error, do not warn, and simply stop working.
+Three were found in one section:
+
+    forceMount            -> keepMounted
+    data-[state=active]   -> data-active
+    data-[state=inactive] -> data-hidden
+
+The first had removed five of six service panels from the page, and nothing
+anywhere said so. Assume more of these are waiting in the sections not yet
+touched. Grep for `data-[state=` before porting each one.
+
+## shadcn base classes that beat yours
+
+Three fights lost to the component's own cva classes, all in one section:
+
+    TabsTrigger  flex-1              every pill stretched to fill the row
+    TabsList     h-8, bg-muted       fixed height, and a grey bar behind it
+    Card         ring-1, not border  border-none removed nothing
+
+Use `h-auto!`, `bg-transparent`, `ring-0`. Reading the component's base
+classes first is faster than guessing at overrides.
 
 ## Branches
 
@@ -84,22 +110,30 @@ widths rather than deleted.
 
 - Footer is commented out in app/layout.tsx, so every page has no bottom
 - ScrollingBannerA is commented out in the same place
-- OurServices, Reviews, ServiceBanner, CalgaryPainting, FaqSection,
-  ContactFormSection and FinalCTA are still commented out on the home page
-- Components importing removed shadcn files still do not typecheck: carousel,
-  card, tabs, field, hero-highlight. The build passes because nothing
-  reachable imports them.
+- Reviews, ServiceBanner, CalgaryPainting, FaqSection, ContactFormSection and
+  FinalCTA are still commented out on the home page
+- `our-services copy.tsx` and `GallerySectionHome.tsx` do not typecheck. Both
+  are dead, nothing imports them, and the build passes because of it.
+- carousel, field and hero-highlight are still missing from components/ui, so
+  the components importing them stay broken until their sections come up
 
 ## Next step
 
-Feature 4, OurServices, working top to bottom down the home page.
+Feature 5, working top to bottom down the home page. Reviews is next.
 
-It is the first section where "same as LATAM" and "content holds still" truly
-collide. Primo's is a Tabs interface over six service types, each with a photo
-GallerySection, and forceMount so every title and description is in the HTML.
-LATAM's is four stacked cards with no images and the data hardcoded in the
-component. Their layout has nowhere to put the galleries, and those image alts
-are in the baseline.
+The SEO gate has not run since Why Choose Us, the slider or the services
+section. It should before any of this merges.
+
+## What the services section settled
+
+"Same as LATAM" and "content holds still" collided here for the first time.
+LATAM's services are four stacked cards, hardcoded in the component, with no
+images. Primo's are six tabbed panels with photo galleries whose alt text is
+in the baseline. Their layout has nowhere to put the galleries.
+
+Resolved in favour of rule 1: Primo's structure stays, LATAM supplies the
+tokens, the spacing and the section tint. An attempt to restructure it to
+LATAM's centred shape was reverted, because it was worse.
 
 ## Working agreements
 
