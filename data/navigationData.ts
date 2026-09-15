@@ -34,10 +34,27 @@
  */
 export type NavigationIcon = "home" | "about" | "contact" | "projects";
 
+/**
+ * A sub-item in a dropdown. `description` is the line of copy shown under the
+ * title in the desktop menu.
+ */
+export type NavigationSubItem = {
+  title: string;
+  href: string;
+  description?: string;
+};
+
+/**
+ * `items` is optional, and that is the whole point: an entry with no `items`
+ * renders as a plain link, an entry with them renders as a dropdown. Nothing
+ * currently uses it, so the nav is still flat, but the shape is now here for
+ * the six service pages when they arrive.
+ */
 export type NavigationItem = {
   title: string;
   href: string;
   icon: NavigationIcon;
+  items?: NavigationSubItem[];
 };
 
 export const navigationItemsData: NavigationItem[] = [
@@ -50,6 +67,11 @@ export const navigationItemsData: NavigationItem[] = [
     title: "About",
     href: "/about",
     icon: "about",
+  },
+  {
+    title: "Projects",
+    href: "/projects",
+    icon: "projects",
   },
   {
     title: "Contact",
