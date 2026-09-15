@@ -256,6 +256,84 @@ sm 600, md 760, lg 920, xl 1040, plus tn, xsm, 3xl and 4xl - came out on
 widths. The 22 uses of the custom names were converted to inline arbitrary
 widths rather than deleted.
 
+## ImageKit, decided 2026-09-14
+
+The photos move to ImageKit. The URLs do not change, because a Next rewrite
+proxies them, so the browser only ever talks to primopainters.ca.
+
+    src in the data files   /interior-painting/cabinet-painting/cab-img-3.jpg
+    what the browser asks   primopainters.ca/interior-painting/cabinet-...
+    what answers it         ImageKit, through a rewrite in next.config
+
+Nothing has been built. The account exists and `.env.local` is filled in. No
+code has been written, nothing uploaded, no rewrite added.
+
+**The account.** One ImageKit account per client, rather than one agency
+account with a folder per client, so a client's public image URLs never carry
+the agency name. The ID is assigned by ImageKit and is not chooseable: this one
+is `b5xayf4mq`. `.env.local` holds NEXT_PUBLIC_IMAGE_KIT_URL, IMAGE_KIT_ID,
+IMAGE_KIT_PUBLIC_KEY and IMAGE_KIT_PRIVATE_KEY. That file is gitignored at
+.gitignore line 29 and is untracked. Only the endpoint is read by the site. The
+private key is for the upload script and never reaches a browser, because
+browser uploads were ruled out.
+
+**No wrapper and no loader.** Three routes were compared and two were dropped:
+
+    a global custom loader    replaces Next's optimizer for every image in the
+                              app, including the logo and icons, which would
+                              stop being optimized at all
+    @imagekit/next <Image>    verified as a thin wrapper around next/image,
+                              v2.1.5, confirmed by the import in its own dist.
+                              Same output, but it means editing imports in all
+                              46 files that render an image
+    a rewrite                 one config block, zero components touched
+
+The rewrite wins because the path already says which images belong to ImageKit.
+/interior-painting/* and /projects/* go there, everything else stays local, and
+flipping between local and ImageKit is adding or removing the block.
+
+**The rewrite must use beforeFiles.** Next's own docs, at
+node_modules/next/dist/docs/01-app/03-api-reference/05-config/01-next-config-js/rewrites.md
+line 48, say array-form rewrites run after checking the filesystem including
+/public files. Rule 3 keeps the images on disk, so the local file wins, the
+rewrite silently never fires, and every image keeps serving locally. Nothing
+errors and nothing warns. The beforeFiles form runs before files and is the fix.
+
+**The split.** Photos go, small interface assets stay:
+
+    to ImageKit   interior-painting/ (50 in sub-folders + 4 loose), about/ (8),
+                  banners/ (4), heros/ (1), images/ (1, the home hero),
+                  visualisations/ (2), and projects/ once it exists
+    stays local   icons/ (6), SVGs/, primo-painters-logo.png, og-image.png
+
+og-image.png stays for a reason beyond being small: it is the social share
+card, and og:image is an absolute URL recorded in scripts/seo-baseline, so
+moving it changes meta tags rather than hosting.
+
+**Ruled out.** A custom domain, images.primopainters.ca, is paid only: Pro
+plan, $89 a month minimum, arranged through ImageKit support rather than
+self-serve. It is also a subdomain and never the apex, so it does not even give
+what was asked for. The rewrite gives the apex for free.
+
+**Agreed, not done.** The six services are peers in data/serviceData.ts, namely
+interiors, walls, ceilings, trim and doors, garages and cabinets, but public/
+nests five of them under interior-painting/, which is itself one of the six.
+Flat is correct and mirrors how the home page renders them. It was left until
+the hosting settled because it moves 50 live image URLs.
+
+**Two corrections worth keeping.** Removing images from public/ would not
+shrink the repo, because git history keeps every committed version; only a
+history rewrite does that, and we are not doing one. And a folder name in an
+image path is a minor SEO signal at best, so interior-painting/cabinet-painting
+already beats any generic images/ or projects/ container. The real gain would
+be in filenames, since cab-img-3.jpg carries nothing, but that moves live URLs
+and is parked rather than agreed.
+
+**Two loose ends found while reading.** drywall-repair/ holds 2 images and has
+no entry in serviceData.ts, so nothing renders it. And a URL endpoint
+identifier named primo-painters was created in the ImageKit dashboard and is no
+longer referenced by anything, so it can be deleted there.
+
 ## What is still down
 
 - ContactFormSection is still commented out on the home page
