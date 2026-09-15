@@ -98,7 +98,14 @@ export default async function GoogleReviews() {
                 <Avatar className="h-10 w-10 shrink-0">
                   {/* Google's own hosted avatar for the person who wrote it. */}
                   <AvatarImage src={review.photoUrl} alt="" />
-                  <AvatarFallback className="bg-primary/10 text-sm font-medium text-primary">
+                  {/* Decorative. The full name is rendered beside it, so
+                      announcing and indexing "ER" adds a meaningless token to
+                      the page text and makes a screen reader say two letters
+                      before every review. */}
+                  <AvatarFallback
+                    aria-hidden="true"
+                    className="bg-primary/10 text-sm font-medium text-primary"
+                  >
                     {initialsOf(review.author)}
                   </AvatarFallback>
                 </Avatar>
