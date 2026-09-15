@@ -53,22 +53,38 @@ export function GalleryTile({
   const height = isPortrait ? 1920 : 1080;
   const ratio = isPortrait ? 9 / 16 : 16 / 9;
 
+  // A button's aria-label overrides everything inside it when a screen reader
+  // works out the accessible name, so "Open image 1 of 2" on its own discarded
+  // the alt text on the photo below it. The photo leads, the action follows.
   return (
     <button
       ref={ref}
       type="button"
       onClick={() => onImageClick?.(index)}
-      className="block w-full cursor-pointer text-left"
-      aria-label={`Open image ${index + 1} of ${totalCount}`}
+      className="relative block w-full cursor-pointer text-left"
+      aria-label={`${image.alt}. Open image ${index + 1} of ${totalCount}`}
     >
       <LazyImage
         alt={image.alt}
         containerClassName="cn-rounded"
-        fallback={`https://placehold.co/${width}x${height}/`}
         inView={inView}
         ratio={ratio}
         src={image.src}
       />
+
+      {/*
+        Dev-only alt readout, so alt can be checked against the photo it
+        describes rather than against a list in data/images.ts.
+
+        NODE_ENV is replaced with a literal at build time, so this whole block
+        is dropped from the production bundle. It cannot ship, which is why it
+        is written this way rather than left to be deleted by hand later.
+      */}
+      {process.env.NODE_ENV === "development" && (
+        <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-black/75 px-2 py-1 text-[10px] leading-snug text-white">
+          {image.alt || "NO ALT"}
+        </span>
+      )}
     </button>
   );
 }

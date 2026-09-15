@@ -9,6 +9,7 @@
 import { cn } from "@/lib/utils";
 import { useInView } from "framer-motion";
 import React from "react";
+import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 type LazyImageProps = {
@@ -41,11 +42,14 @@ export function LazyImage({
     inView ? undefined : src,
   );
   const [isLoading, setIsLoading] = React.useState(true);
-
+  // On error, fall back only to a host next.config's remotePatterns allows.
+  // The gallery used to pass a placehold.co URL here, which a bare <img> did
+  // not care about; next/image refuses any host not on that list, so the
+  // fallback would have failed in production and only in production. Clearing
+  // the src instead leaves the container's own bg-accent/30 showing, which is
+  // a quiet grey box rather than a broken image icon.
   const handleError = () => {
-    if (fallback) {
-      setImgSrc(fallback);
-    }
+    setImgSrc(fallback);
     setIsLoading(false);
   };
 
@@ -79,21 +83,28 @@ export function LazyImage({
       ref={ref}
     >
       {imgSrc && (
-        // biome-ignore lint/correctness/useImageSize: dynamic image size
-        <img
+        /*
+          next/image rather than a bare <img>: these are full size phone
+          photos, 3.5MB in one case, and a plain tag serves every byte of
+          that to every visitor. `fill` works because AspectRatio above is
+          already position:relative with a fixed ratio.
+
+          next.config sets unoptimized in development, so this makes no
+          difference locally. It is the production build that changes.
+        */
+        <Image
           alt={alt}
           className={cn(
             "size-full object-cover transition-opacity duration-500",
             isLoading ? "opacity-0" : "opacity-100",
             className,
           )}
-          decoding="async"
-          fetchPriority={inView ? "high" : "low"}
-          loading="lazy"
+          fill
           onError={handleError}
           onLoad={handleLoad}
+          priority={inView}
           ref={imgRef}
-          role="presentation" // Changed from "img" to "presentation" since it's decorative
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           src={imgSrc}
         />
       )}

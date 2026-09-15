@@ -18,7 +18,7 @@ type ProjectCardProps = {
 function ProjectCardBody({ project }: { project: Project }) {
   return (
     <>
-      <div className="relative aspect-square w-full overflow-hidden min-[970px]:aspect-auto min-[970px]:w-1/2">
+      <div className="relative aspect-square w-full overflow-hidden min-[970px]:w-1/2">
         <GalleryImage
           src={project.thumbnail}
           alt={project.title}
