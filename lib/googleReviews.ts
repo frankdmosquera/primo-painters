@@ -17,12 +17,23 @@ import { siteConfig } from "@/data/siteConfig";
  * reached the HTML at all. On a site that ranks, review text Google cannot
  * read is review text that does not exist.
  *
- * REVALIDATED DAILY. Reviews come from Place Details Enterprise + Atmosphere,
- * which allows 1,000 calls a month free and then costs $25 per 1,000. One call
- * per page view would pass the free tier at a thousand visits. Once a day is
- * about 30 a month, and reviews do not change hourly. This number is the
- * difference between free and a bill, so do not lower it without doing the
- * arithmetic again.
+ * TWO CACHES, DIFFERENT SCOPES. Do not collapse them into one.
+ *
+ *   next: { revalidate } here   the FETCH cache. keyed by URL, shared by every
+ *                               caller in the app. decides how often GOOGLE is
+ *                               called
+ *   export const revalidate     the PAGE cache, in each page file. decides how
+ *                               often THAT page's HTML regenerates
+ *
+ * The page one alone is not enough. Twenty pages rendering this section would
+ * regenerate on twenty unaligned schedules and each one would call Google. The
+ * fetch cache means the first caller pays and the rest read the stored copy.
+ * Same at build time: next build generates every route in one run, so without
+ * this, one build is one Google call per page that uses it, on every push.
+ *
+ * And the number is not arbitrary. Reviews come from Place Details Enterprise +
+ * Atmosphere, 1,000 calls a month free and then $25 per 1,000. Once a day is
+ * about 30 a month. Do the arithmetic again before lowering it.
  *
  * NEVER THROWS. Every failure path returns empty rather than raising. A dead
  * key, a rotated place id, a Google outage or a quota stop should make the
@@ -95,8 +106,7 @@ export async function getGoogleReviews(): Promise<GoogleReviewsResult> {
         "X-Goog-Api-Key": key,
         // Asking for less costs less. Every extra field can move the request
         // into a pricier SKU, and reviews already sit in the dearest one.
-        "X-Goog-FieldMask":
-          "rating,userRatingCount,googleMapsUri,reviews",
+        "X-Goog-FieldMask": "rating,userRatingCount,googleMapsUri,reviews",
       },
       next: { revalidate: REVALIDATE_SECONDS },
     });

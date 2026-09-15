@@ -4,13 +4,22 @@ import HomeHero from "@/components/heros/HomeHero";
 import WhyChooseUs from "@/components/whyChooseUs";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import OurServices from "@/components/our-services";
-import GoogleReviewsCarousel from "@/components/GoogleReviewCarousel3";
+import GoogleReviews from "@/components/google-reviews";
 import { CalgaryPainting } from "@/components/calgary-painting";
 import { OurProcessHome } from "@/components/home/OurProcessHome";
 import FaqSection from "@/components/Faq";
 import { ProjectGalleryGrid } from "@/components/projects/project-gallery-grid";
 import { getProjects } from "@/data/projectsData";
 import FinalCTA from "@/components/FinalCTA";
+
+// How often this page regenerates, and with it the Google reviews it renders.
+// It lives here rather than on the fetch because caching a page and fetching
+// data are two different jobs: lib/googleReviews.ts just fetches, and every
+// page that renders the section sets its own interval.
+//
+// 86,400 is a day. Reviews are billed per call on Google's dearest SKU, so this
+// number is the difference between about 30 calls a month and a bill.
+export const revalidate = 86400;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -87,13 +96,10 @@ export default async function Home() {
         </div>
       </section>
       {/* <div className="flex flex-col "> */}
-      {/* LATAM's reviews carousel, brought over on 2026-09-14 with its own
-          20 generated reviews. Boilerplate on purpose: it is here so there is
-          something real to look at while the layout is built. The Google API
-          swap comes after. */}
-      {/* ⚠ FABRICATED REVIEWS. Boilerplate only, must not reach main.
-          See the warning at the top of GoogleReviewCarousel3.tsx. */}
-      <GoogleReviewsCarousel />
+      {/* Real Google reviews, read server side and revalidated daily.
+          components/GoogleReviewCarousel3.tsx is still on disk with its 20
+          fabricated reviews. It is unlinked from here, not deleted. */}
+      <GoogleReviews />
       {/* <div className="relative top-[100px]">
           <BgLines />
         </div> */}
