@@ -66,6 +66,21 @@ export const siteConfig = {
   reviews: {
     rating: 5,
     reviewCount: 1,
+
+    // Google's id for this listing, used by lib/googleReviews.ts.
+    //
+    // Not a secret: it is public and it identifies the business, so it belongs
+    // here with the rest of the per-client detail rather than in .env.local
+    // with the API key. New client, new config, same code.
+    //
+    // ⚠ These change. The id previously hardcoded in app/api/getReviews was
+    // ChIJT0simD93cVMRNkpXzYqRErA, and Google now answers it with
+    // "The provided Place ID is no longer valid". Google rotates them when a
+    // listing is edited, merged or moved. If reviews ever go blank, check this
+    // first. The one below was confirmed live on 2026-09-15, and its cid
+    // matches the one inside location.googleMaps above, so both point at the
+    // same listing.
+    placeId: "ChIJXQ-YpKmdcVMRIXUL0phNtc0",
   },
 
   social: {
