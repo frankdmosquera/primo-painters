@@ -37,8 +37,16 @@ next ships.
 
 3. axios is installed and used in 3 files. fetch is built in.
 
-4. @imagekit/next is installed and imported nowhere, while the stack names
-   ImageKit as the image library. Wire it up or take it out.
+4. ⚠ CORRECTED 2026-09-15. This said @imagekit/next is imported nowhere. That
+   is wrong, and it was repeated in conversation before anyone opened the file.
+   components/projects/gallery-image.tsx line 1 imports `Image as IKImage`
+   from @imagekit/next and renders through it for relative src values, falling
+   back to a plain <img> for absolute URLs. So the project card thumbnails
+   already go through ImageKit's own component.
+
+   That matters because where-we-are.md's ImageKit section settles on a Next
+   rewrite and explicitly rules out their component. Those two are now in
+   conflict in the codebase. Decide which one wins before building ImageKit.
 
 5. Resolved 2026-09-14. lucide-react is 1.46.0, past the 1.34 LATAM runs.
 
@@ -106,12 +114,22 @@ next ships.
     deleted with the rest of the old reviews tree. js-cookie and
     @types/js-cookie are still in package.json and imported nowhere.
 
-21. The Google API key is hardcoded in app/api/getReviews/route.ts line 6 and
-    is in git history and on GitHub. It is server side so it is not shipped to
-    browsers, but it should move to an env var and be rotated. The correct
-    pattern already exists at app/api/place-details.ts, which reads
-    process.env.GOOGLE_MAPS_API_KEY - though that file is a Pages Router
-    handler in an App Router folder, so it never runs.
+21. ⚠ UPDATED 2026-09-15. The old key, AIzaSyAcrdM_5..., is still hardcoded in
+    app/api/getReviews/route.ts line 6 and is still in git history and on
+    GitHub. It is dead in two ways now: its project has no billing, and the
+    legacy Places API it calls is not enabled on the new project either.
+
+    A new key was created on 2026-09-15 in a new Google Cloud project,
+    primo-painters, restricted to Places and to primopainters.ca, and put in
+    .env.local as GOOGLE_MAPS_API_KEY. lib/googleReviews.ts reads it.
+
+    The old one is not rotated, it is merely useless. If anyone ever enables
+    billing on whatever project it belongs to, it becomes spendable and it is
+    already published. That route file is due for deletion anyway, which
+    removes it from the working tree but not from history.
+
+    app/api/place-details.ts is still a Pages Router handler in an App Router
+    folder, so it still never runs.
 
 22. Alberta Colour Painting, a different company, is named in six places:
     alberta-carousel.tsx, full-width-carousel.tsx, promotional-slider.tsx,

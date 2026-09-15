@@ -47,11 +47,11 @@ moved.
 
 ## Where we are
 
-Nineteen commits on this branch. Head is 248d93e. The build is green and
-typecheck is clean on everything touched.
+Twenty-three commits on this branch. Head is 4711448. The build is green,
+typecheck is clean on everything touched, and **everything is pushed.**
 
-⚠ The last three commits are NOT pushed: c68af48, 248d93e and the docs commit
-that carries this line. Frank asked for commit without push.
+The four commits this file used to call unpushed are now on origin, along with
+the two from 2026-09-15.
 
 The home page now renders, in order: the ticker, the header, the hero, the
 services tabs, Why Choose Us, the before and after slider, the reviews
@@ -61,6 +61,10 @@ gallery, the FAQ, the final CTA, the ticker again, and the footer.
 The about page renders the hero, Our Story, the process section, Our Promise,
 Serving Calgary, and the footer.
 
+    4711448  fix: make gallery photos optimized, accessible and uniform in height
+    10c466c  feat: build the project gallery from the real services and three real jobs
+    3a93bec  docs: record the imagekit decision and how it will be wired
+    0f38d05  docs: record the projects and nav work and what it contradicts
     248d93e  feat: add the projects pages and port latam's dropdown nav
     c68af48  feat: rebuild the contact hero and bring the form back
     b9b4618  docs: bring the state file up to date
@@ -83,23 +87,76 @@ Serving Calgary, and the footer.
     324c471  feat: port the header from the-latam-painters
     4f62c3e  chore: remove the shadcn component layer and align the next packages
 
-The three most recent commits are unpushed.
+All of these are pushed as of 2026-09-15.
 
-## ⚠ MERGE BLOCKER: the gallery projects are placeholder
+## RESOLVED 2026-09-15: the gallery projects are real
 
-The project gallery renders 40 invented projects: invented titles, invented
-descriptions claiming work that was never done, and photos served from
-picsum.photos, a random image service.
+This was a merge blocker. It is not any more, and the old text is replaced
+rather than kept, because a blocker that has been cleared is a blocker nobody
+reads carefully the next time.
 
-It is server rendered, so all of it is in the HTML Google reads, on a site
-that ranks in Calgary. This is the same class of problem as the fabricated
-reviews below, and it arrived the same way: placeholder content so the design
-could be built against something realistic.
+What it said: the gallery rendered 40 invented projects with invented titles,
+invented descriptions claiming work that was never done, and photos from
+picsum.photos, all server rendered into the HTML Google reads.
 
-**Before this branch goes near main:** replace every entry in
-data/projectsData.ts with Primo's real projects and real photos, or take the
-section off the page. The warning is repeated at the top of that file and at
-the call site in app/page.tsx.
+What it renders now, from data/projectsData.ts:
+
+    six service cards   built from data/serviceData.ts, which already held the
+                        titles and descriptions and already imports the six
+                        image arrays from data/images.ts. nothing is duplicated
+    three real jobs     dark kitchen cabinets painted white, built-ins and
+                        panelling in Bearspaw, and a garage taken from bare
+                        taped drywall to white
+
+`getProjects()` kept its signature, so the home gallery, /projects and
+generateStaticParams on /projects/[slug] all switched without being touched.
+Nine project routes now build instead of forty.
+
+The placeholder generator is still at the bottom of projectsData.ts, commented
+out, at Frank's request. It is useful for designing against fake content. It
+must never be the thing that ships.
+
+**Where the job photos came from, and what it cost.** They are in
+C:\Users\frank\Desktop\coding\images, outside the repo, 723 files organised by
+job: cabinet-painting/sally, built-ins/bearspow, ceiling/luke and so on. That
+folder answers the question this file used to say could not be answered from
+the repo, namely where the job grouping comes from.
+
+But those folders are working records, not galleries. Roughly half of what is
+in them is prep shots, detail macros, half-done rooms and someone's boots.
+ceiling/luke opens on an entryway and closes on a macro of moulding mid-sand.
+So every photo has to be opened before it can be used, and that, not the alt
+text, is what makes adding more projects slow.
+
+Timestamps do a lot of the filtering for free:
+
+    oak-to-white-paul    9 photos inside 5 minutes. all before. a quote visit,
+                         not a job. unusable
+    Popcorn Ceiling      8 photos inside 32 seconds. one state. and
+                         20220605_151407_nzvz8d.webp is already in the site's
+                         ceiling gallery
+    garage/Auburn        13 Nov and 5 Dec 2020. a real before and after
+    built-ins/bearspow   22 Jun to 20 Jul 2022. before, progress, after
+    Railings/sharla      Jul 2022 and Aug 2023, a year apart. probably two
+                         separate jobs sharing one folder
+
+**Twelve more interior jobs are sitting there unused**, each with enough
+photos: sally, luke, bearspow, mazens, donaldson, Auburn, sharla, Janikke,
+chris-patches, basement-patches, james-okotoks, main-floor-platinum. Plus about
+ten exterior jobs, which are off-message for a site titled Calgary Interior
+House Painters.
+
+**Do not use the folder names as titles.** Most are customer first names.
+`/projects/sally` publishes a customer's name next to photographs of their
+home. Several folders are places rather than people and those are free to use:
+Bearspaw, Okotoks, Auburn Bay, Strathmore. Where there is no place, title by
+the work, as "Dark Kitchen Cabinets Painted White" does.
+
+**Still open on the gallery:** the six service cards all lead with a prep shot,
+which is look-into item 18 and Frank's to reorder. project-card.tsx:24 uses
+project.title as the thumbnail alt, which is the one thing alt must not be. The
+three job descriptions are drafts and are marked as such in the file. And
+Sally's two photos are 3.1MB and 3.5MB straight off the phone.
 
 ## ⚠ Read this before touching the gallery or the nav again
 
@@ -145,17 +202,106 @@ the breakpoints and lists the custom scale, which came out on 2026-09-14.
 
 ## ⚠ MERGE BLOCKER: the reviews are fabricated
 
-The reviews carousel renders 20 invented reviews - invented names, invented
-dates and ratings, and stock headshots from pravatar.cc - under a heading
-reading "4.9 · 20+ Google reviews". It is server rendered, so those names are
+Still a blocker. GoogleReviewCarousel3 still renders 20 invented reviews, with
+invented names, dates and ratings and stock headshots from pravatar.cc, under a
+heading reading "4.9 · 20+ Google reviews". Server rendered, so those names are
 in the HTML Google reads, on a site that ranks in Calgary.
 
-It is on the page ON PURPOSE, as boilerplate, so the section could be designed
-against real-looking content. That is the only reason.
+What changed on 2026-09-15 is that every unknown behind fixing it is now
+answered, and half the work is built.
 
-**Before this branch goes near main:** wire it to real Google reviews through
-app/api/getReviews, or take the section off the page. The warning is repeated
-at the top of GoogleReviewCarousel3.tsx and at the call site in app/page.tsx.
+### The number that decides the design
+
+Google has **one review**. Not twenty.
+
+    rating   5.0 from 1 rating
+    review   Efrain Rocha jaramillo, a month ago, 5 stars, with real specific
+             text about an interior painting project
+
+So the section cannot be a carousel. There is nothing to rotate through. Note
+also that the LocalBusiness JSON-LD already says `"reviewCount": "1"`, which is
+correct, so the page currently tells Google one thing and visitors another, and
+the visitor-facing number is the false one.
+
+**Frank chose, on 2026-09-15:** show the one real review as a single
+testimonial, honestly labelled 5.0 from 1 Google review, with a link to the
+listing so visitors can leave their own. Not a carousel of one, and not an
+empty space.
+
+### The Google side, all done by Frank on 2026-09-15
+
+    project        primo-painters, Google Cloud
+    billing        a billing account was created and linked. there was none
+                   before, on any project
+    API enabled    Places API (New). the legacy Places API is explicitly NOT
+                   enabled, and calling it returns "You're calling a legacy
+                   API, which is not enabled for your project"
+    key            in .env.local as GOOGLE_MAPS_API_KEY, restricted to Places
+                   and to primopainters.ca
+
+Because legacy is off, `app/api/getReviews/route.ts` cannot work as written. It
+calls `maps/api/place/details/json`. The new endpoint is
+`https://places.googleapis.com/v1/places/{placeId}` with an `X-Goog-Api-Key`
+header and an `X-Goog-FieldMask`, and the response is shaped differently:
+`text.text` and `authorAttribution.displayName` rather than `text` and
+`author_name`.
+
+### The place id was dead
+
+`ChIJT0simD93cVMRNkpXzYqRErA`, hardcoded in that route, returns "The provided
+Place ID is no longer valid". Google rotates them when a listing is edited,
+merged or moved.
+
+The live one is `ChIJXQ-YpKmdcVMRIXUL0phNtc0`, at 217 Legacy Reach Cres SE, and
+it now lives in `data/siteConfig.ts` under `reviews.placeId` rather than in the
+env file, because it is public and it is per-client. Its cid,
+14822839067314189601, matches the one inside `location.googleMaps` and inside
+the JSON-LD `sameAs`, so all three point at the same listing. There is no
+second listing holding older reviews.
+
+### Cost, and why the revalidation number is not arbitrary
+
+Reviews come from Place Details **Enterprise + Atmosphere**, the dearest SKU.
+
+    free          1,000 calls a month, on the BILLING ACCOUNT, not per project
+    after that    $25.00 per 1,000
+
+    per page view     1,000 visits and you are at the cap. 10,000 is ~$225
+    hourly refresh    ~720 a month. inside, but only just
+    daily refresh     ~30 a month. what lib/googleReviews.ts does
+
+At thirty client sites sharing one billing account, one read a day each is 930
+a month and still free. But the quota cap is per project, so thirty projects
+each capped at 30 a day authorises 27,900 a month. Cap per project at 1 or 2
+once there is more than one site.
+
+**Frank has not set the quota cap yet.** APIs & Services, Places API, Quotas,
+requests per day. 30 a day for Primo alone. That is the brake; the $0 budget
+alert he set is only the heads up and stops nothing.
+
+### What is built
+
+`lib/googleReviews.ts`, uncommitted. Server side, daily revalidation, typed
+against Google's response, and it returns empty on every failure path rather
+than throwing, so a dead key or a quota stop renders nothing instead of taking
+the page down.
+
+It does not import `server-only`, which would make a client-side import a build
+error. That package is not installed and rule 14 forbids installing without
+asking. The key is safe regardless: `GOOGLE_MAPS_API_KEY` has no
+`NEXT_PUBLIC_` prefix, so it is absent from the browser bundle.
+
+### What is not built
+
+The component. GoogleReviewCarousel3 still has its 20 fabricated reviews and
+its pravatar avatars, and nothing imports `getGoogleReviews` yet.
+
+Also decided but not done: drop `app/api/getReviews/route.ts` rather than fix
+it. Fetching Google directly from the server component caches cleanly with
+`next: { revalidate }`; going through an internal route handler makes caching
+two separate questions. That also puts the review text in the HTML, which the
+old client-side version never managed, because it fetched in the browser behind
+a cookie and localStorage.
 
 the-latam-painters carried the same warning in the same file and renders
 GoogleReviewCarousel2 on their live site instead.
@@ -379,36 +525,47 @@ Every one of these is a decision Frank made to defer, not something missed:
 
 ## Next step
 
-The home page and the about page are both built out. What is left is not new
-sections but the two merge blockers, the parked list above, and the gate.
+Pick up here. One bite, then stop, as always.
 
-**The gate has not been run since 2026-09-14's work.** It will show changes
-that are deliberate, and they need checking against this list rather than
-being assumed:
+**Build the reviews component.** Everything it needs exists. Read the reviews
+merge blocker section above first, in full, because it carries the numbers and
+the decision.
 
-- "Ready to Transform Your Interior Space?" removed from /about
-- ServingCalgary's two paragraphs joined into one, same words, same order
-- The FAQ questions render as h2, matching the live baseline. The HeroUI
-  version forced h3, but that section was commented out so the h3 never
-  shipped.
-- New text on /: the process section's heading and four steps, and the
-  gallery's placeholder project titles
+    1   Import getGoogleReviews from lib/googleReviews.ts in a server
+        component and render the single review as a testimonial: the text,
+        "Efrain Rocha jaramillo", five stars, "5.0 from 1 Google review", and
+        a link to mapsUrl so visitors can leave their own
+    2   Delete the 20 fabricated reviews and the pravatar avatars from
+        GoogleReviewCarousel3.tsx, and its do-not-merge header with them
+    3   Delete app/api/getReviews/route.ts rather than fix it. It calls the
+        legacy endpoint, which is not enabled on the project, and an internal
+        route handler makes the caching two questions instead of one
+    4   Handle the empty case in the markup, not just in the data. The fetch
+        returns empty on failure by design, so the section has to render
+        nothing gracefully rather than an empty card
+    5   Build, typecheck, gate, then commit
 
-Anything beyond that is a regression.
+The heading is the part to get right. "4.9 · 20+ Google reviews" is currently
+false and contradicts the site's own JSON-LD, which says one. Whatever replaces
+it has to read the real rating and the real count.
 
-First, though: swap the fabricated reviews for
-real ones. app/api/getReviews already calls the Google Places API and returns
-`result.reviews`. Three things to do there:
+**Then the gate, which has run and is understood.** It was run on 2026-09-15
+and every line in it was accounted for, split between scripts/README.md's
+approved-changes list and the expected list that used to live in this section.
+Today's contribution was two lines only: the gallery card titles on / becoming
+the six service names with photo counts, and "Previous 1 2 3 Next" from the
+pagination. Anything beyond what is on those two lists is a regression.
 
-1. The API key is hardcoded in app/api/getReviews/route.ts line 6 and is in
-   git history. Move it to an env var and rotate the key. The correct pattern
-   is already in the repo at app/api/place-details.ts, which reads
-   process.env.GOOGLE_MAPS_API_KEY - though that file is a Pages Router
-   handler sitting in an App Router folder, so it is dead code.
-2. Fetch server side with revalidation rather than in the browser. The
-   component that used to do this fetched client side behind a cookie and
-   localStorage cache, so the review text never reached the HTML at all.
-3. Handle one review, a few, and many. Google returns at most five.
+One line in that diff is worth knowing about rather than rediscovering. The
+LocalBusiness JSON-LD telephone moved from +15877352312 to +17806952631. That
+is look-into item 14, Frank's decision already made, but it is NAP data on a
+ranking local business, so the Google Business Profile has to carry the same
+number.
+
+**After reviews**, in no particular order: the six service cards all leading
+with a prep shot, project-card.tsx:24 using the title as thumbnail alt, Frank's
+words on the three draft job descriptions, Sally's 3.5MB photos, and ImageKit,
+which is decided and recorded but not built.
 
 ## Gate before commit, not after
 
