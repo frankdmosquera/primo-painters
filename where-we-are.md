@@ -47,8 +47,11 @@ moved.
 
 ## Where we are
 
-Sixteen commits on this branch, all pushed. Head is 86814a8. The build is
-green and typecheck is clean on everything touched.
+Nineteen commits on this branch. Head is 248d93e. The build is green and
+typecheck is clean on everything touched.
+
+⚠ The last three commits are NOT pushed: c68af48, 248d93e and the docs commit
+that carries this line. Frank asked for commit without push.
 
 The home page now renders, in order: the ticker, the header, the hero, the
 services tabs, Why Choose Us, the before and after slider, the reviews
@@ -58,6 +61,9 @@ gallery, the FAQ, the final CTA, the ticker again, and the footer.
 The about page renders the hero, Our Story, the process section, Our Promise,
 Serving Calgary, and the footer.
 
+    248d93e  feat: add the projects pages and port latam's dropdown nav
+    c68af48  feat: rebuild the contact hero and bring the form back
+    b9b4618  docs: bring the state file up to date
     86814a8  feat: let the about texture image carry its section
     06c3893  feat: rebuild the about page
     c15d7ef  feat: run the discount ticker top and bottom and load roboto 300
@@ -77,7 +83,7 @@ Serving Calgary, and the footer.
     324c471  feat: port the header from the-latam-painters
     4f62c3e  chore: remove the shadcn component layer and align the next packages
 
-Nothing is unpushed.
+The three most recent commits are unpushed.
 
 ## ⚠ MERGE BLOCKER: the gallery projects are placeholder
 
@@ -94,6 +100,48 @@ could be built against something realistic.
 data/projectsData.ts with Primo's real projects and real photos, or take the
 section off the page. The warning is repeated at the top of that file and at
 the call site in app/page.tsx.
+
+## ⚠ Read this before touching the gallery or the nav again
+
+Two things landed on 2026-09-14 that contradict decisions already written
+down. They are here so the next session does not have to rediscover them.
+
+**The gallery points at the wrong thing.** The "Primo Design Plan" artifact,
+phase 05, says cardMode="link" is an SEO gain "if it is pointed at the service
+pages". /projects points it at forty invented projects instead. The plan also
+puts the gallery LAST, after tokens, rhythm, motion and components, and marks
+it "handle with care" because forceMount on the services tabs is what puts the
+six service descriptions into the HTML.
+
+**The nav is no longer flat.** Line 302 of this file says the nav stays flat
+and holds three, not four, and that adding items would be a content change. It
+now has four entries and the dropdown shape. The nav renders on every page, so
+that moved rendered text site-wide.
+
+Both were done at Frank's request in the moment. Neither was checked against
+what was already written, which is the failure that keeps repeating.
+
+**What the live site actually has, read from origin/claude:** the desktop nav
+is hardcoded Link elements inside Header.tsx, not a NavigationMenu.
+components/NavBar.tsx and data/navigationData.ts do not exist there at all -
+both were created during the design pass. So the hover behaviour on the
+current nav comes from shadcn's navigation-menu component and has never been
+on primopainters.ca. Its /booking link also carries a trailing space in the
+href.
+
+## Where the notes live
+
+Four places, and the .md files are not the whole picture:
+
+    where-we-are.md        this branch's state
+    look-into.md           numbered open questions
+    CLAUDE.md              the rules
+    Primo Design Plan      the design argument and its phases, an artifact
+    Primo Punch List       an artifact, referenced by the design plan's footer
+                           as "read first". Still unread.
+
+The design plan is dated 11 Sep and parts are superseded: it says do not change
+the breakpoints and lists the custom scale, which came out on 2026-09-14.
 
 ## ⚠ MERGE BLOCKER: the reviews are fabricated
 
@@ -240,6 +288,16 @@ Every one of these is a decision Frank made to defer, not something missed:
   once in FinalCTA. app/page.tsx line 68 predicted this.
 - About's text contrast drifted while the texture band was darkened. The
   intro paragraph is grey on blue and needs fixing before this ships.
+- The contact form has never been submitted. The route is unverified end to
+  end. app/contact/ContactForm.tsx, the old formik version, is still on disk
+  and imported by nothing.
+- components/NavBarDropdown.tsx is LATAM's desktop nav, ported and NOT wired
+  in. Header.tsx still renders our NavBar.tsx. To switch, change that import.
+  Nothing in navigationData.ts has items yet, so switching today would look
+  identical to now.
+- The contact hero uses siteConfig.branding.ogImage, the social share graphic,
+  which has its own headline baked into the picture. Two headlines fight in
+  the same space.
 
 ## Next step
 
