@@ -4,10 +4,6 @@ import Link from "next/link";
 import { getProjects, getProjectBySlug } from "@/data/projectsData";
 import { ProjectDetailView } from "@/components/projects/project-detail-view";
 
-// ⚠ PLACEHOLDER CONTENT. MUST NOT REACH MAIN.
-// Every page this generates describes work that was never done, with photos
-// from picsum.photos. See data/projectsData.ts and app/projects/page.tsx.
-
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };

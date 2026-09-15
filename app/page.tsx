@@ -101,8 +101,6 @@ export default async function Home() {
       <CalgaryPainting />
       <OurProcessHome />
 
-      {/* ⚠ PLACEHOLDER PROJECTS. Invented titles, descriptions and photos.
-          Must not reach main. See data/projectsData.ts. */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4">
           <ProjectGalleryGrid projects={getProjects()} />

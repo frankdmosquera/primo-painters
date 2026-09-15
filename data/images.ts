@@ -335,3 +335,51 @@ export const garagePaintingImages = [
     alt: "garage painting calgary",
   },
 ];
+
+// PROJECT GALLERIES
+// PROJECT GALLERIES
+//
+// One array per job, unlike the service arrays above which are one per service.
+// Sources are the raw job folders outside the repo; only the photos that
+// actually show finished work were copied in, and the originals were left where
+// they are.
+//
+// The after shot is first in every array, because the first entry is the card's
+// thumbnail. look-into.md item 18 records what happens otherwise: the interiors
+// tab opens on an unpainted railing.
+//
+// Alt describes the frame. It does not repeat the project title, and it does
+// not claim anything about products or process that is not visible.
+
+export const darkKitchenCabinetsImages = [
+  {
+    src: "/projects/dark-kitchen-cabinets-painted-white/kitchen-cabinets-after-painted-white.jpg",
+    alt: "Kitchen with cabinets painted white, granite counters, glass-front upper cabinets and stainless wall ovens, after painting",
+  },
+  {
+    src: "/projects/dark-kitchen-cabinets-painted-white/kitchen-cabinets-before-dark-espresso.jpg",
+    alt: "The same kitchen before painting, with dark espresso-stained cabinets against a cream tile backsplash",
+  },
+];
+
+export const bearspawBuiltInsImages = [
+  {
+    src: "/projects/built-ins-and-panelling-bearspaw/built-ins-painted-white-glass-doors.jpg",
+    alt: "Built-in cabinetry painted white with glass-front doors, beside a white panelled hallway and a navy front door",
+  },
+  {
+    src: "/projects/built-ins-and-panelling-bearspaw/sunroom-doors-and-trim-painted-white.jpg",
+    alt: "Sunroom doors and window frames painted white beneath a stained wood slat ceiling",
+  },
+];
+
+export const garageDrywallImages = [
+  {
+    src: "/projects/garage-drywall-painted-white/garage-after-painted-white.jpg",
+    alt: "Garage interior with the drywall painted white, after painting",
+  },
+  {
+    src: "/projects/garage-drywall-painted-white/garage-before-bare-taped-drywall.jpg",
+    alt: "The same garage before painting, with bare drywall and taped, mudded seams",
+  },
+];
