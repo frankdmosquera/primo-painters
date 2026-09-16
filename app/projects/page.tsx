@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: "Project Gallery",
   description:
     "Browse our recent painting projects - exteriors, interiors, and full home repaints.",
+
+  // Without this the root layout's canonical of "/" is inherited, and this
+  // page tells Google it is the homepage.
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default function ProjectsPage() {

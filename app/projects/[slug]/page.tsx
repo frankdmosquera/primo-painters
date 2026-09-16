@@ -30,6 +30,13 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.description,
+
+    // Built from the slug. Without it every project page inherits the root
+    // layout's canonical of "/" and disclaims itself in favour of the
+    // homepage, which is the one thing a page meant to rank must not do.
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
   };
 }
 
