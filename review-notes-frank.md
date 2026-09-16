@@ -291,3 +291,52 @@ which is noindex and therefore harmless, and said nothing about the project
 pages, which are indexable and meant to rank. Checking the one entry is what
 surfaced the others. The entry was right that something was wrong and wrong
 about which page mattered.
+
+## The image alts. Done, not parked.
+
+Fifty photographs opened one at a time and described. Result on the home page:
+
+    before   6 strings covered 96 of 132 images
+    after    131 images, 71 distinct alts, nothing repeats more than twice
+
+The pairs that remain are the same photograph rendered twice on the page.
+
+Shape, settled with Frank partway through and then applied to all of them:
+
+    keyword first - what is actually in the frame - Primo Painters
+
+The descriptions are limited to what was painted. An earlier pass had them
+wandering into a pickup parked in a garage, a picture on a wall and a mosaic
+backsplash, none of which is what the business sells. Keyword tails vary
+rather than repeating one phrase, because repeating one phrase was the
+problem being fixed.
+
+Which arrays were wrong, and which were already right:
+
+    cabinetPaintingImages        12 images, 1 alt     fixed
+    trimAndDoorPaintingImages    12 images, 1 alt     fixed
+    garagePaintingImages          9 images, 1 alt     fixed
+    ceilingPaintingImages         7 images, 2 alts    fixed
+    GalleryInteriorImages        10 images, 3 alts    fixed
+    wallPaintingImages            8 images, 8 alts    already right
+    the three project arrays      2 images each       already right
+
+serviceData.ts defines no alts of its own. It imports six of those arrays and
+attaches them to the six services, so the service galleries were the problem
+rather than the safe part.
+
+Things that only turned up by looking at the photographs:
+
+- tnd-img-9 and tnd-img-10 are the before and after of the living room
+  built-ins, and tnd-img-10 is the photo the old hero alt described. That is
+  why the hero said "built-ins and mantel painted cream" long after the image
+  had been swapped for a kitchen.
+- long-wall-before and long-wall-after are a commercial office corridor, not
+  a house, and the after is a layered mountain mural in three blues. It sits
+  in a gallery on a site selling residential interior painting.
+- cabinet images 9 to 12 are split before-and-after composites with curved or
+  diagonal dividers. They are not the same camera or the same houses as 1
+  through 8. Worth confirming they are Primo's own work.
+- every photograph in the ceiling gallery is a prep or mid-spray shot. That
+  service has no finished room to show at all.
+- data/images.ts also carries 24 commented-out entries.
