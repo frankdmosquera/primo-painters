@@ -69,43 +69,43 @@ export const OurStoryImg = {
 export const GalleryInteriorImages = [
   {
     src: "/interior-painting/strathmoore-railing-prior-to-painting.jpg",
-    alt: "stained oak railing prior to being painted white  - railing painting calgary",
+    alt: "railing painting calgary - stained oak stair railing before being painted white - Primo Painters",
   },
   {
     src: "/interior-painting/strathmoore-railing-after-painting.jpg",
-    alt: "stained oak railing after being painted white  - railing painting calgary",
+    alt: "railing painting calgary - the same oak stair railing after being painted white - Primo Painters",
   },
   {
     src: "/interior-painting/long-wall-before-painted.png",
-    alt: "interior painting calgary",
+    alt: "commercial painting calgary - long office wall with its old green zigzag graphic before repainting - Primo Painters",
   },
   {
     src: "/interior-painting/long-wall-after-painted.webp",
-    alt: "interior painting calgary",
+    alt: "calgary interior painting - the same wall repainted as a layered mountain mural in three blues - Primo Painters",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-3.jpg",
-    alt: "interior painting calgary",
+    alt: "wall painting calgary - stairwell wall patched and sanded with the outlets masked, ready for paint - Primo Painters",
   },
   {
     src: "/interior-painting/wall-painting/wall-img-4.webp",
-    alt: "interior painting calgary",
+    alt: "calgary interior house painting - the same stairwell finished, walls in warm beige with white trim and newel posts - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-9.jpg",
-    alt: "interior painting calgary",
+    alt: "trim and door painting calgary - stained oak built-in wall and fireplace mantel before painting - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-10.jpg",
-    alt: "interior painting calgary",
+    alt: "calgary interior house painting - living room built-ins and mantel painted cream - Primo Painters",
   },
   {
     src: "/interior-painting/drywall-repair/garage-drywall-repair-calgary.jpg",
-    alt: "interior painting calgary",
+    alt: "drywall repair calgary - garage wall opened up for repair, studs, insulation and plumbing exposed - Primo Painters",
   },
   {
     src: "/interior-painting/drywall-repair/garage-drywall-repair-calgary-after-finished.jpg",
-    alt: "interior painting calgary",
+    alt: "drywall repair calgary - the same garage wall repaired, filled and painted - Primo Painters",
   },
   // {
   //   src: "/gallery3.png",
