@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Metadata, Viewport } from "next";
 
 import blogsBanner from "@/public/general/blogs-banner.webp";
-import BgFlourish from "@/components/BgFlourish";
+import BgBackground2 from "@/public/SVGs/backgrounds/above-gallery-bg-line.svg";
 
 import Calendly from "@/components/calendly";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -124,15 +124,11 @@ export default function ContactPage() {
       {/* Online Booking */}
       <Calendly />
 
-      {/* Decorative. The band carries its own height: the old markup was an
-          absolute div inside a relative div with nothing to size either, which
-          resolved to 0x0 and drew nothing.
-
-          No -translate-y. The only thing above this is the Calendly iframe,
-          which is opaque, and the flourish sits at -z-10, so lifting it hides
-          the top of the curve behind the calendar. */}
-      <div className="relative h-56 w-full">
-        <BgFlourish className="inset-y-0" />
+      {/* Decorative Background */}
+      <div className="relative">
+        <div className="absolute -z-10">
+          <Image src={BgBackground2} alt="" aria-hidden="true" />
+        </div>
       </div>
 
       {/* ContactForm*/}
@@ -152,8 +148,9 @@ export default function ContactPage() {
         </div>
         {/* Contact Form */}
         <div className="relative w-full">
-          {/* Flipped, so it is not the same curve twice on one page. */}
-          <BgFlourish flip className="top-0 h-96" />
+          <div className="absolute top-[800px] -z-10">
+            <Image src={BgBackground2} alt="" aria-hidden="true" />
+          </div>
           <ContactForm />
         </div>
       </section>
