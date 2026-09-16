@@ -110,42 +110,35 @@ which is the live site. The SEO gate reports 507 changed lines between them.
       blue, so the supporting line carries more brand colour than the heading.
 - [ ] `--services-bg` reads more lavender than intended.
 
-## The SEO gate, in case scripts/ goes
+## scripts/, if you ever want it
 
-Everything worth keeping from `scripts/README.md`, so the folder can be
-deleted without losing how it worked.
+A tool, not an obligation. Nothing here is a step anyone has to take, and no
+session should treat it as one. scripts/README.md was deleted on purpose for
+exactly that reason. Do not put it back.
 
-`seo-snapshot.mjs` reads HTML and extracts only what a search engine reads:
-title, every meta tag, canonical and alternate links, JSON-LD parsed and
-re-stringified so key order cannot cause a false diff, every heading with its
-level, every image alt, and all visible prose. It throws away markup, classes
-and whitespace, so a pure design change diffs clean and any moved word shows.
+What is there:
 
-`scripts/seo-baseline/` is what five pages said on 2026-09-11, which is the
-live site. It regenerates from `78b5867`, which is what `main` points at, so
-it is recoverable as long as that commit exists.
+    seo-snapshot.mjs     reads html and keeps only what a search engine reads.
+                         title, meta, canonical, JSON-LD parsed and
+                         re-stringified so key order cannot fake a diff, every
+                         heading with its level, every img alt, all visible
+                         prose. markup, classes and whitespace are thrown away,
+                         so a pure design change diffs clean
+    seo-baseline/        what five pages said on 2026-09-11. regenerates from
+                         78b5867 if it is ever lost
 
-Running it. The dev server's on-demand image optimiser makes it unusable, so
-build first and serve the production output on a port nothing else is using:
+Running it, if you want a before and after:
 
     npm run build
     npx next start -p 3014
+    # curl the five pages into a folder, then
+    node scripts/seo-snapshot.mjs <that folder> <an output folder>
+    diff -ru --strip-trailing-cr scripts/seo-baseline <that output folder>
 
-    mkdir -p /tmp/after-html
-    for r in "index:/" "about:/about" "contact:/contact" "booking:/booking" "thank-you:/thank-you"; do
-      name="${r%%:*}"; path="${r##*:}"
-      curl -s "http://localhost:3014$path" -o "/tmp/after-html/$name.html"
-    done
+Two things that wasted time on 2026-09-15:
 
-    node scripts/seo-snapshot.mjs /tmp/after-html /tmp/after
-    diff -ru --strip-trailing-cr scripts/seo-baseline /tmp/after
-
-Two traps that cost time on 2026-09-15:
-
-- The baseline is CRLF and a fresh snapshot is LF, so a plain `diff` reports
-  every file as fully changed. `--strip-trailing-cr` is not optional.
-- If the port is already in use, `next start` fails but curl still succeeds
-  against whatever is already listening, and you silently snapshot a stale
-  build. Check the server actually started.
-
-As of 2026-09-15 the diff is 507 lines against a branch 58 commits ahead.
+- the baseline is CRLF and a fresh snapshot is LF, so a plain diff calls every
+  file fully changed. --strip-trailing-cr is not optional
+- if the port is busy, next start fails but curl still succeeds against
+  whatever is already listening, and you snapshot a stale build without
+  noticing
