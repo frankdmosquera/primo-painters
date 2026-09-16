@@ -251,18 +251,22 @@ A screen reader user also hears it 24 times.
 
 Frank's call, in a later pass: work out what those 96 photos actually show.
 
-## Still open at the end of 2026-09-15
+## Decided, so nobody reopens them
 
-    phone icon        24px in the header, 16px in the mobile menu
-    logo alt          "Primo Painters Calgary - logo". "logo" in alt is
-                      discouraged. tracked text on a ranking page.
-    thank-you         canonicalises to the homepage. the page is already
-                      noindex, nofollow, so it is untidy rather than harmful.
-                      the look-into entry overstates it.
-    dead code         7 items, all deletions
-    507 SEO lines     against main, never looked at
-    outside the repo  old Google API key, Places quota cap, the 780 number on
-                      the Google Business Profile, the origin remote redirect
+    phone icon    24px in the header, 16px in the mobile menu. leave it.
+    logo alt      "Primo Painters Calgary - logo". leave it.
+    dead code     7 items. noted and parked, not deleted.
+    image alts    done, see the section above.
+    thank-you     canonical fixed, see the canonical section.
+
+## Genuinely still open
+
+    origin remote     points at primo-painting.git, GitHub redirects every
+                      push to primo-painters.git. one command to repoint.
+    507 SEO lines     against main. a review, not a fix: run the gate, read
+                      the diff, decide each change before merging.
+    outside the repo  Places quota cap, and the 780 number on the Google
+                      Business Profile. both in Frank's Google accounts.
 
 ## The canonical bug. The real find of the session.
 
