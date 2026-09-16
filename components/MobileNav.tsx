@@ -148,7 +148,13 @@ export default function MobileNav() {
           </div>
         </nav>
 
-        <SheetFooter className="gap-4 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+4rem)]">
+        {/* The 4rem below the buttons is comfortable on a normal phone and is
+            what clips a link in half on a short one, because the footer is
+            mt-auto and every pixel it takes comes off the list above it.
+            Under 600px tall it drops to 1.5rem, which hands about 40px back.
+            A height query, not a width one: a 320 wide phone that is 700 tall
+            has no problem here. The safe area inset is kept at both sizes. */}
+        <SheetFooter className="gap-4 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+4rem)] [@media(max-height:600px)]:pb-[calc(env(safe-area-inset-bottom)+1.5rem)]">
           <a
             href={`tel:${siteConfig.business.phone}`}
             aria-label={`Call ${siteConfig.business.name} at ${siteConfig.business.phoneDisplay}`}
