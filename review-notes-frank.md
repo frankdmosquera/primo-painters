@@ -263,3 +263,31 @@ Frank's call, in a later pass: work out what those 96 photos actually show.
     507 SEO lines     against main, never looked at
     outside the repo  old Google API key, Places quota cap, the 780 number on
                       the Google Business Profile, the origin remote redirect
+
+## The canonical bug. The real find of the session.
+
+The root layout sets `alternates.canonical: "/"`. Any page that does not
+override it inherits that and tells Google it is the homepage.
+
+    /                            -> /          ok
+    /about                       -> /about     ok
+    /contact                     -> /contact   ok
+    /booking                     -> /booking   ok
+    /thank-you                   -> homepage   WRONG, but noindex so harmless
+    /projects                    -> homepage   WRONG
+    /projects/<every slug>       -> homepage   WRONG
+
+A canonical pointing elsewhere tells Google to fold this page's signals into
+that page and generally to drop this one from the index. The project pages
+carry the photographs and the service keywords, and every one of them was
+disclaiming itself in favour of the homepage.
+
+Fixed: `/projects` self-references, and the `[slug]` template builds its own
+from the slug, so it covers every project page at once. thank-you too,
+including its og:url, which meant a pasted link previewed as the homepage.
+
+Worth noting how this was found. look-into.md flagged the thank-you page,
+which is noindex and therefore harmless, and said nothing about the project
+pages, which are indexable and meant to rank. Checking the one entry is what
+surfaced the others. The entry was right that something was wrong and wrong
+about which page mattered.
