@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { siteConfig } from "@/data/siteConfig";
 import Image from "next/image";
 import AboutHero from "@/components/AboutUs/AboutHero";
 import OurStory from "@/components/AboutUs/OurStoy";
@@ -29,13 +30,32 @@ export const metadata: Metadata = {
       "Learn about Primo Painters and why Calgary homeowners trust us for professional interior painting.",
 
     url: "/about",
+
+    siteName: siteConfig.business.name,
+
+    locale: "en_CA",
+
+    type: "website",
+
+    images: [
+      {
+        url: siteConfig.branding.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.business.name} - About`,
+      },
+    ],
   },
 
   twitter: {
+    card: "summary_large_image",
+
     title: "About Primo Painters | Calgary Interior Painting Company",
 
     description:
       "Learn about Primo Painters and why Calgary homeowners trust us for professional interior painting.",
+
+    images: [siteConfig.branding.ogImage],
   },
 };
 
