@@ -13,9 +13,24 @@ type ProjectCardProps = {
   onOpen?: (project: Project) => void;
   /** Links to the project's real static page instead — used on /gallery. */
   href?: string;
+  /**
+   * Which heading tag the card title uses. The cards sit under a section h2
+   * on the home page, so h3 is right there. On /projects they sit directly
+   * under the page h1 with nothing between, so h3 skips a level.
+   *
+   * No visual difference: globals.css only sets a font family on headings and
+   * Tailwind preflight resets their size to inherit.
+   */
+  headingLevel?: "h2" | "h3";
 };
 
-function ProjectCardBody({ project }: { project: Project }) {
+function ProjectCardBody({
+  project,
+  headingLevel: Heading = "h3",
+}: {
+  project: Project;
+  headingLevel?: "h2" | "h3";
+}) {
   return (
     <>
       <div className="relative aspect-square w-full overflow-hidden min-[970px]:w-1/2">
@@ -37,7 +52,7 @@ function ProjectCardBody({ project }: { project: Project }) {
       </div>
 
       <div className="flex flex-1 flex-col justify-center gap-1 p-4">
-        <h3 className="font-medium text-foreground">{project.title}</h3>
+        <Heading className="font-medium text-foreground">{project.title}</Heading>
         <p className="text-sm text-muted-foreground">
           {project.images.length} photos
         </p>
@@ -46,11 +61,16 @@ function ProjectCardBody({ project }: { project: Project }) {
   );
 }
 
-export function ProjectCard({ project, onOpen, href }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  onOpen,
+  href,
+  headingLevel,
+}: ProjectCardProps) {
   if (href) {
     return (
       <Link href={href} className={cardClassName}>
-        <ProjectCardBody project={project} />
+        <ProjectCardBody project={project} headingLevel={headingLevel} />
       </Link>
     );
   }
@@ -61,7 +81,7 @@ export function ProjectCard({ project, onOpen, href }: ProjectCardProps) {
       onOpen={onOpen}
       className={cardClassName}
     >
-      <ProjectCardBody project={project} />
+      <ProjectCardBody project={project} headingLevel={headingLevel} />
     </ProjectCardOpenButton>
   );
 }

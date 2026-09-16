@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      <ProjectGalleryGrid projects={projects} cardMode="link" />
+      <ProjectGalleryGrid projects={projects} cardMode="link" headingLevel="h2" />
     </main>
   );
 }

@@ -27,11 +27,14 @@ type ProjectGalleryGridProps = {
    * each project is a real, crawlable, indexable URL.
    */
   cardMode?: "dialog" | "link";
+  /** Passed straight to the card. See the note on ProjectCardProps. */
+  headingLevel?: "h2" | "h3";
 };
 
 export function ProjectGalleryGrid({
   projects,
   cardMode = "dialog",
+  headingLevel,
 }: ProjectGalleryGridProps) {
   const [page, setPage] = useState(1);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -55,6 +58,7 @@ export function ProjectGalleryGrid({
           <ProjectCard
             key={project.slug}
             project={project}
+            headingLevel={headingLevel}
             onOpen={cardMode === "dialog" ? setActiveProject : undefined}
             href={cardMode === "link" ? `/projects/${project.slug}` : undefined}
           />
