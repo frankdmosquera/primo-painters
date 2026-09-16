@@ -26,7 +26,6 @@ export function Header() {
           <Image
             src={logoImg.src}
             alt={logoImg.alt}
-            title={siteConfig.business.name}
             width={142}
             height={100}
             priority
