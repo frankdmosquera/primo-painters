@@ -24,14 +24,23 @@ export default function Footer() {
           {/* Header */}
           <div className="mb-6 flex flex-col justify-between md:flex-row">
             <div className="mb-6 md:mb-0 md:text-left">
-              {/* clamp replaces a fixed size plus a breakpoint override, and
-                  stays in rem at both ends so it follows the browser setting */}
-              <h2 className="text-[clamp(1.5rem,4vw,2.75rem)] font-semibold tracking-wider uppercase">
-                LET'S
+              {/* One heading, not two. This was an h2 reading "LET'S" followed by
+                  an h3 reading "GET IN TOUCH", which is one sentence cut in half
+                  across two levels, and the h3 rendered larger than the h2 above
+                  it so the outline ran opposite to the visual order.
+
+                  The two clamps move to spans and the rendering is unchanged.
+                  clamp replaces a fixed size plus a breakpoint override, and
+                  stays in rem at both ends so it follows the browser setting. */}
+              <h2>
+                <span className="block text-[clamp(1.5rem,4vw,2.75rem)] font-semibold tracking-wider uppercase">
+                  LET'S
+                </span>
+                {" "}
+                <span className="block text-[clamp(2rem,7vw,4.8125rem)] leading-[1.05] font-bold text-balance">
+                  GET IN TOUCH
+                </span>
               </h2>
-              <h3 className="text-[clamp(2rem,7vw,4.8125rem)] leading-[1.05] font-bold text-balance">
-                GET IN TOUCH
-              </h3>
             </div>
             <Link href="/contact" className="self-start md:self-end">
               <span className="mt-4 flex items-center gap-2 rounded-full border-2 border-white bg-[#0D378D] py-2 pr-1.5 pl-5 text-sm font-medium transition-colors hover:bg-[#0a2c72] md:mt-0 md:text-base">
