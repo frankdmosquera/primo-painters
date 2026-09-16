@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PhoneIcon } from "lucide-react";
+import { ChevronRight, PhoneIcon, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -76,6 +77,11 @@ export default function MobileNav() {
 
       <SheetContent
         side="right"
+        // The built-in close is size="icon-sm", 28px with a 16px icon, well
+        // under the 44px both Apple and Google ask for. SheetContent is
+        // shared with HeroCallToAction, so it is switched off here rather
+        // than resized for everything.
+        showCloseButton={false}
         className="flex flex-col gap-0 overflow-hidden p-0 data-[side=right]:w-full data-[side=right]:sm:max-w-sm"
       >
         <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
@@ -89,11 +95,18 @@ export default function MobileNav() {
             <Image
               src={logoImg.src}
               alt={logoImg.alt}
-              width={71}
-              height={50}
-              className="h-9 w-auto"
+              width={80}
+              height={56}
+              className="h-14 w-auto"
             />
           </Link>
+          <SheetClose
+            aria-label="Close menu"
+            className="text-foreground/70 hover:text-foreground hover:bg-muted active:bg-muted -mr-2 flex size-11 shrink-0 items-center justify-center rounded-full transition-colors"
+          >
+            <X className="size-6" strokeWidth={2.5} aria-hidden="true" />
+          </SheetClose>
+
           <SheetTitle className="sr-only">Navigation menu</SheetTitle>
           <SheetDescription className="sr-only">
             Browse pages for {siteConfig.business.name}
@@ -104,29 +117,45 @@ export default function MobileNav() {
           className="relative flex-1 overflow-y-auto px-3 py-4"
           aria-label="Mobile"
         >
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             {navigationItemsData.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={currentPath === item.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                className="hover:text-primary-dark flex items-center justify-between rounded-lg px-2 py-3 text-lg font-semibold text-foreground transition-colors hover:bg-muted"
+                className={cn(
+                  // justify-between was already here waiting for something on
+                  // the right that never arrived, so each row was bare text
+                  // with nothing to say it was tappable. The chevron and the
+                  // divider are that. py-4 takes the row to 60px, over the
+                  // 44px touch minimum.
+                  "border-border/60 flex items-center justify-between gap-3 border-b px-2 py-4 text-lg font-semibold transition-colors",
+                  "active:bg-muted",
+                  currentPath === item.href
+                    ? "text-primary-dark"
+                    : "text-foreground hover:text-primary-dark",
+                )}
               >
                 {item.title}
+
+                <ChevronRight
+                  className="text-muted-foreground size-5 shrink-0"
+                  aria-hidden="true"
+                />
               </Link>
             ))}
           </div>
         </nav>
 
-        <SheetFooter className="gap-3 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+4rem)]">
+        <SheetFooter className="gap-4 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+4rem)]">
           <a
             href={`tel:${siteConfig.business.phone}`}
             aria-label={`Call ${siteConfig.business.name} at ${siteConfig.business.phoneDisplay}`}
-            className="text-primary-dark flex items-center justify-center gap-2 font-semibold"
+            className="border-primary/30 text-primary-dark active:bg-muted flex h-12 items-center justify-center gap-2 rounded-full border text-base font-semibold transition-colors"
           >
             <PhoneIcon
-              className="text-primary-light size-4"
+              className="text-primary-light size-5"
               fill="var(--primary)"
             />
             {siteConfig.business.phoneDisplay}
@@ -136,7 +165,7 @@ export default function MobileNav() {
               <Button
                 size="lg"
                 onClick={openCalendly}
-                className="bg-accent text-accent-foreground hover:bg-accent/85 w-full text-base font-semibold"
+                className="bg-accent text-accent-foreground hover:bg-accent/85 h-14 w-full rounded-full text-lg font-semibold"
               />
             }
           >
