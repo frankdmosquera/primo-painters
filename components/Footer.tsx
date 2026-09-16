@@ -79,7 +79,7 @@ export default function Footer() {
             {/* Quick Links */}
             <div className="my-5">
               <h3 className="mb-4 text-xl font-medium">Quick Links</h3>
-              <nav>
+              <nav aria-label="Quick links">
                 <ul className="space-y-4">
                   {navigationItemsData.map(({ title, href }) => (
                     <li key={href}>

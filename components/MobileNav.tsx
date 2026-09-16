@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { PhoneIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,9 @@ import { useCalendly } from "./calendly-provider";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
+  // Matches the desktop nav, which already marks the current page. No visual
+  // difference either way: aria-current is announced, not styled.
+  const currentPath = usePathname();
   const openCalendly = useCalendly();
 
   return (
@@ -99,13 +103,14 @@ export default function MobileNav() {
 
         <nav
           className="relative flex-1 overflow-y-auto px-3 py-4"
-          aria-label="Mobile navigation"
+          aria-label="Mobile"
         >
           <div className="flex flex-col gap-1">
             {navigationItemsData.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={currentPath === item.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 className="hover:text-primary-dark flex items-center justify-between rounded-lg px-2 py-3 text-lg font-semibold text-foreground transition-colors hover:bg-muted"
               >

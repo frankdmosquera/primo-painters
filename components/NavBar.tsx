@@ -13,8 +13,12 @@ import Link from "next/link";
 function NavBar() {
   const currentPath = usePathname();
 
+  // Labelled because the page has three nav landmarks. The word "navigation"
+  // is deliberately not in the label: screen readers already announce the role,
+  // so "Main navigation" is read aloud as "main navigation navigation".
+  // See W3C APG, Landmark Regions.
   return (
-    <NavigationMenu>
+    <NavigationMenu aria-label="Main">
       <NavigationMenuList>
         {navigationItemsData.map((item) => (
           <NavigationMenuItem key={item.title}>
