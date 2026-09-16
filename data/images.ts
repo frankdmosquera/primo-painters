@@ -252,51 +252,51 @@ export const cabinetPaintingImages = [
 export const trimAndDoorPaintingImages = [
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-1.jpg",
-    alt: "trim and door painting calgary",
+    alt: "trim and door painting calgary - stained wood stair railing before painting, with the stairs masked off - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-2.jpg",
-    alt: "trim and door painting calgary",
+    alt: "railing painting calgary - stairwell mid job, the upper railing painted white and the lower still stained - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-3.webp",
-    alt: "trim and door painting calgary",
+    alt: "railing painting calgary - finished stair railing in white, turned spindles and newel posts - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-4.jpg",
-    alt: "trim and door painting calgary",
+    alt: "calgary interior house painters - a painter spraying a stair railing, the spindles half stained and half white - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-5.jpg",
-    alt: "trim and door painting calgary",
+    alt: "trim and door painting calgary - dark stained panelling, built-ins and fireplace surround before painting - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-6.jpg",
-    alt: "trim and door painting calgary",
+    alt: "calgary interior house painting - the same panelling, built-ins and mantel finished in white - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-7.jpg",
-    alt: "trim and door painting calgary",
+    alt: "fireplace mantel painting calgary - dark stained mantel and surround masked off ready to paint - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-8.jpg",
-    alt: "trim and door painting calgary",
+    alt: "trim and door painting calgary - the same fireplace mantel painted white with the firebox still masked - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-9.jpg",
-    alt: "trim and door painting calgary",
+    alt: "trim and door painting calgary - stained oak built-in wall with arched alcoves and a fireplace mantel before painting - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-10.jpg",
-    alt: "trim and door painting calgary",
+    alt: "calgary interior house painting - the same built-ins and mantel painted cream - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-11.jpg",
-    alt: "trim and door painting calgary",
+    alt: "door painting calgary - entry door, sidelights and trim painted white with the stair railing draped - Primo Painters",
   },
   {
     src: "/interior-painting/trim-and-door-painting/tnd-img-12.jpg",
-    alt: "trim and door painting calgary",
+    alt: "door painting calgary - interior doors painted white, glass panels masked and a painter at work - Primo Painters",
   },
 ];
 
