@@ -105,7 +105,18 @@ export default function ContactPage() {
               form link from the hero for this page for this reason. */}
         </div>
       </section>
-
+      {/* Decorative Background */}
+      <div className="relative translate-y-20">
+        <div className="absolute -z-10">
+          <img
+            src={BgBackground2.src}
+            width={BgBackground2.width}
+            height={BgBackground2.height}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </div>
       {/* ContactOptions  */}
       <section className="py-12 px-4 bg-background">
         <div className="container max-w-4xl mx-auto text-center">
@@ -124,15 +135,18 @@ export default function ContactPage() {
       {/* Online Booking */}
       <Calendly />
 
-      {/* Decorative Background */}
-      <div className="relative">
-        <div className="absolute -z-10">
-          <Image src={BgBackground2} alt="" aria-hidden="true" />
-        </div>
-      </div>
-
       {/* ContactForm*/}
-      <section className="pt-20 pb-8 px-4 w-full">
+      <section className="relative pt-20 pb-8 px-4 w-full">
+        {/* Decorative Background */}
+        <div className="absolute inset-x-0 top-0 -z-10">
+          <img
+            src={BgBackground2.src}
+            width={BgBackground2.width}
+            height={BgBackground2.height}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
         <div className="container max-w-3xl mx-auto text-center">
           <p className="uppercase tracking-[0.25em] text-[#0D378D] font-semibold">
             Prefer Email?
@@ -147,16 +161,22 @@ export default function ContactPage() {
           </p>
         </div>
         {/* Contact Form */}
-        <div className="relative w-full">
-          <div className="absolute top-[800px] -z-10">
-            <Image src={BgBackground2} alt="" aria-hidden="true" />
-          </div>
-          <ContactForm />
-        </div>
+        <ContactForm />
       </section>
-
       {/* Google Map */}
-      <GoogleMap />
+      <div className="relative">
+        {/* Decorative Background */}
+        <div className="absolute inset-x-0 top-0 -z-10">
+          <img
+            src={BgBackground2.src}
+            width={BgBackground2.width}
+            height={BgBackground2.height}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <GoogleMap />
+      </div>
     </>
   );
 }

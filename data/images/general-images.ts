@@ -12,12 +12,6 @@ export const logoImg = {
   alt: "Primo Painters Calgary logo",
 };
 
-// BgBackgrounds
-// BgBackgrounds
-export const BgBackgroundImg = {
-  src: "/SVGs/backgrounds/about-background-vector-line.svg",
-  alt: "",
-};
 
 // HERO IMAGES
 // HERO IMAGES

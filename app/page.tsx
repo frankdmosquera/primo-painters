@@ -120,9 +120,6 @@ export default async function Home() {
           components/GoogleReviewCarousel3.tsx is still on disk with its 20
           fabricated reviews. It is unlinked from here, not deleted. */}
       <GoogleReviews />
-      {/* <div className="relative top-[100px]">
-          <BgLines />
-        </div> */}
       {/* <ServiceBanner /> */}
       <CalgaryPainting />
       <OurProcessHome />
@@ -134,9 +131,6 @@ export default async function Home() {
       </section>
 
       <FaqSection />
-      {/* <div className="relative ">
-          <BgLines />
-        </div> */}
       {/* <ContactFormSection /> */}
       <FinalCTA />
       {/* </div> */}

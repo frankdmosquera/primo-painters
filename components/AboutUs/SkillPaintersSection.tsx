@@ -1,12 +1,10 @@
 import service1 from "@/public/general/service1.webp";
 import Image from "next/image";
 import { Dot } from "lucide-react";
-import BgLines from "../BgLines";
 
 export default function SkillPaintersSection() {
   return (
     <div className="grid md:grid-cols-2 gap-8 items-center relative mt-10 my-3.5 pb-[40px]">
-      <BgLines />
       <div className="relative w-full  lg:w-[80%] mr-auto aspect-square md:aspect-auto md:h-[600px] overflow-hidden">
         <Image
           src={service1}

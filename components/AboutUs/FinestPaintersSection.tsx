@@ -1,12 +1,8 @@
 import Image from "next/image";
-import BgLines from "../BgLines";
 
 export default function FinestPaintersSection() {
   return (
     <>
-      <div className="relative ">
-        <BgLines />
-      </div>
       <div className="grid md:grid-cols-2 gap-8 items-center relative mt-10 my-3.5">
         <div className="space-y-6 ">
           <div className="space-y-2">
