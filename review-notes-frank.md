@@ -191,3 +191,75 @@ live site, not this branch.
     images pass                   Frank's own block for later: filenames,
                                   alts, the six service galleries leading
                                   with prep shots.
+
+## Second half: the markup pass
+
+All committed and pushed on design-pass-2.
+
+**Nav landmarks.** The page carried three, and only pagination was named. Now
+"Main" on the header, "Quick links" on the footer. The mobile menu said
+"Mobile navigation", which W3C is explicit about: the role is announced
+already, so that reads aloud as "mobile navigation navigation". Now "Mobile".
+The mobile links also gained aria-current, which the desktop nav already had.
+
+**Headings.** Audited every page.
+
+    /            h1 h2 h3 ...            valid
+    /about       h1 h2 h2 h3 ...         valid
+    /contact     h1 h2 h2 h2 h2 h3 h3    valid
+    /projects    h1 h3 h3 h3 h3 h2 ...   BROKEN, skipped a level four times
+    /booking     h1 only, then footer
+    /thank-you   h1 only, then footer
+    /projects/*  h1 only, then footer
+
+/projects is fixed. The same card renders on the home page under a section h2
+where h3 is correct, so the level is a prop now, defaulting to h3.
+
+The footer's call to action was an h2 reading "LET'S" and an h3 reading "GET
+IN TOUCH" on every page, one sentence across two levels, with the h3
+rendering larger than the h2 above it. One h2 now, two styled spans, with an
+explicit {" "} between them because JSX strips whitespace between elements and
+without it the text reads "LET'SGET IN TOUCH".
+
+**Social cards.** Home and about defined their own openGraph and twitter
+objects, which replace the layout's rather than merging, so both dropped the
+image, site name, locale and card type. The two most-shared pages posted as
+bare text links. Fixed to match contact's shape.
+
+**Small ones.** The header's tel: link was next/link, which has nothing to
+prefetch for a tel:. Now a plain <a>, matching MobileNav. The logo's title
+tooltip is gone from both headers: it repeated the alt, only mouse users saw
+it, and Google reads alt not title.
+
+## The image alts. Parked for its own pass.
+
+132 images on the home page. None broken, none missing an alt. But:
+
+    24x  "trim and door painting calgary"
+    24x  "cabinet painting calgary"
+    18x  "garage painting calgary"
+    16x  "interior painting calgary"
+     8x  "Ceiling painting calgary"
+     6x  "Ceiling preparation for spray painting the ceilings"
+
+96 of 132 images share six strings. The look-into entry named only the last
+two, so it described 14 of 96.
+
+Google's image documentation warns against filling alt attributes with
+keywords, and the same five words on 24 different photographs is that pattern.
+A screen reader user also hears it 24 times.
+
+Frank's call, in a later pass: work out what those 96 photos actually show.
+
+## Still open at the end of 2026-09-15
+
+    phone icon        24px in the header, 16px in the mobile menu
+    logo alt          "Primo Painters Calgary - logo". "logo" in alt is
+                      discouraged. tracked text on a ranking page.
+    thank-you         canonicalises to the homepage. the page is already
+                      noindex, nofollow, so it is untidy rather than harmful.
+                      the look-into entry overstates it.
+    dead code         7 items, all deletions
+    507 SEO lines     against main, never looked at
+    outside the repo  old Google API key, Places quota cap, the 780 number on
+                      the Google Business Profile, the origin remote redirect
