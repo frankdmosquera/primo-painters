@@ -64,10 +64,10 @@ const HomeHero = () => {
               content reads as one run, "CALGARY'SINTERIOR". */}
           {/* The cap was 3.25rem, which held the headline at 52px on a 1920
               monitor - small enough that the hero read as a phone layout
-              stretched wide. 4rem lets it reach 64px, settled
+              stretched wide. 3.875rem lets it reach 62px, settled
               on 2026-09-16 after 4.5rem/72px read as too much. The floor and the vw
               term are unchanged, so nothing below desktop moves. */}
-          <h1 className="mx-auto max-w-[22ch] text-[clamp(1.75rem,4.4vw,4rem)] leading-[1.3] font-bold text-white">
+          <h1 className="mx-auto max-w-[22ch] text-[clamp(1.75rem,4.4vw,3.875rem)] leading-[1.3] font-bold text-white">
             <span className="block">CALGARY'S </span>
             <span className="bg-reveal">INTERIOR HOUSE PAINTERS</span>
           </h1>
