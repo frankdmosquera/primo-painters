@@ -1,26 +1,49 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import logo from "@/public/logo.svg";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "@/components/icons/SocialIcons";
+import { navigationItemsData } from "@/data/navigationData";
+import { siteConfig } from "@/data/siteConfig";
+
+/**
+ * An account with no URL yet renders as a plain shape, not a link. It cannot
+ * be clicked or tabbed to, and Google never sees an anchor. Filling the URL
+ * into siteConfig.social turns it into a real link with no component change.
+ */
+const socialLinks = [
+  { name: "Instagram", Icon: Instagram, url: siteConfig.social.instagram },
+  { name: "Facebook", Icon: Facebook, url: siteConfig.social.facebook },
+  { name: "YouTube", Icon: Youtube, url: siteConfig.social.youtube },
+];
 
 export default function Footer() {
   return (
     <footer>
-      <div className="bg-black text-white min-h-[400px] p-6 md:p-10">
-        <div className="max-w-7xl mx-auto">
+      <div className="min-h-[25rem] bg-black p-6 text-white md:p-10">
+        <div className="mx-auto max-w-7xl">
           {/* Header */}
-          <div className="flex flex-col md:flex-row justify-between  mb-6">
-            <div className="md:text-left mb-6 md:mb-0">
-              <h2 className="text-[44px] font-semibold uppercase tracking-wider">
-                LET'S
+          <div className="mb-6 flex flex-col justify-between md:flex-row">
+            <div className="mb-6 md:mb-0 md:text-left">
+              {/* One heading, not two. This was an h2 reading "LET'S" followed by
+                  an h3 reading "GET IN TOUCH", which is one sentence cut in half
+                  across two levels, and the h3 rendered larger than the h2 above
+                  it so the outline ran opposite to the visual order.
+
+                  The two clamps move to spans and the rendering is unchanged.
+                  clamp replaces a fixed size plus a breakpoint override, and
+                  stays in rem at both ends so it follows the browser setting. */}
+              <h2>
+                <span className="block text-[clamp(1.5rem,4vw,2.75rem)] font-semibold tracking-wider uppercase">
+                  LET'S
+                </span>
+                {" "}
+                <span className="block text-[clamp(2rem,7vw,4.8125rem)] leading-[1.05] font-bold text-balance">
+                  GET IN TOUCH
+                </span>
               </h2>
-              <h3 className="text-3xl md:text-[77px] font-bold">
-                GET IN TOUCH
-              </h3>
             </div>
-            <Link href="/contact">
-              <span className="flex items-center gap-2 border-2 border-white rounded-full pl-5 pr-1.5 py-2 text-sm md:text-base font-medium bg-[#0D378D] cursor-pointer transition-colors mt-4 md:mt-[80px]">
+            <Link href="/contact" className="self-start md:self-end">
+              <span className="mt-4 flex items-center gap-2 rounded-full border-2 border-white bg-[#0D378D] py-2 pr-1.5 pl-5 text-sm font-medium transition-colors hover:bg-[#0a2c72] md:mt-0 md:text-base">
                 Contact Us
                 <svg
                   width="32"
@@ -42,54 +65,38 @@ export default function Footer() {
           {/* Divider */}
           <div className="border-t border-gray-700 my-4"></div>
 
-          {/* Content */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0.5 ">
+          {/* Content. Columns sized to their contents rather than three equal
+              thirds, so the icon row no longer reserves a third of the width. */}
+          <div className="mt-0.5 grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_auto]">
             {/* Logo and Description */}
-            <div className="space-y-6 my-5">
-              {/* <div className=" w-48 h-16 flex items-center justify-center rounded"> */}
-
-              <Link href="/">
+            <div className="my-5 space-y-6">
+              <Link href="/" className="inline-block">
                 <Image
-                  // src={logo}
                   alt="Primo Painters Logo"
                   width={180}
                   height={60}
-                  className="object-contain"
+                  className="h-auto w-[11rem] object-contain"
                   src="/primo-painters-logo.png"
                 />
               </Link>
-              {/* </div> */}
-              <p className="text-sm text-white leading-relaxed mt-10">
+              <p className="max-w-[32ch] text-sm leading-relaxed text-white/75">
                 We offer professional interior house painting services in
                 Calgary.
               </p>
             </div>
 
             {/* Quick Links */}
-            <div className="md:place-self-center">
-              <h3 className="font-medium mb-4 text-[20px]">Quick Links</h3>
-              <nav>
-                <ul className="space-y-5">
-                  {[
-                    "Home",
-                    "About",
-                    // "Services",
-                    "Gallery",
-                    // "Blog",
-                    "Contact",
-                  ].map((item) => (
-                    <li key={item}>
+            <div className="my-5">
+              <h3 className="mb-4 text-xl font-medium">Quick Links</h3>
+              <nav aria-label="Quick links">
+                <ul className="space-y-4">
+                  {navigationItemsData.map(({ title, href }) => (
+                    <li key={href}>
                       <Link
-                        href={
-                          item === "Home"
-                            ? "/"
-                            : item === "Blog"
-                              ? "/blogs"
-                              : `/${item.toLowerCase()}`
-                        }
-                        className="text-white hover:text-white transition-colors"
+                        href={href}
+                        className="text-white/75 transition-colors hover:text-white"
                       >
-                        {item}
+                        {title}
                       </Link>
                     </li>
                   ))}
@@ -97,36 +104,39 @@ export default function Footer() {
               </nav>
             </div>
 
-            {/* Contact Information */}
-            <div className="place-self-start">
-              {/* <h3 className="font-medium mb-4 text-[20px]">Contact</h3> */}
-              <div className="space-y-5 ">
-                <Link target="_blank" href="https://g.co/kgs/Wm9YRbr"></Link>
-                <div className="flex flex-row gap-5 mt-2">
-                  <Link
-                    href="https://www.instagram.com/@Primo-Painters"
-                    aria-label="Visit Primo Painting on Instagram"
-                  >
-                    <Instagram className="text-[#0D378D] text-2xl" />
-                  </Link>
-                  <Link
-                    href="https://www.facebook.com/@Primo-Painters"
-                    aria-label="Visit Primo Painting on Facebook"
-                  >
-                    <Facebook className="text-[#0D378D] text-2xl" />
-                  </Link>
-                  <Link
-                    href="https://www.youtube.com/@Primo-Painters"
-                    aria-label="Visit Primo Painting on YouTube"
-                  >
-                    <Youtube className="text-[#0D378D] text-2xl" />
-                  </Link>
-                </div>
+            {/* Social */}
+            <div className="my-5">
+              <div className="flex flex-row gap-3">
+                {socialLinks.map(({ name, Icon, url }) => {
+                  // All three look identical. Only the element differs: a real
+                  // anchor when the account exists, an inert span when it does
+                  // not, so nothing is ever a broken or fake link.
+                  const shell =
+                    "flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white";
+                  const icon = <Icon className="h-5 w-5" strokeWidth={1.8} />;
+
+                  return url ? (
+                    <Link
+                      key={name}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${siteConfig.business.name} on ${name}`}
+                      className={`${shell} transition-colors hover:border-white/40 hover:bg-white/15`}
+                    >
+                      {icon}
+                    </Link>
+                  ) : (
+                    <span key={name} aria-hidden="true" className={shell}>
+                      {icon}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>
-          <div className="border-t  mt-8 pt-4 text-center text-xs text-gray-700">
-            <p className="text-white">© 2026 Primo Painters Calgary.</p>
+          <div className="mt-8 border-t border-white/15 pt-5 text-center text-xs">
+            <p className="text-white/60">© 2026 Primo Painters Calgary.</p>
           </div>
         </div>
       </div>

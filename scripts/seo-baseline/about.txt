@@ -1,0 +1,242 @@
+# TITLE
+About Primo Painters | Calgary Interior Painting Company
+
+# META
+application-name = Primo Painters
+category = Home Services
+description = Learn about Primo Painters, a locally owned Calgary interior painting company dedicated to meticulous workmanship, honest pricing, and exceptional customer service.
+next-size-adjust = 
+og:description = Learn about Primo Painters and why Calgary homeowners trust us for professional interior painting.
+og:title = About Primo Painters | Calgary Interior Painting Company
+og:url = https://primopainters.ca/about
+robots = index, follow
+twitter:card = summary
+twitter:description = Learn about Primo Painters and why Calgary homeowners trust us for professional interior painting.
+twitter:title = About Primo Painters | Calgary Interior Painting Company
+utf-8 = utf-8
+viewport = width=device-width, initial-scale=1
+
+# LINK REL
+canonical = https://primopainters.ca/about
+
+# JSON-LD
+{
+ "@context": "https://schema.org",
+ "@type": [
+  "LocalBusiness",
+  "HousePainter"
+ ],
+ "@id": "https://primopainters.ca/#business",
+ "name": "Primo Painters",
+ "url": "https://primopainters.ca",
+ "logo": "https://primopainters.ca/primo-painters-logo.png",
+ "image": [
+  "https://primopainters.ca/primo-painters-logo.png"
+ ],
+ "description": "Primo Painters provides professional interior house painting services in Calgary. We specialize in painting walls, ceilings, trim, doors, cabinets and other interior spaces with clean workmanship, attention to detail, and free estimates.",
+ "telephone": "+15877352312",
+ "email": "info@primopainters.ca",
+ "priceRange": "$$",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "217 Legacy Reach Cres SE",
+  "addressLocality": "Calgary",
+  "addressRegion": "AB",
+  "postalCode": "T2X 5A7",
+  "addressCountry": "CA"
+ },
+ "geo": {
+  "@type": "GeoCoordinates",
+  "latitude": 50.8550013,
+  "longitude": -113.9955408
+ },
+ "hasMap": "https://www.google.com/maps/place/Primo+Painters+Calgary/@50.8550013,-113.9955408,17z/data=!4m6!3m5!1s0x53719da9a4980f5d:0xcdb54d98d20b7521!8m2!3d50.8550013!4d-113.9955408!16s%2Fg%2F11nr1d01rz",
+ "areaServed": [
+  {
+   "@type": "City",
+   "name": "Calgary"
+  }
+ ],
+ "openingHoursSpecification": [
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "opens": "08:00",
+   "closes": "18:00"
+  },
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": "Saturday",
+   "opens": "09:00",
+   "closes": "18:00"
+  },
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": "Sunday",
+   "opens": "10:00",
+   "closes": "16:00"
+  }
+ ],
+ "aggregateRating": {
+  "@type": "AggregateRating",
+  "ratingValue": "5",
+  "reviewCount": "1"
+ },
+ "sameAs": [
+  "https://www.google.com/maps/place/Primo+Painters+Calgary/@50.8550013,-113.9955408,17z/data=!4m6!3m5!1s0x53719da9a4980f5d:0xcdb54d98d20b7521!8m2!3d50.8550013!4d-113.9955408!16s%2Fg%2F11nr1d01rz",
+  "https://www.youtube.com/@Primo-Painting"
+ ],
+ "serviceType": [
+  "Interior House Painting",
+  "Interior Painting",
+  "Residential Interior Painting",
+  "Wall Painting",
+  "Ceiling Painting",
+  "Trim Painting",
+  "Door Painting",
+  "Garage Painting",
+  "Cabinet Painting",
+  "Built-in Cabinet Painting",
+  "Baseboard Painting",
+  "Railing Painting"
+ ],
+ "knowsAbout": [
+  "Interior House Painting",
+  "Interior Painting",
+  "Wall Painting",
+  "Ceiling Painting",
+  "Trim Painting",
+  "Door Painting",
+  "Garage Painting",
+  "Cabinet Painting",
+  "Built-in Cabinet Painting",
+  "Baseboard Painting",
+  "Railing Painting",
+  "Residential Painting"
+ ],
+ "inLanguage": "en-CA",
+ "currenciesAccepted": "CAD",
+ "paymentAccepted": [
+  "Cash",
+  "Credit Card",
+  "Debit Card",
+  "E-Transfer"
+ ]
+}
+
+# HEADINGS
+h1: About Primo Painters
+h2: Quality Painting. Honest Service. No Shortcuts.
+h2: A Simple Process Designed Around Your Home
+h3: Book Your Estimate
+h3: Preparation
+h3: Professional Painting
+h3: Final Walkthrough
+h2: What You Can Expect From Every Project
+h3: Honest Communication
+h3: Respect for Your Home
+h3: Meticulous Workmanship
+h3: Quality Without Shortcuts
+h2: Interior Painting Throughout Calgary
+h3: Ready to Transform Your Interior Space?
+h2: LET'S
+h3: GET IN TOUCH
+h3: Quick Links
+
+# IMG ALT
+(empty)
+Home Banner Background
+Primo Painters Calgary - logo
+Primo Painters Logo
+calgary painters
+calgary painters
+
+# TEXT
+About Primo Painters | Calgary Interior Painting Company
+15% OFF Interior Painting •
+Offer Ends Aug 26th •
+Free Estimates •
+15% OFF Interior Painting •
+5-Star Rated •
+Serving Calgary & Area •
+15% OFF Interior Painting •
+Offer Ends Aug 26th •
+Free Estimates •
+15% OFF Interior Painting •
+5-Star Rated •
+Serving Calgary & Area •
+Home About Booking Contact
+Book Now
+About Primo Painters
+Primo Painters is a locally owned Calgary interior painting company dedicated to meticulous workmanship, honest pricing, and respect for every home we paint.
+Book Now
+Questions?
+Our Story
+Quality Painting. Honest Service. No Shortcuts.
+Primo Painters was founded with a simple goal: provide Calgary homeowners with an interior painting experience that is straightforward, dependable, and built around quality workmanship.
+Instead of trying to complete as many projects as possible, we choose to stay focused on delivering meticulous results. Every project receives the preparation, attention to detail, and care needed to produce a finish that looks beautiful and lasts.
+We believe homeowners deserve honest advice, transparent pricing, and clear communication from the first estimate through the final walkthrough. That's why we treat every home with the same respect and care we would expect in our own.
+Whether you're refreshing a single room or repainting your entire home, our goal is always the same: make the process simple, stress-free, and deliver results you'll be proud to live with for years to come.
+Our Process
+A Simple Process Designed Around Your Home
+From your first estimate to the final walkthrough, every step is focused on making your interior painting project organized, stress-free, and completed with meticulous attention to detail.
+STEP 01
+Book Your Estimate
+Choose a convenient time using our online booking system. We'll visit your home, discuss your project, answer your questions, and provide a detailed, no-obligation estimate.
+STEP 02
+Preparation
+Once you're ready to move forward, we carefully protect your home, prepare every surface, and ensure everything is ready for a smooth, professional finish.
+STEP 03
+Professional Painting
+Using premium materials and meticulous workmanship, we deliver smooth finishes, crisp lines, and beautiful results while keeping your home clean and organized.
+STEP 04
+Final Walkthrough
+Together we'll inspect every detail to ensure you're completely satisfied before we consider the project finished.
+Our Promise
+What You Can Expect From Every Project
+Every project completed by Primo Painters reflects our commitment to delivering professional interior painting services Calgary homeowners can rely on.
+Honest Communication
+From your first estimate to the final walkthrough, we keep you informed every step of the way with clear expectations and no surprises.
+Respect for Your Home
+We treat your home with the same care we would our own by protecting your floors, furniture, and belongings while maintaining a clean workspace.
+Meticulous Workmanship
+Preparation, clean lines, smooth finishes, and attention to detail are at the heart of every project we complete.
+Quality Without Shortcuts
+We believe doing the job right is more important than doing it quickly. Every project receives the time and care it deserves.
+Proudly Serving Calgary
+Interior Painting Throughout Calgary
+Primo Painters proudly provides professional interior painting services throughout Calgary, helping homeowners refresh everything from a single room to an entire home.
+Whether you're updating walls, ceilings, trim, doors, cabinets, or garages, our focus is always the same: meticulous workmanship, honest communication, and beautiful results that last.
+15% OFF Interior Painting •
+Offer Ends Aug 26th •
+Free Estimates •
+15% OFF Interior Painting •
+5-Star Rated •
+Serving Calgary & Area •
+15% OFF Interior Painting •
+Offer Ends Aug 26th •
+Free Estimates •
+15% OFF Interior Painting •
+5-Star Rated •
+Serving Calgary & Area •
+Ready to Transform Your Interior Space?
+Whether you're painting one room or your entire home, we're here to make the process simple, stress-free, and beautifully finished.
+Book Your Free Estimate
+⏳
+Loading calendar, please wait…
+LET'S
+GET IN TOUCH
+Contact Us
+We offer professional interior house painting services in Calgary.
+Quick Links
+Home
+About
+Gallery
+Contact
+© 2026 Primo Painters Calgary.

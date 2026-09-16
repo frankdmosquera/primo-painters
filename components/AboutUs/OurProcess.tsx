@@ -1,82 +1,96 @@
-import { CalendarCheck, Home, PaintRoller, ClipboardCheck } from "lucide-react";
-
-const steps = [
-  {
-    icon: <CalendarCheck size={38} />,
-    number: "01",
-    title: "Book Your Estimate",
-    description:
-      "Choose a convenient time using our online booking system. We'll visit your home, discuss your project, answer your questions, and provide a detailed, no-obligation estimate.",
-  },
-  {
-    icon: <Home size={38} />,
-    number: "02",
-    title: "Preparation",
-    description:
-      "Once you're ready to move forward, we carefully protect your home, prepare every surface, and ensure everything is ready for a smooth, professional finish.",
-  },
-  {
-    icon: <PaintRoller size={38} />,
-    number: "03",
-    title: "Professional Painting",
-    description:
-      "Using premium materials and meticulous workmanship, we deliver smooth finishes, crisp lines, and beautiful results while keeping your home clean and organized.",
-  },
-  {
-    icon: <ClipboardCheck size={38} />,
-    number: "04",
-    title: "Final Walkthrough",
-    description:
-      "Together we'll inspect every detail to ensure you're completely satisfied before we consider the project finished.",
-  },
-];
+// The About page's process section, now sharing the home page's step cards.
+//
+// Why it changed: About ran two pale card sections back to back, Our Process
+// and Our Promise, 1,800px with no images and no contrast between them. The
+// dark cards give this one weight without needing a single new photo, and the
+// two pages now read as one site rather than two.
+//
+// Why the copy did not change: every word here comes from data/processSteps.ts,
+// which holds this page's own wording verbatim - the eyebrow, the heading, the
+// intro paragraph and all four steps. The home page reads the same file. There
+// was a second copy of these words hardcoded in this component; that is gone,
+// so the text now lives in one place instead of two.
+//
+// The intro paragraph is kept here and not on home. That is deliberate: it is
+// About's copy and About is where it has always been.
+import {
+  processEyebrow,
+  processHeading,
+  processIntro,
+  processSteps,
+} from "@/data/processSteps";
+import { StepReveal } from "../home/StepReveal";
 
 export default function OurProcess() {
   return (
-    <section className="bg-[#E2E7F1] py-24 px-4">
-      <div className="container max-w-7xl mx-auto">
-        {/* Heading */}
+    // The ground is a gradient with glows rather than the flat #E2E7F1 slab it
+    // was. Our Promise below runs a gradient wash and two blurred glows, and a
+    // solid slab next to it read as unfinished by comparison.
+    //
+    // No photograph here, deliberately. Two were tried and both were worse.
+    //
+    // A stairwell shot at 10% did not dissolve: the banister spindles still
+    // read as a photograph behind the text, because the image is photographic
+    // rather than graphic.
+    //
+    // Sharing one image across this section and Promise was worse again. Cover
+    // sizing stretched it over 1602px, which zoomed past the mural's flat
+    // shapes and left the office furniture and a red desk edge legible.
+    //
+    // So the pair rhymes through treatment, not texture: this section is about
+    // its cards, Promise is about its surface.
+    <section className="relative overflow-hidden bg-linear-to-b from-background/40 via-primary/20 to-background/45 px-4 py-24">
 
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="uppercase tracking-[0.25em] text-[#0D378D] font-semibold">
-            Our Process
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 -left-32 size-[30rem] rounded-full bg-white/50 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 -bottom-32 size-[30rem] rounded-full bg-primary/10 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-semibold uppercase tracking-[0.25em] text-primary-dark">
+            {processEyebrow}
           </p>
 
-          <h2 className="text-3xl lg:text-5xl  font-bold text-black mt-3">
-            A Simple Process Designed Around Your Home
+          <h2 className="mt-3 text-3xl font-bold text-black lg:text-5xl">
+            {processHeading}
           </h2>
 
-          <p className="mt-6 text-gray-700 leading-8">
-            From your first estimate to the final walkthrough, every step is
-            focused on making your interior painting project organized,
-            stress-free, and completed with meticulous attention to detail.
+          <p className="mt-6 font-light leading-8 text-gray-700">
+            {processIntro}
           </p>
         </div>
 
-        {/* Cards */}
+        <ol className="relative mt-16 flex flex-col gap-10 md:flex-row md:items-start md:gap-6">
+          {processSteps.map((step, i) => {
+            const Icon = step.icon;
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mt-20">
-          {steps.map((step) => (
-            <div
-              key={step.number}
-              className="bg-white rounded-xl shadow-sm p-8 text-center hover:-translate-y-1 transition-transform"
-            >
-              <div className="flex justify-center text-[#0D378D] mb-6">
-                {step.icon}
-              </div>
+            return (
+              <StepReveal
+                key={step.title}
+                index={i}
+                icon={<Icon className="size-6 text-primary" />}
+              >
+                <span className="text-xs font-semibold tracking-widest text-white/80">
+                  STEP {step.number}
+                </span>
 
-              <span className="text-[#0D378D] font-bold text-sm tracking-widest">
-                STEP {step.number}
-              </span>
-
-              <h3 className="text-2xl font-semibold text-[#0D378D] mt-3 mb-4">
-                {step.title}
-              </h3>
-
-              <p className="text-gray-600 leading-7">{step.description}</p>
-            </div>
-          ))}
-        </div>
+                <div className="md:px-2 md:text-center">
+                  <h3 className="font-semibold leading-snug text-white">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1 text-sm font-light leading-relaxed text-white/70">
+                    {step.description}
+                  </p>
+                </div>
+              </StepReveal>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

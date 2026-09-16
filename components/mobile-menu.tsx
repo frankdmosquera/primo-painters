@@ -1,34 +1,51 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Facebook, Instagram, X, Youtube } from "lucide-react";
-import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
+import {
+  ArrowUpRight,
+  CalendarDays,
+  House,
+  Images,
+  Mail,
+  Phone,
+  Users,
+  X,
+} from "lucide-react";
 import Image from "next/image";
 import { logoImg } from "@/data/images";
+import { siteConfig } from "@/data/siteConfig";
+import {
+  navigationItemsData,
+  type NavigationIcon,
+} from "@/data/navigationData";
+import { useCalendly } from "./calendly-provider";
+
+// Names in navigationData map to components here, so the data file never has
+// to import React. lucide renders inline <svg>, nothing extra is fetched.
+const NAV_ICONS: Record<NavigationIcon, typeof House> = {
+  home: House,
+  about: Users,
+  contact: Mail,
+  projects: Images,
+};
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const currentPath = usePathname();
+  const openCalendly = useCalendly();
 
-  // Create a ref for the mobile menu
-  const menuRef = useRef<HTMLDivElement | null>(null);
-
-  // Close the menu when the user clicks outside of it
+  // Escape closes the panel. The old click-outside listener was removed: the
+  // panel covers the whole viewport now, so there is no outside left to click.
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
+    if (!isOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
     };
-
-    // Attach the event listener to the document
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
 
   return (
     <div className="xl:hidden">
@@ -45,15 +62,6 @@ export default function MobileMenu() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect x="1" y="1" width="59" height="46" rx="23" fill="#0D378D" />
-          <rect
-            x="1"
-            y="1"
-            width="59"
-            height="46"
-            rx="23"
-            stroke="#CADBFF"
-            strokeWidth="2"
-          />
           <path
             d="M19.5 17H41.5"
             stroke="white"
@@ -76,72 +84,97 @@ export default function MobileMenu() {
       </button>
 
       {isOpen && (
+        // inset-0 is the full screen. The previous h-[630px] left the page
+        // showing underneath on any viewport taller than that.
         <div
-          ref={menuRef} // Attach the ref to the menu container
-          className="fixed inset-0 h-[630px] sm:h-[630px] bg-white z-50 flex flex-col transition-all duration-300 ease-in-out transform translate-x-0 border-b-2 border-gray-400"
-          style={{ transform: isOpen ? "translateX(0)" : "translateX(100%)" }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          className="fixed inset-0 z-50 flex flex-col bg-white"
         >
-          <div className="flex justify-between m-[28px]">
+          <div className="flex items-center justify-between p-7">
             <Link href="/" onClick={() => setIsOpen(false)}>
               <Image
                 src={logoImg.src}
                 alt={logoImg.alt}
-                title="Primo Painting"
+                title={siteConfig.business.name}
                 width={130}
                 height={60}
-                className="h-auto"
+                className="h-auto w-[7rem]"
               />
             </Link>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-gray-800"
+              className="rounded-full p-2 text-gray-800 transition-colors hover:bg-black/5"
               aria-label="Close menu"
             >
               <X className="h-6 w-6" />
             </button>
           </div>
 
-          <nav className="flex flex-col items-center space-y-6">
-            <Link
-              href="/"
-              className="text-gray-800 text-xl font-medium"
-              onClick={() => setIsOpen(false)}
+          {/* One centred group, so there is no dead gap between the links and
+              the call to action on tall screens. */}
+          <div className="flex flex-1 flex-col items-center justify-center gap-9 px-7 pb-16">
+            {/* items-start inside a w-fit wrapper: the block is centred as a
+                whole, but the links align left so the icons form a column
+                instead of drifting with each word's length. */}
+            <nav
+              className="mx-auto flex w-fit flex-col items-start gap-7"
+              aria-label="Site menu"
             >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className="text-gray-800 text-xl font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
+              {navigationItemsData.map(({ title, href, icon }) => {
+                const Icon = NAV_ICONS[icon];
+                const isActive = currentPath === href;
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex items-center gap-3 text-2xl motion-safe:transition-colors ${
+                      isActive
+                        ? "font-semibold text-[#0D378D]"
+                        : "font-medium text-gray-800 hover:text-[#0D378D]"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Icon
+                      size={22}
+                      strokeWidth={isActive ? 2.4 : 1.9}
+                      className={isActive ? "" : "text-gray-400"}
+                    />
+                    {title}
+                  </Link>
+                );
+              })}
+            </nav>
 
-            {/* <Link
-              href="/gallery"
-              className="text-gray-800 text-xl font-medium"
-              onClick={() => setIsOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                // Close this panel first so only the Calendly overlay is left.
+                // Otherwise the visitor has to dismiss two things to back out.
+                setIsOpen(false);
+                openCalendly();
+              }}
+              className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#0D378D] px-9 py-4 text-lg font-semibold text-white shadow-[0_14px_30px_-10px_rgba(13,55,141,0.8)] motion-safe:transition-all hover:bg-[#0a2c72] hover:shadow-[0_18px_36px_-10px_rgba(13,55,141,0.9)]"
             >
-              Gallery
-            </Link> */}
-
-            <Link
-              href="/contact"
-              className="text-gray-800 text-xl font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-          </nav>
-
-          <div className="mt-auto p-6 flex flex-col space-y-4">
-            <Link
-              onClick={() => setIsOpen(false)}
-              href="/booking"
-              className="bg-[#0D378D] cursor-pointer text-white mb-5 border-4 border-[#CADBFF] text-center px-8 py-1 rounded-4xl font-medium hover:bg-[#0D378D] transition-colors"
-            >
+              <CalendarDays size={20} strokeWidth={2.2} />
               Book Now
-            </Link>
+              <ArrowUpRight
+                size={18}
+                strokeWidth={2.5}
+                className="opacity-70 motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5"
+              />
+            </button>
+
+            <a
+              href={`tel:${siteConfig.business.phone}`}
+              aria-label={`Call ${siteConfig.business.name} at ${siteConfig.business.phoneDisplay}`}
+              className="flex items-center gap-2 text-base font-semibold text-[#0D378D]"
+            >
+              <Phone size={16} strokeWidth={2.5} />
+              {siteConfig.business.phoneDisplay}
+            </a>
           </div>
         </div>
       )}

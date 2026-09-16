@@ -1,29 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { PopupModal } from "react-calendly";
 import { ClipboardList, MessageCircleQuestion, PhoneCall } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import ContactFormSection from "../ContactFormSection";
 import { siteConfig } from "@/data/siteConfig";
+import { useCalendly } from "../calendly-provider";
 
 const secondaryPillClass =
   "inline-flex cursor-pointer items-center gap-2 rounded-full bg-white text-[#0D378D] px-4 py-2 font-medium shadow-lg hover:bg-gray-100";
 
 export default function HeroCallToAction() {
   const [showCallForm, setShowCallForm] = useState(false);
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const openCalendly = useCalendly();
 
   return (
     <div className="flex flex-col items-center gap-2">
       <button
-        onClick={() => setIsCalendlyOpen(true)}
+        onClick={openCalendly}
         className="mx-auto w-38 flex flex-col items-center animate-book-pulse will-change-transform [backface-visibility:hidden]"
       >
         <Image
@@ -70,14 +65,6 @@ export default function HeroCallToAction() {
         </div>
       )}
 
-      {mounted && (
-        <PopupModal
-          url="https://calendly.com/primo-painting/30min?hide_gdpr_banner=1"
-          open={isCalendlyOpen}
-          onModalClose={() => setIsCalendlyOpen(false)}
-          rootElement={document.body}
-        />
-      )}
     </div>
   );
 }

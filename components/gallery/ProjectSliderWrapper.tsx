@@ -2,12 +2,18 @@
 
 import { useRef, useState, useEffect, ReactNode } from "react";
 
+// lucide, not heroicons. heroicons came out in the teardown and CLAUDE.md
+// names lucide as the icon library. Aliased to the old names so the four use
+// sites below did not have to change.
 import {
-  PlayIcon,
-  PauseIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from "@heroicons/react/24/solid";
+  Play as PlayIcon,
+  Pause as PauseIcon,
+  ArrowLeft as ArrowLeftIcon,
+  ArrowRight as ArrowRightIcon,
+} from "lucide-react";
+
+import { CONTROL } from "@/lib/controlClasses";
+
 
 interface ProjectSliderWrapperProps {
   children: ReactNode[];
@@ -113,7 +119,12 @@ export default function ProjectSliderWrapper({
     <div className="w-full relative">
       <div className="w-full">
         {/* DESKTOP FADE VERSION */}
-        <div className="relative w-full h-[25rem]   overflow-hidden">
+        {/* aspect-[3/2] rather than a fixed h-[25rem]. A hard 400px forced
+            every photo into the same letterbox whatever its shape, so tall
+            rooms and wide rooms were both cropped to the same strip. rounded
+            to match the mobile slides, which are already rounded-2xl - the
+            desktop one was the only square-cornered image on the page. */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-black/5">
           {children.map((child, index) => (
             <div
               key={index}
@@ -126,29 +137,48 @@ export default function ProjectSliderWrapper({
           ))}
         </div>
 
-        {/* DESKTOP CONTROLS */}
-        <div className="">
-          <div className="flex justify-center gap-4 mt-6">
-            <ArrowLeftIcon
-              onClick={handlePrev}
-              className="w-9 h-9 text-[#0D378D] hover:text-blue-800 cursor-pointer"
-            />
+        {/*
+          These were bare SVGs carrying onClick. Three problems: a 36px icon
+          floating in white space with nothing to press, a hover that only went
+          from one blue to a slightly darker blue so it read as nothing, and no
+          keyboard access at all, because an svg is not a button.
+
+          Now real buttons: a 40px circle each, centred in their own row, with
+          a hover that fills, a focus ring, and an aria-label.
+        */}
+        <div className="mt-4 flex items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous photo"
+            className={CONTROL}
+          >
+            <ArrowLeftIcon className="size-4" />
+          </button>
+
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+            // mx-2 so play/pause is separated from the two arrows rather than
+            // reading as the middle of three identical buttons.
+            className={`${CONTROL} mx-2`}
+          >
             {isPlaying ? (
-              <PauseIcon
-                onClick={togglePlay}
-                className="mx-6 w-9 h-9 text-[#0D378D] hover:text-blue-800 cursor-pointer"
-              />
+              <PauseIcon className="size-4" />
             ) : (
-              <PlayIcon
-                onClick={togglePlay}
-                className="mx-6 w-9 h-9 text-[#0D378D] hover:text-blue-800 cursor-pointer"
-              />
+              <PlayIcon className="size-4" />
             )}
-            <ArrowRightIcon
-              onClick={handleNext}
-              className="w-9 h-9 text-[#0D378D] hover:text-blue-800 cursor-pointer"
-            />
-          </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next photo"
+            className={CONTROL}
+          >
+            <ArrowRightIcon className="size-4" />
+          </button>
         </div>
       </div>
     </div>

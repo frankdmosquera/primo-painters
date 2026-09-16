@@ -5,6 +5,18 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+
+  // Self referencing. The root layout's canonical is "/", so without this the
+  // page claims to be the homepage while also asking not to be indexed, which
+  // are contradictory signals. og:url likewise, so a pasted link does not
+  // preview as the homepage.
+  alternates: {
+    canonical: "/thank-you",
+  },
+
+  openGraph: {
+    url: "/thank-you",
+  },
 };
 
 export default function page() {

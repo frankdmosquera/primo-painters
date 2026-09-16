@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AboutUsImg } from "@/data/images";
+import { OurStoryImg } from "@/data/images";
 
 export default function OurStory() {
   return (
@@ -48,8 +48,8 @@ export default function OurStory() {
         {/* Image */}
         <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
           <Image
-            src={AboutUsImg.src}
-            alt={AboutUsImg.alt}
+            src={OurStoryImg.src}
+            alt={OurStoryImg.alt}
             fill
             className="object-cover"
           />

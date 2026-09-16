@@ -2,21 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import "./homebanner.css";
 import Calendly from "../calendly";
+import BookNowTrigger from "../BookNowTrigger";
 
 const ServiceBanner = () => {
   return (
     <div>
       <div className="back-img lg:mt-[40px] container max-w-7xl mx-auto pt-10 pb-0 relative">
         {/* Lazy-loaded Background Image */}
+        {/* The before shot: this is the same room as the hero, in dark oak,
+            behind a heading that asks about transforming an interior. The
+            hero carries the after. Dark wood also holds white text better
+            than the pale finished room did. */}
         <Image
-          src="/banners/HomeBannerBG.webp"
-          alt="Home Banner Background"
+          src="/interior-painting/trim-and-door-painting/tnd-img-9.jpg"
+          alt=""
           fill
           className="object-cover -z-10"
           priority={false}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-6 sm:px-12 z-20 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-8 sm:px-14 z-20 relative">
           <div className="text-white col-span-2">
             <h3 className="text-2xl  font-medium mb-4 uppercase">
               Ready to Transform Your Interior Space?
@@ -28,8 +33,7 @@ const ServiceBanner = () => {
           </div>
 
           <div className="flex items-center lg:justify-end justify-start mb-4">
-            <Link
-              href="/booking"
+            <BookNowTrigger
               className="flex items-center bg-[#0D378D] text-white pl-4 pr-2 py-3 rounded-full text-base font-medium border-2 border-[#cadbff]"
             >
               <span className="mr-2 ">Book Your Free Estimate</span>
@@ -46,10 +50,13 @@ const ServiceBanner = () => {
                   fill="#0D378D"
                 />
               </svg>
-            </Link>
+            </BookNowTrigger>
           </div>
         </div>
-        <div className="relative z-2 ">
+        {/* Same px as the grid above. The embed used to sit outside the
+            padded container, so the calendar ran wider than the heading and
+            the button it belongs to. */}
+        <div className="relative z-2 px-8 sm:px-14">
           <Calendly />
         </div>
       </div>

@@ -1,0 +1,181 @@
+# TITLE
+Book Your Free Interior Painting Estimate | Primo Painters
+
+# META
+application-name = Primo Painters
+category = Home Services
+description = Schedule your free interior painting estimate with Primo Painters. Serving Calgary homeowners with professional interior painting, honest pricing, and meticulous workmanship.
+next-size-adjust = 
+og:description = Schedule a free in-home estimate with Calgary's trusted interior painting company.
+og:image = https://primopainters.ca/og-image.png
+og:image:alt = Primo Painters - Book Your Free Estimate
+og:image:height = 630
+og:image:width = 1200
+og:locale = en_CA
+og:site_name = Primo Painters
+og:title = Book Your Free Interior Painting Estimate | Primo Painters
+og:type = website
+og:url = https://primopainters.ca/booking
+robots = index, follow
+twitter:card = summary_large_image
+twitter:description = Schedule your free interior painting estimate with Primo Painters.
+twitter:image = https://primopainters.ca/og-image.png
+twitter:title = Book Your Free Interior Painting Estimate | Primo Painters
+utf-8 = utf-8
+viewport = width=device-width, initial-scale=1
+
+# LINK REL
+canonical = https://primopainters.ca/booking
+
+# JSON-LD
+{
+ "@context": "https://schema.org",
+ "@type": [
+  "LocalBusiness",
+  "HousePainter"
+ ],
+ "@id": "https://primopainters.ca/#business",
+ "name": "Primo Painters",
+ "url": "https://primopainters.ca",
+ "logo": "https://primopainters.ca/primo-painters-logo.png",
+ "image": [
+  "https://primopainters.ca/primo-painters-logo.png"
+ ],
+ "description": "Primo Painters provides professional interior house painting services in Calgary. We specialize in painting walls, ceilings, trim, doors, cabinets and other interior spaces with clean workmanship, attention to detail, and free estimates.",
+ "telephone": "+15877352312",
+ "email": "info@primopainters.ca",
+ "priceRange": "$$",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "217 Legacy Reach Cres SE",
+  "addressLocality": "Calgary",
+  "addressRegion": "AB",
+  "postalCode": "T2X 5A7",
+  "addressCountry": "CA"
+ },
+ "geo": {
+  "@type": "GeoCoordinates",
+  "latitude": 50.8550013,
+  "longitude": -113.9955408
+ },
+ "hasMap": "https://www.google.com/maps/place/Primo+Painters+Calgary/@50.8550013,-113.9955408,17z/data=!4m6!3m5!1s0x53719da9a4980f5d:0xcdb54d98d20b7521!8m2!3d50.8550013!4d-113.9955408!16s%2Fg%2F11nr1d01rz",
+ "areaServed": [
+  {
+   "@type": "City",
+   "name": "Calgary"
+  }
+ ],
+ "openingHoursSpecification": [
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "opens": "08:00",
+   "closes": "18:00"
+  },
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": "Saturday",
+   "opens": "09:00",
+   "closes": "18:00"
+  },
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": "Sunday",
+   "opens": "10:00",
+   "closes": "16:00"
+  }
+ ],
+ "aggregateRating": {
+  "@type": "AggregateRating",
+  "ratingValue": "5",
+  "reviewCount": "1"
+ },
+ "sameAs": [
+  "https://www.google.com/maps/place/Primo+Painters+Calgary/@50.8550013,-113.9955408,17z/data=!4m6!3m5!1s0x53719da9a4980f5d:0xcdb54d98d20b7521!8m2!3d50.8550013!4d-113.9955408!16s%2Fg%2F11nr1d01rz",
+  "https://www.youtube.com/@Primo-Painting"
+ ],
+ "serviceType": [
+  "Interior House Painting",
+  "Interior Painting",
+  "Residential Interior Painting",
+  "Wall Painting",
+  "Ceiling Painting",
+  "Trim Painting",
+  "Door Painting",
+  "Garage Painting",
+  "Cabinet Painting",
+  "Built-in Cabinet Painting",
+  "Baseboard Painting",
+  "Railing Painting"
+ ],
+ "knowsAbout": [
+  "Interior House Painting",
+  "Interior Painting",
+  "Wall Painting",
+  "Ceiling Painting",
+  "Trim Painting",
+  "Door Painting",
+  "Garage Painting",
+  "Cabinet Painting",
+  "Built-in Cabinet Painting",
+  "Baseboard Painting",
+  "Railing Painting",
+  "Residential Painting"
+ ],
+ "inLanguage": "en-CA",
+ "currenciesAccepted": "CAD",
+ "paymentAccepted": [
+  "Cash",
+  "Credit Card",
+  "Debit Card",
+  "E-Transfer"
+ ]
+}
+
+# HEADINGS
+h1: Schedule Your Interior Painting Estimate
+h2: LET'S
+h3: GET IN TOUCH
+h3: Quick Links
+
+# IMG ALT
+Primo Painters Calgary - logo
+Primo Painters Logo
+
+# TEXT
+Book Your Free Interior Painting Estimate | Primo Painters
+15% OFF Interior Painting •
+Offer Ends Aug 26th •
+Free Estimates •
+15% OFF Interior Painting •
+5-Star Rated •
+Serving Calgary & Area •
+15% OFF Interior Painting •
+Offer Ends Aug 26th •
+Free Estimates •
+15% OFF Interior Painting •
+5-Star Rated •
+Serving Calgary & Area •
+Home About Booking Contact
+Book Now
+Book Your Free Estimate
+Schedule Your Interior Painting Estimate
+Choose a convenient time using our online booking system. We'll visit your home, discuss your project, answer your questions, and provide a detailed, no-obligation estimate.
+⏳
+Loading calendar, please wait…
+LET'S
+GET IN TOUCH
+Contact Us
+We offer professional interior house painting services in Calgary.
+Quick Links
+Home
+About
+Gallery
+Contact
+© 2026 Primo Painters Calgary.

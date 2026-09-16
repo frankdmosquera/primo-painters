@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useRef, useState, ReactNode } from "react";
-// import { GalleryHomeImages } from "@/data/images";
-import Image from "next/image";
 
-// interface SmallGalleryWrapperProps {
-//   children: ReactNode;
-// }
 type SmallGalleryWrapperProps = {
   GalleryImages: {
     src: string;
@@ -20,71 +15,67 @@ export default function SmallGalleryWrapper({
   GalleryImages,
 }: SmallGalleryWrapperProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
 
-  // const numberOfImages = GalleryHomeImages.length;
-  const numberOfImages = GalleryImages.length;
+  const count = Math.max(GalleryImages.length, 1);
 
+  // Raw scroll fraction rather than a step index. A rail that moves smoothly
+  // with the thumb feels connected to the gesture; one that jumps between
+  // discrete positions does not.
   const handleScroll = () => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const totalScrollWidth = container.scrollWidth - container.clientWidth;
-    const currentScroll = container.scrollLeft;
-
-    const scrollPercent = (currentScroll / totalScrollWidth) * 100;
-    const stepSize = 100 / numberOfImages;
-
-    const step = Math.min(
-      Math.floor(scrollPercent / stepSize),
-      numberOfImages - 1,
-    );
-
-    setCurrentStep(step);
+    const el = scrollRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setProgress(max > 0 ? el.scrollLeft / max : 0);
   };
 
-  return (
-    <>
-      <div className="relative xl:hidden">
-        {/* Images directly rendered */}
-        <div
-          ref={scrollRef}
-          onScroll={handleScroll}
-          tabIndex={0} // Make focusable
-          onKeyDown={(e) => {
-            if (!scrollRef.current) return; // Null check
+  const scrollByOne = (direction: 1 | -1) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: direction * el.clientWidth * 0.86, behavior: "smooth" });
+  };
 
-            if (e.key === "ArrowRight") {
-              scrollRef.current.scrollBy({ left: 100, behavior: "smooth" });
-              e.preventDefault();
-            } else if (e.key === "ArrowLeft") {
-              scrollRef.current.scrollBy({ left: -100, behavior: "smooth" });
-              e.preventDefault();
-            }
-          }}
-          className="overflow-x-auto flex snap-x snap-mandatory scroll-smooth  cursor-grab active:cursor-grabbing"
-        >
-          {children}
+  // The rail segment is one image's share of the track, so it shortens on its
+  // own as a service gains photos. Seven images or thirty, it still reads.
+  const segmentWidth = 100 / count;
+  const travelInOwnWidths = 100 / segmentWidth - 1;
+
+  return (
+    <div className="xl:hidden">
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        tabIndex={0}
+        role="region"
+        aria-label="Project photos, scroll sideways to see more"
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") {
+            scrollByOne(1);
+            e.preventDefault();
+          } else if (e.key === "ArrowLeft") {
+            scrollByOne(-1);
+            e.preventDefault();
+          }
+        }}
+        className="flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 py-1 [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+      >
+        {children}
+      </div>
+
+      {/* Replaces the black thumbnail strip. Those were 20px photos at 40%
+          opacity on a solid black bar, unreadable at that size and unable to
+          cope with a gallery of thirty. */}
+      <div className="mt-3 px-4" aria-hidden="true">
+        <div className="h-1 w-full overflow-hidden rounded-full bg-black/10">
+          <div
+            className="h-full rounded-full bg-[#0D378D] motion-safe:transition-transform motion-safe:duration-150"
+            style={{
+              width: `${segmentWidth}%`,
+              transform: `translateX(${progress * travelInOwnWidths * 100}%)`,
+            }}
+          />
         </div>
       </div>
-      {/* thumbnails */}
-      <div className="bg-black w-full xl:hidden  flex  justify-center px-1 py-1 gap-2 xsm:gap-3 md:gap-4 overflow-hidden">
-        {GalleryImages.map((img, index) => (
-          <div
-            className="relative h-5 w-5 tn:h-6 tn:w-6 xsm:h-7 xsm:w-7 "
-            key={index}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className={`object-cover transition-opacity duration-300 rounded-xl ${
-                index === currentStep ? "opacity-100" : "opacity-40"
-              }`}
-            />
-          </div>
-        ))}
-      </div>
-    </>
+    </div>
   );
 }

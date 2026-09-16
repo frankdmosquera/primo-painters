@@ -1,4 +1,3 @@
-// import { GalleryHomeImages } from '@/data/images'
 import Image from "next/image";
 
 export default function GallerySlides({
@@ -9,16 +8,22 @@ export default function GallerySlides({
   return (
     <>
       {GalleryImages?.map((slide, i) => (
+        // 86% wide rather than a full 100vw, so the next photo peeks at the
+        // right edge. That peek is the swipe affordance: it does the job
+        // arrows would, without adding controls to a touch surface.
         <div
           key={i}
-          className="flex-shrink-0 snap-start w-[100vw] relative h-[10rem] tn:h-[12rem] xsm:h-[16rem] sm:h-[20rem]  md:h-[24rem]  lg:h-[28rem]  transition-transform duration-300 ease-in-out"
+          // snap-always is scroll-snap-stop: always. Without it a fast flick
+          // sails past several photos and settles wherever momentum dies;
+          // with it the scroll is forced to stop at the very next slide.
+          className="relative aspect-[4/3] w-[86%] shrink-0 snap-center snap-always overflow-hidden rounded-2xl bg-black/5 sm:aspect-[3/2]"
         >
           <Image
             src={slide.src}
             alt={slide.alt}
             className="object-cover"
             fill
-            sizes="(max-width: 640px) 100vw, 30rem"
+            sizes="(max-width: 1280px) 86vw, 30rem"
           />
         </div>
       ))}
