@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Facebook, Instagram, Youtube } from "@/components/icons/SocialIcons";
+import { logoImg } from "@/data/images/general-images";
 import { navigationItemsData } from "@/data/navigationData";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -72,11 +73,11 @@ export default function Footer() {
             <div className="my-5 space-y-6">
               <Link href="/" className="inline-block">
                 <Image
-                  alt="Primo Painters Logo"
+                  alt={logoImg.alt}
                   width={180}
                   height={60}
                   className="h-auto w-[11rem] object-contain"
-                  src="/primo-painters-logo.png"
+                  src={logoImg.src}
                 />
               </Link>
               <p className="max-w-[32ch] text-sm leading-relaxed text-white/75">

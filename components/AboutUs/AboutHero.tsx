@@ -1,4 +1,4 @@
-import { AboutUsImg } from "@/data/images";
+import { AboutUsImg } from "@/data/images/general-images";
 import Image from "next/image";
 import HeroCallToAction from "../heros/HeroCallToAction";
 import { HeroHomeButtons } from "../heros/HeroHomeButtons";

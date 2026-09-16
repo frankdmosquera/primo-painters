@@ -105,8 +105,8 @@ export default async function Home() {
       <section className="bg-background py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <BeforeAfterSlider
-            beforeImage="/visualisations/kitchen-colour-before-oak.jpg"
-            afterImage="/visualisations/kitchen-colour-after-black.png"
+            beforeImage="/general/kitchen-colour-before-oak.jpg"
+            afterImage="/general/kitchen-colour-after-black.png"
             beforeAlt="Kitchen with light oak cabinets before a colour change"
             afterAlt="The same kitchen with the cabinets in black"
             beforeLabel="Before"
@@ -120,9 +120,6 @@ export default async function Home() {
           components/GoogleReviewCarousel3.tsx is still on disk with its 20
           fabricated reviews. It is unlinked from here, not deleted. */}
       <GoogleReviews />
-      {/* <div className="relative top-[100px]">
-          <BgLines />
-        </div> */}
       {/* <ServiceBanner /> */}
       <CalgaryPainting />
       <OurProcessHome />
@@ -134,9 +131,6 @@ export default async function Home() {
       </section>
 
       <FaqSection />
-      {/* <div className="relative ">
-          <BgLines />
-        </div> */}
       {/* <ContactFormSection /> */}
       <FinalCTA />
       {/* </div> */}

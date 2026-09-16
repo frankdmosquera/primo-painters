@@ -7,11 +7,17 @@ import ButtonBlue from "./ButtonBlue";
 
 export default function OurServices() {
   return (
-    // bg-services-bg is required, not decoration. The home hero image is
+    // An opaque background here is required, not decoration. The home hero image is
     // sticky with the page as its parent, so it never stops pinning and sits
     // behind the entire document. Any section left transparent shows the hero
     // photo through it, which made this heading unreadable over a kitchen.
-    <section className="w-full overflow-visible bg-services-bg py-16 text-foreground md:py-24">
+    //
+    // bg-background rather than bg-services-bg since 2026-09-16. The tint was
+    // already the faint end of a decision made once before, when it replaced
+    // a much stronger #E2E7F1. Next to the warm cream of Why Choose Us it
+    // still read as a cooler, darker panel rather than the same surface:
+    // lightness 96.5 against 98.3, and cool against warm. One ground now.
+    <section className="w-full overflow-visible bg-background py-16 text-foreground md:py-24">
       {/* Was py-8 against py-16 md:py-24 everywhere else, and five competing
           horizontal paddings (sm:px-10 md:px-20 xl:px-5 2xl:px-20 2xl:px-40)
           with no max-width, so this section sat tighter than its neighbours

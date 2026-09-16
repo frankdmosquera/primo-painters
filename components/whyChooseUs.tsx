@@ -1,7 +1,7 @@
 import WorkmanshipIcon from "./AboutUs/WorkmanshipIcon";
 import TeamIcon from "./AboutUs/TeamIcon";
 import LicensedIcon from "./AboutUs/LicensedIcon";
-import BgBackground from "./BgBackground";
+import BgBackground2 from "@/public/SVGs/backgrounds/above-gallery-bg-line.svg";
 import FivestarIcon from "./AboutUs/FivestarIcon";
 
 // The four icons are hand rolled SVGs carrying their own width and height
@@ -55,18 +55,22 @@ export default function WhyChooseUs() {
     // now text-primary, so the section follows the theme instead of pinning
     // its own copy of the brand blue.
     <section className="relative w-full bg-background py-16 md:py-24">
-      {/* Decorative only. The offset stays in px on purpose: it is measured
-          against the graphic's own pixel geometry, so in rem it would drift
-          away from what it is anchoring to as soon as the root size changed. */}
-      <div className="absolute top-[-490px]">
-        <BgBackground />
+      {/* Decorative Background */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 translate-y-40">
+        <img
+          src={BgBackground2.src}
+          width={BgBackground2.width}
+          height={BgBackground2.height}
+          alt=""
+          aria-hidden="true"
+        />
       </div>
 
       {/* --site-max and the same px scale as the header and the hero, so the
           page keeps one edge all the way down instead of each section picking
           its own. This was max-w-[51rem], which sat 464px narrower than the
           header above it. */}
-      <div className="relative mx-auto w-full max-w-[var(--site-max)] px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[var(--site-max)] px-4 sm:px-6 lg:px-8">
         {/* Centred, and their type scale. Primo's own comment here used to say
             the heading was deliberately left aligned to match House Painting
             Services, Reviews and the FAQ - but those sections are being ported

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { OurStoryImg } from "@/data/images";
+import { OurStoryImg } from "@/data/images/general-images";
 
 export default function OurStory() {
   return (

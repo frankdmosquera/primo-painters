@@ -1,7 +1,7 @@
 import TrustBadges from "../trust-badges";
 import Image from "next/image";
 
-import { HeroHomeImg } from "@/data/images";
+import { HeroHomeImg } from "@/data/images/general-images";
 import { HeroHomeButtons } from "./HeroHomeButtons";
 
 const HomeHero = () => {

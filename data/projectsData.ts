@@ -11,14 +11,14 @@
 // the HTML Google reads, on a site that ranks in Calgary.
 //
 // The source of truth is data/serviceData.ts, which itself pulls the image
-// arrays from data/images.ts. Nothing is duplicated here.
+// arrays from data/images/services-images.ts. Nothing is duplicated here.
 
 import { services } from "./serviceData";
 import {
   bearspawBuiltInsImages,
   darkKitchenCabinetsImages,
   garageDrywallImages,
-} from "./images";
+} from "./images/projects-images";
 
 export type ProjectImage = {
   src: string;

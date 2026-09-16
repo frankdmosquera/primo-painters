@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { ClipboardList, MessageCircleQuestion, PhoneCall } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import ContactFormSection from "../ContactFormSection";
@@ -21,15 +20,7 @@ export default function HeroCallToAction() {
         onClick={openCalendly}
         className="mx-auto w-38 flex flex-col items-center animate-book-pulse will-change-transform [backface-visibility:hidden]"
       >
-        <Image
-          src="/SVGs/calendar-img-flat-bottom.svg"
-          width={150}
-          height={150}
-          alt=""
-          unoptimized
-          className="h-auto w-full"
-        />
-        <div className="mt-0 pt-0 relative pb-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md rounded-t-none text-sm font-medium bg-[#0D378D] text-white shadow-xs hover:bg-[#0D378D]/90 h-9 px-4 py-2 text-2xl -translate-y-0.5">
+        <div className="relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg-[#0D378D] text-white shadow-xs hover:bg-[#0D378D]/90 h-9 px-4 py-2 text-2xl">
           Book Now
         </div>
       </button>

@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import MobileNav from "./MobileNav";
 import HeaderBookNow from "./HeaderBookNow";
 import { HeaderScrollHider } from "./HeaderScrollHider";
-import { logoImg } from "@/data/images";
+import { logoImg } from "@/data/images/general-images";
 import { siteConfig } from "@/data/siteConfig";
 
 /**

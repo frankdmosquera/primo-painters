@@ -19,7 +19,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { navigationItemsData } from "@/data/navigationData";
-import { logoImg } from "@/data/images";
+import { logoImg } from "@/data/images/general-images";
 import { siteConfig } from "@/data/siteConfig";
 import { useCalendly } from "./calendly-provider";
 

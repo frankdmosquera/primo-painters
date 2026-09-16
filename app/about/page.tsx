@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/data/siteConfig";
 import Image from "next/image";
 import AboutHero from "@/components/AboutUs/AboutHero";
+import BgBackground2 from "@/public/SVGs/backgrounds/above-gallery-bg-line.svg";
 import OurStory from "@/components/AboutUs/OurStoy";
 import OurProcess from "@/components/AboutUs/OurProcess";
 import OurPromise from "@/components/AboutUs/OurPromise";
@@ -63,7 +64,23 @@ export default function page() {
   return (
     <>
       <AboutHero />
-      <OurStory />
+      {/* Decorative Background. Outside OurStory on purpose: that section is a
+          container max-w-7xl, so a line placed inside it stops reaching the
+          page edges above 1280 and reads as a centred graphic. */}
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-x-0 bottom-24 z-0">
+          <img
+            src={BgBackground2.src}
+            width={BgBackground2.width}
+            height={BgBackground2.height}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <div className="relative z-10">
+          <OurStory />
+        </div>
+      </div>
       {/* Process and Promise share one container, one background image and one
           gradient, rather than each carrying its own. Two sections with their
           own image and their own ground showed a seam where they met, however

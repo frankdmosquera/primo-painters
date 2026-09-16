@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import paintingCompany from "@/public/paintingCompany.webp";
+import paintingCompany from "@/public/general/paintingCompany.webp";
 
 export const CalgaryPainting = () => {
   return (

@@ -32,8 +32,8 @@ export const siteConfig = {
   },
 
   branding: {
-    logo: "/primo-painters-logo.png",
-    ogImage: "/og-image.png",
+    logo: "/primo-painters-logo-400.png",
+    ogImage: "/general/og-image.png",
   },
 
   booking: {

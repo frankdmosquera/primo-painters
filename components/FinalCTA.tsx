@@ -25,8 +25,8 @@ export default function FinalCTA() {
             distinction survives in the file tree as well as on the page. */}
         <div className="mb-4">
           <BeforeAfterSlider
-            beforeImage="/visualisations/kitchen-colour-before-oak.jpg"
-            afterImage="/visualisations/kitchen-colour-after-black.png"
+            beforeImage="/general/kitchen-colour-before-oak.jpg"
+            afterImage="/general/kitchen-colour-after-black.png"
             beforeAlt="Kitchen with light oak cabinets before a colour change"
             afterAlt="The same kitchen with the cabinets in black"
             beforeLabel="Before"

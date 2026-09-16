@@ -1,12 +1,10 @@
 import { Dot } from "lucide-react";
 import Image from "next/image";
-import service2 from "@/public/about/service2.webp";
-import BgLines from "../BgLines";
+import service2 from "@/public/general/service2.webp";
 
 export default function CommitmentQualitySection() {
   return (
     <div className="relative grid md:grid-cols-2 gap-8 mb-16 items-center my-3.5 lg:mt-20">
-      <BgLines />
       <div className="relative w-full  lg:w-[80%] mr-auto aspect-square md:aspect-auto md:h-[600px] overflow-hidden">
         <Image
           src={service2}
