@@ -171,81 +171,81 @@ export const wallPaintingImages = [
 export const ceilingPaintingImages = [
   {
     src: "/interior-painting/ceiling-painting/ceiling-preparation-for-spray-painting-the-ceilings_mtajyu.jpg",
-    alt: "Open plan kitchen and living room fully masked for spraying, every pot light bagged and the walls sheeted in plastic - ceiling painting calgary",
+    alt: "ceiling painting calgary - open plan kitchen and living room masked for spraying, pot lights bagged and walls sheeted - Primo Painters",
   },
   {
     src: "/interior-painting/ceiling-painting/20220605_151407_nzvz8d.webp",
-    alt: "Living room ceiling sprayed white, with the furniture, walls and fireplace draped in plastic - calgary interior house painting",
+    alt: "calgary interior house painting - living room ceiling sprayed white with the room fully draped - Primo Painters",
   },
   {
     src: "/interior-painting/ceiling-painting/20171009_150601.jpg",
-    alt: "Freshly sprayed white ceiling over a kitchen, pot lights bagged in paper and the cabinets and fridge sheeted - ceiling painting calgary",
+    alt: "ceiling painting calgary - freshly sprayed white ceiling over a kitchen, pot lights bagged - Primo Painters",
   },
   {
     src: "/interior-painting/ceiling-painting/20171009_152317.jpg",
-    alt: "The same job from the living room side, sprayed ceiling above bookshelves and a sofa under plastic - ceiling spraying calgary",
+    alt: "ceiling spraying calgary - the same sprayed white ceiling from the living room side - Primo Painters",
   },
   {
     src: "/interior-painting/ceiling-painting/PXL_20230923_210821437.jpg",
-    alt: "Modern kitchen masked up to a cedar plank feature ceiling, blue tape along the edge and drop sheets throughout - calgary interior house painters",
+    alt: "calgary interior house painters - kitchen masked up to a cedar plank feature ceiling before spraying - Primo Painters",
   },
   {
     src: "/interior-painting/ceiling-painting/PXL_20230923_215021422.jpg",
-    alt: "Kitchen ceiling sprayed white, the range hood bagged and paper banding protecting the cabinets - ceiling painting calgary",
+    alt: "ceiling painting calgary - kitchen ceiling sprayed white with the cabinets paper banded - Primo Painters",
   },
   {
     src: "/interior-painting/ceiling-painting/PXL_20230923_222428881.jpg",
-    alt: "The same room from the hallway, sprayed ceiling with the bulkhead masked and the fireplace covered - ceiling spraying calgary",
+    alt: "ceiling spraying calgary - the same sprayed ceiling with the bulkhead masked off - Primo Painters",
   },
 ];
 export const cabinetPaintingImages = [
   {
     src: "/interior-painting/cabinet-painting/cab-img-1.jpg",
-    alt: "Dark espresso kitchen cabinets before painting, with marble counters and a glass mosaic backsplash - cabinet painting calgary",
+    alt: "cabinet painting calgary - dark espresso kitchen cabinets before painting - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-2.jpg",
-    alt: "The same kitchen masked with paper and plastic, doors removed and frames exposed, ready to spray - cabinet spraying calgary",
+    alt: "cabinet spraying calgary - kitchen cabinets masked off, doors removed and frames exposed, ready to spray - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-3.jpg",
-    alt: "Kitchen cabinetry and island primed white mid job, the room tented in plastic - calgary interior house painting",
+    alt: "cabinet painting calgary - kitchen cabinetry and island primed white mid job - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-4.jpg",
-    alt: "The same kitchen finished, cabinets in white with a sage green island and a marble counter - calgary interior house painting",
+    alt: "calgary interior house painting - the same kitchen cabinets finished in white with a sage green island - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-5.jpg",
-    alt: "Near black raised panel kitchen cabinets before painting, with granite counters and a cream subway tile backsplash - cabinet painting calgary",
+    alt: "cabinet painting calgary - near black raised panel kitchen cabinets before painting - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-6.jpg",
-    alt: "The same cabinets sprayed white with the doors off and the openings masked - cabinet spraying calgary",
+    alt: "cabinet spraying calgary - the same cabinet frames sprayed white with the doors off - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-7.jpg",
-    alt: "The finished kitchen in white, with glass front uppers, a chimney hood and granite counters - calgary interior house painters",
+    alt: "calgary interior house painters - the finished kitchen cabinets in white with glass front uppers - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-8.jpg",
-    alt: "The peninsula of the same kitchen finished in white beside granite counters and a stainless dishwasher - kitchen cabinet painting calgary",
+    alt: "kitchen cabinet painting calgary - the peninsula of the same kitchen finished in white - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-9.jpg",
-    alt: "Before and after of a kitchen, honey oak on one side and white cabinets with a blue grey island on the other - cabinet painting calgary",
+    alt: "cabinet painting calgary - before and after of a kitchen, honey oak on one side and white painted cabinets on the other - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-10.jpg",
-    alt: "Before and after of a kitchen, stained walnut on one side and grey painted cabinets on the other - cabinet refinishing calgary",
+    alt: "cabinet refinishing calgary - before and after of a kitchen, stained walnut on one side and grey painted cabinets on the other - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-11.jpg",
-    alt: "Cabinet colour options shown against a kitchen, with six painted door samples from taupe to navy - calgary interior house painting",
+    alt: "calgary interior house painting - cabinet colour options with six painted door samples from taupe to navy - Primo Painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-12.jpg",
-    alt: "Before and after of an oak kitchen, the same cabinets and panelled fridge surround painted grey - cabinet painting calgary",
+    alt: "cabinet painting calgary - before and after of an oak kitchen with the same cabinets painted grey - Primo Painters",
   },
 ];
 
@@ -303,39 +303,39 @@ export const trimAndDoorPaintingImages = [
 export const garagePaintingImages = [
   {
     src: "/interior-painting/garage-painting/gar-img-1.webp",
-    alt: "Garage before painting, drywall taped and filled, with wooden steps up to the house door and a pickup parked inside - garage painting calgary",
+    alt: "garage painting calgary - garage walls and ceiling in taped and filled drywall before painting - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-2.jpg",
-    alt: "Garage ceiling before paint, drywall seams taped and filled around the door opener rail - garage drywall painting calgary",
+    alt: "garage drywall painting calgary - garage ceiling before paint, drywall seams taped and filled - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-3.jpg",
-    alt: "Garage walls and ceiling in filled drywall before painting, with an overhead storage rack fitted - garage painting calgary",
+    alt: "garage painting calgary - garage walls and ceiling in filled drywall before painting - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-4.webp",
-    alt: "Two Primo Painters rolling out a garage wall, floor sheeted and a ladder set against the wall - calgary interior house painters",
+    alt: "calgary interior house painters - two painters rolling out a garage wall with the floor sheeted - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-5.webp",
-    alt: "The same garage with the walls and ceiling painted and the drop sheets still down - garage painting calgary",
+    alt: "garage painting calgary - the same garage with the walls and ceiling painted - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-6.jpg",
-    alt: "Finished garage ceiling and bulkhead painted smooth white beside the door opener rail - calgary interior house painting",
+    alt: "calgary interior house painting - finished garage ceiling and bulkhead painted smooth white - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-7.jpg",
-    alt: "Finished garage wall in warm grey with the house door and its trim in white - garage painting calgary",
+    alt: "garage painting calgary - finished garage wall in warm grey with the house door and trim in white - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-8.jpg",
-    alt: "Freshly painted white garage stairwell, sunlight striping across the walls - garage painting calgary",
+    alt: "garage painting calgary - freshly painted white garage stairwell - Primo Painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-9.webp",
-    alt: "Painted garage steps, grey treads with cream risers and a white handrail - calgary interior house painting",
+    alt: "calgary interior house painting - painted garage steps, grey treads with cream risers and a white handrail - Primo Painters",
   },
 ];
 
