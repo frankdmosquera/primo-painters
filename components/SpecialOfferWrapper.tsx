@@ -1,6 +1,6 @@
 import "./SpecialOffer/style.css";
 import Image from "next/image";
-import BgBackground from "@/public/about-background-vector-line.svg";
+import BgBackground from "@/public/SVGs/backgrounds/about-background-vector-line.svg";
 import Link from "next/link";
 import {
   Carousel,

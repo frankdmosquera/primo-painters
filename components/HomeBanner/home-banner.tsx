@@ -9,7 +9,7 @@ const HomeBanner = () => {
       <div className='back-img lg:mt-[40px] container max-w-7xl mx-auto py-20 max-sm:py-6 relative'>
         {/* Lazy-loaded Background Image */}
         <Image
-          src="/HomeBannerBG.webp"
+          src="/general/HomeBannerBG.webp"
           alt="Home Banner Background"
           fill
           className="object-cover -z-10"

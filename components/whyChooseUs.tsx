@@ -1,7 +1,7 @@
 import WorkmanshipIcon from "./AboutUs/WorkmanshipIcon";
 import TeamIcon from "./AboutUs/TeamIcon";
 import LicensedIcon from "./AboutUs/LicensedIcon";
-import BgBackground from "./BgBackground";
+import BgFlourish from "./BgFlourish";
 import FivestarIcon from "./AboutUs/FivestarIcon";
 
 // The four icons are hand rolled SVGs carrying their own width and height
@@ -55,12 +55,15 @@ export default function WhyChooseUs() {
     // now text-primary, so the section follows the theme instead of pinning
     // its own copy of the brand blue.
     <section className="relative w-full bg-background py-16 md:py-24">
-      {/* Decorative only. The offset stays in px on purpose: it is measured
-          against the graphic's own pixel geometry, so in rem it would drift
-          away from what it is anchoring to as soon as the root size changed. */}
-      <div className="absolute top-[-490px]">
-        <BgBackground />
-      </div>
+      {/* Two passes of the same curve, the second rotated 180 so the pair does
+          not read as one shape repeated. One hangs off the top edge, one off
+          the bottom, which is what fills the section rather than decorating
+          only its heading.
+
+          They overlap in the middle on purpose. Both are behind content at
+          -z-10 and neither takes pointer events, so stacking costs nothing. */}
+      <BgFlourish className="top-0 h-80" />
+      <BgFlourish flip className="bottom-0 h-96" />
 
       {/* --site-max and the same px scale as the header and the hero, so the
           page keeps one edge all the way down instead of each section picking

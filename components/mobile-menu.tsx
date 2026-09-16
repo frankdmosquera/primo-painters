@@ -14,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
-import { logoImg } from "@/data/images";
+import { logoImg } from "@/data/images/general-images";
 import { siteConfig } from "@/data/siteConfig";
 import {
   navigationItemsData,

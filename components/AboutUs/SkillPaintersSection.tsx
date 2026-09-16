@@ -1,4 +1,4 @@
-import service1 from "@/public/about/service1.webp";
+import service1 from "@/public/general/service1.webp";
 import Image from "next/image";
 import { Dot } from "lucide-react";
 import BgLines from "../BgLines";

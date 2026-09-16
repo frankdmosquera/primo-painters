@@ -5,7 +5,7 @@ import {
   garagePaintingImages,
   trimAndDoorPaintingImages,
   wallPaintingImages,
-} from "./images";
+} from "./images/services-images";
 
 export const services = [
   {

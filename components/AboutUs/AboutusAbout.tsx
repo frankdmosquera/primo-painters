@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { AboutUsImg } from "@/data/images";
+import { AboutUsImg } from "@/data/images/general-images";
 
 import HeroPhoneMobileBlue from "../heros/HeroPhoneMobileBlue";
 import BgBackground from "../BgBackground";

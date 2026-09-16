@@ -1,4 +1,4 @@
-// import { GalleryHomeImages } from "@/data/images";
+// import { GalleryHomeImages } from "@/data/images/general-images";
 // import ProjectSliderWrapper from "@/app/gallery/ProjectSliderWrapper";
 import Image from "next/image";
 import ProjectSliderWrapper from "./ProjectSliderWrapper";

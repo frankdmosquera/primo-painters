@@ -1,5 +1,5 @@
 import Image from "next/image";
-import AboutUs from "@/public/AboutUs.webp";
+import AboutUs from "@/public/general/AboutUs.webp";
 
 export default function ServiceArticle({
   articles,

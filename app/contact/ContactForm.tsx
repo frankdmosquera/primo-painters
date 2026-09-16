@@ -2,9 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import phone from "../../public/SVGs/phone.svg";
-import email from "../../public/SVGs/email.svg";
-import location from "../../public/SVGs/location.svg";
 import { toast } from "sonner";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";

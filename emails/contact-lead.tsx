@@ -13,7 +13,7 @@ import {
   Text,
 } from "@react-email/components";
 
-import { logoImg } from "@/data/images";
+import { logoImg } from "@/data/images/general-images";
 import { siteConfig } from "@/data/siteConfig";
 
 /**

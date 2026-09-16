@@ -4,7 +4,7 @@ import TeamIcon from "./TeamIcon";
 import FivestarIcon from "./FivestarIcon";
 import LicensedIcon from "./LicensedIcon";
 import ButtonBlueWithBorder from "../ButtonBlueWithBorder";
-import { AboutUsImg } from "@/data/images";
+import { AboutUsImg } from "@/data/images/general-images";
 import BgBackground from "../BgBackground";
 
 export default function AboutusHome() {

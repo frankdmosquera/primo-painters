@@ -1,5 +1,5 @@
 import Image from "next/image";
-import service3 from "@/public/about/service3.webp";
+import service3 from "@/public/general/service3.webp";
 import BgLines from "../BgLines";
 
 export default function EcofriendlySection() {
