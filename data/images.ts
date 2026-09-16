@@ -201,51 +201,51 @@ export const ceilingPaintingImages = [
 export const cabinetPaintingImages = [
   {
     src: "/interior-painting/cabinet-painting/cab-img-1.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Dark espresso kitchen cabinets before painting, with marble counters and a glass mosaic backsplash - cabinet painting calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-2.jpg",
-    alt: "cabinet painting calgary",
+    alt: "The same kitchen masked with paper and plastic, doors removed and frames exposed, ready to spray - cabinet spraying calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-3.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Kitchen cabinetry and island primed white mid job, the room tented in plastic - calgary interior house painting",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-4.jpg",
-    alt: "cabinet painting calgary",
+    alt: "The same kitchen finished, cabinets in white with a sage green island and a marble counter - calgary interior house painting",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-5.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Near black raised panel kitchen cabinets before painting, with granite counters and a cream subway tile backsplash - cabinet painting calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-6.jpg",
-    alt: "cabinet painting calgary",
+    alt: "The same cabinets sprayed white with the doors off and the openings masked - cabinet spraying calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-7.jpg",
-    alt: "cabinet painting calgary",
+    alt: "The finished kitchen in white, with glass front uppers, a chimney hood and granite counters - calgary interior house painters",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-8.jpg",
-    alt: "cabinet painting calgary",
+    alt: "The peninsula of the same kitchen finished in white beside granite counters and a stainless dishwasher - kitchen cabinet painting calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-9.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Before and after of a kitchen, honey oak on one side and white cabinets with a blue grey island on the other - cabinet painting calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-10.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Before and after of a kitchen, stained walnut on one side and grey painted cabinets on the other - cabinet refinishing calgary",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-11.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Cabinet colour options shown against a kitchen, with six painted door samples from taupe to navy - calgary interior house painting",
   },
   {
     src: "/interior-painting/cabinet-painting/cab-img-12.jpg",
-    alt: "cabinet painting calgary",
+    alt: "Before and after of an oak kitchen, the same cabinets and panelled fridge surround painted grey - cabinet painting calgary",
   },
 ];
 
