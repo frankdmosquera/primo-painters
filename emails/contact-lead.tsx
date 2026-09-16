@@ -13,6 +13,7 @@ import {
   Text,
 } from "@react-email/components";
 
+import { logoImg } from "@/data/images";
 import { siteConfig } from "@/data/siteConfig";
 
 /**
@@ -121,9 +122,16 @@ export function ContactLeadEmail({
             {/* Most clients block images until the reader allows them, so the
                 alt text is the fallback rather than a nicety: blocked, this
                 still reads "Primo Painters". Absolute URL because an email has
-                no site to be relative to. */}
+                no site to be relative to.
+
+                logoImg, NOT siteConfig.branding.logo. They are different jobs:
+                logoImg is the logo we render, 400x282 at 42KB. branding.logo
+                is the URL declared to Google in data/jsonLd.ts, and it is in
+                the SEO baseline, so it does not move without a decision. An
+                email loads this raw with no optimizer in front of it, which is
+                the one place the 1MB original actually reached a reader. */}
             <Img
-              src={`${siteConfig.business.website}${siteConfig.branding.logo}`}
+              src={`${siteConfig.business.website}${logoImg.src}`}
               alt={siteConfig.business.name}
               width="140"
               height="99"

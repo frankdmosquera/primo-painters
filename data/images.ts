@@ -2,7 +2,10 @@
 // Logo
 
 export const logoImg = {
-  src: "/primo-painters-logo.png",
+  // 400x282, 42KB. The original 1225x864 at 1036KB is still on disk as
+  // primo-painters-logo.png. Nothing on the site renders it wider than about
+  // 140px, so the extra 994KB was never reaching anyone usefully.
+  src: "/primo-painters-logo-400.png",
   alt: "Primo Painters Calgary - logo",
 };
 
