@@ -66,7 +66,7 @@ export function ProjectGalleryGrid({
       </div>
 
       {pageCount > 1 && (
-        <div className="relative mx-auto w-fit overflow-hidden rounded-full border border-white/10 bg-linear-to-br from-neutral-950 via-neutral-900 to-primary-light/70 px-2.5 py-2 shadow-lg shadow-black/30">
+        <div className="relative mx-auto mt-[3px] w-fit overflow-hidden rounded-full border border-white/10 bg-linear-to-br from-neutral-950 via-neutral-900 to-primary-light/70 px-2.5 py-2 shadow-lg shadow-black/30">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-8 -right-8 size-24 rounded-full bg-primary-light/30 blur-2xl"

@@ -26,14 +26,14 @@ import { StepReveal } from "./StepReveal";
 
 export function OurProcessHome() {
   return (
-    <section className="pt-24 md:pt-32 pb-48 md:pb-64">
+    <section className="pt-24 md:pt-32 pb-24 md:pb-32">
       <div className="mx-auto max-w-[var(--site-max)] px-4 sm:px-8 lg:px-16">
         <div className="font-medium gap-2 flex flex-col items-center mb-14 md:mb-20 text-center">
           <p className="inline-block text-xl bg-white p-1.5 rounded-br-lg text-primary-dark">
             {processEyebrow}
           </p>
 
-          <div className="inline-block bg-white p-1.5 rounded-es-3xl text-primary-dark">
+          <div className="my-2 inline-block bg-white p-1.5 rounded-es-3xl text-primary-dark">
             &amp;
           </div>
 

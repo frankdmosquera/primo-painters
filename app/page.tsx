@@ -127,7 +127,7 @@ export default async function Home() {
       <CalgaryPainting />
       <OurProcessHome />
 
-      <section className="py-16 md:py-24">
+      <section className="pt-10 pb-[4.5rem] md:pt-12 md:pb-26">
         <div className="mx-auto max-w-6xl px-4">
           <ProjectGalleryGrid projects={getProjects()} />
         </div>
