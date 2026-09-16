@@ -34,7 +34,7 @@ const HomeHero = () => {
           // LATAM's exact treatment, filter for filter. The warm desaturated
           // wash is a large part of why their hero reads as art-directed
           // rather than as a stock photo behind text.
-          className="object-cover brightness-[.7] grayscale-50 blur-[.5px] sepia-20 hue-rotate-[-10deg]"
+          className="object-cover brightness-[.7] grayscale-50 sepia-20 hue-rotate-[-10deg]"
           priority
           sizes="100vw"
         />
