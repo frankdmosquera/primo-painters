@@ -42,7 +42,9 @@ export function Header() {
         </div>
 
         <div className="hidden items-center gap-8 lg:flex">
-          <Link
+          {/* A plain <a>, not next/link: a tel: is not a route, so there is nothing
+              to prefetch or client-side navigate. MobileNav already does this. */}
+          <a
             href={`tel:${siteConfig.business.phone}`}
             aria-label={`Call ${siteConfig.business.name} at ${siteConfig.business.phoneDisplay}`}
             className="flex items-center gap-1 font-semibold"
@@ -51,7 +53,7 @@ export function Header() {
             <span className="text-primary-dark whitespace-nowrap">
               {siteConfig.business.phoneDisplay}
             </span>
-          </Link>
+          </a>
 
           <HeaderBookNow />
         </div>
