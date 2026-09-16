@@ -247,6 +247,32 @@
   }
 
   /**
+   * The ticker in scrolling-banner-a. The track holds the item list twice, so
+   * travelling exactly -50% lands the second copy where the first began and
+   * the loop is seamless.
+   *
+   * This was framer-motion until 2026-09-15: `animate={{ x: ["0%", "-50%"] }}`
+   * over the same 28 seconds. It came out because that made the banner a
+   * client component, it renders twice on every page, and it ticked JavaScript
+   * every frame directly above the hero while the hero was trying to paint.
+   * As a keyframe it runs on the compositor and the component ships no JS.
+   *
+   * Use it as `motion-safe:animate-marquee`, which is what replaced the old
+   * `useReducedMotion()` call. A permanently moving bar is a real problem for
+   * motion sensitivity and it is the first thing on every page.
+   */
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /**
    * No custom breakpoints. Tailwind's defaults are deliberate:
    *
    *   sm 40rem / 640    md 48rem / 768    lg 64rem / 1024

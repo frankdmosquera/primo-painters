@@ -1,6 +1,7 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
+// No "use client". Nothing in here is interactive: the ticker is a CSS
+// keyframe (--animate-marquee in globals.css) and the reduced-motion check is
+// the motion-safe: variant, so this is a server component and ships no
+// JavaScript at all. It used to be a framer-motion client component.
 import {
   CalendarClock,
   ClipboardPen,
@@ -39,21 +40,12 @@ const items = [
 ];
 
 export default function ScrollingBannerA() {
-  // Respects the visitor's OS setting. A permanently moving bar is a real
-  // problem for motion sensitivity, and it is the first thing on every page.
-  const reduceMotion = useReducedMotion();
-
   return (
     <div className="overflow-hidden border-b border-white/10 bg-[#0D378D]">
-      <motion.div
-        className="flex w-max"
-        animate={reduceMotion ? undefined : { x: ["0%", "-50%"] }}
-        transition={{
-          duration: 28,
-          ease: "linear",
-          repeat: Infinity,
-        }}
-      >
+      {/* motion-safe: respects the visitor's OS setting. A permanently moving
+          bar is a real problem for motion sensitivity, and it is the first
+          thing on every page. */}
+      <div className="flex w-max motion-safe:animate-marquee">
         {[...Array(2)].map((_, repeat) => (
           <div key={repeat} className="flex items-center">
             {items.map(({ icon: Icon, text, highlight }, i) => (
@@ -85,7 +77,7 @@ export default function ScrollingBannerA() {
             ))}
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
