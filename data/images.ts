@@ -171,31 +171,31 @@ export const wallPaintingImages = [
 export const ceilingPaintingImages = [
   {
     src: "/interior-painting/ceiling-painting/ceiling-preparation-for-spray-painting-the-ceilings_mtajyu.jpg",
-    alt: "Ceiling preparation for spray painting the ceilings - ceiling painting calgary",
+    alt: "Open plan kitchen and living room fully masked for spraying, every pot light bagged and the walls sheeted in plastic - ceiling painting calgary",
   },
   {
     src: "/interior-painting/ceiling-painting/20220605_151407_nzvz8d.webp",
-    alt: "Ceiling painting calgary",
+    alt: "Living room ceiling sprayed white, with the furniture, walls and fireplace draped in plastic - calgary interior house painting",
   },
   {
     src: "/interior-painting/ceiling-painting/20171009_150601.jpg",
-    alt: "Ceiling preparation for spray painting the ceilings - ceiling painting calgary",
+    alt: "Freshly sprayed white ceiling over a kitchen, pot lights bagged in paper and the cabinets and fridge sheeted - ceiling painting calgary",
   },
   {
     src: "/interior-painting/ceiling-painting/20171009_152317.jpg",
-    alt: "Ceiling painting calgary",
+    alt: "The same job from the living room side, sprayed ceiling above bookshelves and a sofa under plastic - ceiling spraying calgary",
   },
   {
     src: "/interior-painting/ceiling-painting/PXL_20230923_210821437.jpg",
-    alt: "Ceiling preparation for spray painting the ceilings - ceiling painting calgary",
+    alt: "Modern kitchen masked up to a cedar plank feature ceiling, blue tape along the edge and drop sheets throughout - calgary interior house painters",
   },
   {
     src: "/interior-painting/ceiling-painting/PXL_20230923_215021422.jpg",
-    alt: "Ceiling painting calgary",
+    alt: "Kitchen ceiling sprayed white, the range hood bagged and paper banding protecting the cabinets - ceiling painting calgary",
   },
   {
     src: "/interior-painting/ceiling-painting/PXL_20230923_222428881.jpg",
-    alt: "Ceiling painting calgary",
+    alt: "The same room from the hallway, sprayed ceiling with the bulkhead masked and the fireplace covered - ceiling spraying calgary",
   },
 ];
 export const cabinetPaintingImages = [
@@ -303,39 +303,39 @@ export const trimAndDoorPaintingImages = [
 export const garagePaintingImages = [
   {
     src: "/interior-painting/garage-painting/gar-img-1.webp",
-    alt: "garage painting calgary",
+    alt: "Garage before painting, drywall taped and filled, with wooden steps up to the house door and a pickup parked inside - garage painting calgary",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-2.jpg",
-    alt: "garage painting calgary",
+    alt: "Garage ceiling before paint, drywall seams taped and filled around the door opener rail - garage drywall painting calgary",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-3.jpg",
-    alt: "garage painting calgary",
+    alt: "Garage walls and ceiling in filled drywall before painting, with an overhead storage rack fitted - garage painting calgary",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-4.webp",
-    alt: "garage painting calgary",
+    alt: "Two Primo Painters rolling out a garage wall, floor sheeted and a ladder set against the wall - calgary interior house painters",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-5.webp",
-    alt: "garage painting calgary",
+    alt: "The same garage with the walls and ceiling painted and the drop sheets still down - garage painting calgary",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-6.jpg",
-    alt: "garage painting calgary",
+    alt: "Finished garage ceiling and bulkhead painted smooth white beside the door opener rail - calgary interior house painting",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-7.jpg",
-    alt: "garage painting calgary",
+    alt: "Finished garage wall in warm grey with the house door and its trim in white - garage painting calgary",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-8.jpg",
-    alt: "garage painting calgary",
+    alt: "Freshly painted white garage stairwell, sunlight striping across the walls - garage painting calgary",
   },
   {
     src: "/interior-painting/garage-painting/gar-img-9.webp",
-    alt: "garage painting calgary",
+    alt: "Painted garage steps, grey treads with cream risers and a white handrail - calgary interior house painting",
   },
 ];
 
