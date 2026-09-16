@@ -22,21 +22,21 @@ export const BgBackgroundImg = {
 // service banner. Exterior siding used to sit here, under an H1 reading
 // INTERIOR HOUSE PAINTERS.
 /**
- * The hero photo now points at the-latam-painters' image, copied in on
- * 2026-09-14 at Frank's request so the hero matches theirs.
+ * Primo's hero. Settled 2026-09-15: the photo stays and it is Primo's, whatever
+ * its route onto the site was.
  *
- * ⚠ The alt below still describes Primo's own photo, which is no longer the
- * one being shown. It is left untouched on purpose: alt text is tracked by
- * scripts/seo-baseline on a page that ranks, so changing it is a content
- * decision rather than something to fix in passing. It has to be either
- * rewritten with approval, or the image put back.
+ * The alt was rewritten at the same time to describe what is actually in the
+ * frame. It used to read "Living room built-ins and mantel painted cream",
+ * which described a different photo and had survived the swap.
  *
- * Primo's own photo is still on disk at the path below, not deleted.
+ * alt text is tracked by scripts/seo-baseline on a page that ranks, so this
+ * line is a content change, not a tidy up. It was made deliberately.
+ *
+ * tnd-img-10.jpg, the photo that used to be here, is still on disk.
  */
 export const HeroHomeImg = {
   src: "/images/home-hero-img.jpg",
-  // previously: "/interior-painting/trim-and-door-painting/tnd-img-10.jpg"
-  alt: "Living room built-ins and mantel painted cream - interior painting Calgary",
+  alt: "Open plan kitchen and living room with painted cabinetry and trim - interior painting Calgary",
 };
 
 export const AboutUsImg = {
