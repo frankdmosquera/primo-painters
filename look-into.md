@@ -36,6 +36,20 @@ which is the live site. The SEO gate reports 507 changed lines between them.
 - [ ] `origin` points at `primo-painting.git` and GitHub redirects to
       `primo-painters.git`. Pushes work and print a notice every time.
 
+## Already done, so nobody redoes it
+
+Set up on 2026-09-15 and working. Listed because none of it can be read from
+the code.
+
+- Resend: primopainters.ca is a verified domain, RESEND_API_KEY is in
+  .env.local. A real send from the contact form action arrived in the inbox,
+  not spam.
+- Google Places: a key restricted to Places and to primopainters.ca is in
+  .env.local as GOOGLE_MAPS_API_KEY. Places API (New) is enabled; the legacy
+  API is not, and calling it returns REQUEST_DENIED.
+- `npm run email` previews emails/contact-lead.tsx at localhost:3001 and
+  reloads as you edit. Nothing is sent.
+
 ## Dead code
 
 - [ ] `components/mobile-menu.tsx`, imported by nothing, superseded by
