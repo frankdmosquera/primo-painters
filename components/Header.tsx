@@ -27,7 +27,7 @@ export function Header() {
             src={logoImg.src}
             alt={logoImg.alt}
             title={siteConfig.business.name}
-            width={300}
+            width={142}
             height={100}
             priority
             className="h-16 w-auto sm:h-18 md:h-20 lg:h-24"

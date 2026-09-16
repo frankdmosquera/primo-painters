@@ -86,8 +86,8 @@ export default function MobileNav() {
               src={logoImg.src}
               alt={logoImg.alt}
               title={siteConfig.business.name}
-              width={140}
-              height={46}
+              width={71}
+              height={50}
               className="h-9 w-auto"
             />
           </Link>
