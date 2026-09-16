@@ -41,7 +41,7 @@ export function Header() {
           <MobileNav />
         </div>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           <Link
             href={`tel:${siteConfig.business.phone}`}
             aria-label={`Call ${siteConfig.business.name} at ${siteConfig.business.phoneDisplay}`}
