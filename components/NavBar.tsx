@@ -19,7 +19,7 @@ function NavBar() {
   // See W3C APG, Landmark Regions.
   return (
     <NavigationMenu aria-label="Main">
-      <NavigationMenuList>
+      <NavigationMenuList className="gap-2">
         {navigationItemsData.map((item) => (
           <NavigationMenuItem key={item.title}>
             <NavigationMenuLink

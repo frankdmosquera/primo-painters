@@ -38,7 +38,7 @@ import BookNowTrigger from "../BookNowTrigger";
 const FaqSection = () => {
   return (
     <section className="bg-background">
-      <div className="mx-auto max-w-7xl px-5 py-11 max-sm:mb-10 max-sm:py-0">
+      <div className="mx-auto max-w-7xl px-5 py-11 max-sm:mb-10 max-sm:py-8">
       <h2 className="text-[clamp(1.5625rem,3.2vw,2.25rem)] font-bold text-[#0D378D]">
         Frequently Asked Questions
       </h2>
