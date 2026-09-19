@@ -7,7 +7,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { GalleryImage } from "./gallery-image";
+import { Photo } from "@/components/Photo";
 import { cn } from "@/lib/utils";
 import type { ProjectImage } from "@/data/projectsData";
 
@@ -56,7 +56,7 @@ export function ProjectThumbnailStrip({
                     : "opacity-60 hover:opacity-100",
                 )}
               >
-                <GalleryImage
+                <Photo
                   src={image.src}
                   alt={image.alt}
                   width={120}

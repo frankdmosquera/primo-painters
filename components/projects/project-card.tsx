@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
-import { GalleryImage } from "./gallery-image";
+import { Photo } from "@/components/Photo";
 import { ProjectCardOpenButton } from "./project-card-open-button";
 import type { Project } from "@/data/projectsData";
 
@@ -34,7 +34,7 @@ function ProjectCardBody({
   return (
     <>
       <div className="relative aspect-square w-full overflow-hidden min-[970px]:w-1/2">
-        <GalleryImage
+        <Photo
           src={project.thumbnail}
           alt={project.title}
           width={600}

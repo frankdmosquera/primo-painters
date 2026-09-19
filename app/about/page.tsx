@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/data/siteConfig";
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import AboutHero from "@/components/AboutUs/AboutHero";
 import BgBackground2 from "@/public/SVGs/backgrounds/above-gallery-bg-line.svg";
 import OurStory from "@/components/AboutUs/OurStoy";
@@ -92,7 +92,7 @@ export default function page() {
           The image is decorative: empty alt, hidden from assistive tech. It
           adds nothing to the text a search engine reads. */}
       <div className="relative overflow-hidden">
-        <Image
+        <Photo
           src="/interior-painting/long-wall-after-painted.webp"
           alt=""
           aria-hidden

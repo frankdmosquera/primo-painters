@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Metadata, Viewport } from "next";
 
-import blogsBanner from "@/public/general/blogs-banner.webp";
 import BgBackground2 from "@/public/SVGs/backgrounds/above-gallery-bg-line.svg";
 
 import Calendly from "@/components/calendly";

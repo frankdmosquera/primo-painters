@@ -1,5 +1,5 @@
 import { AboutUsImg } from "@/data/images/general-images";
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import HeroCallToAction from "../heros/HeroCallToAction";
 import { HeroHomeButtons } from "../heros/HeroHomeButtons";
 
@@ -12,7 +12,7 @@ export default function AboutHero() {
     // the h1 hidden at 1280 and 20px at 768. Content in normal flow inside a
     // min-height section cannot do that, at any width or font size.
     <section className="relative flex min-h-[30rem] min-[22rem]:min-h-[32rem] min-[25rem]:min-h-[24rem] lg:min-h-[28rem]">
-      <Image
+      <Photo
         src={AboutUsImg.src}
         alt={AboutUsImg.alt}
         fill

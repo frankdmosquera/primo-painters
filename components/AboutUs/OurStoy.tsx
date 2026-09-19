@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import { OurStoryImg } from "@/data/images/general-images";
 
 export default function OurStory() {
@@ -47,7 +47,7 @@ export default function OurStory() {
 
         {/* Image */}
         <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
-          <Image
+          <Photo
             src={OurStoryImg.src}
             alt={OurStoryImg.alt}
             fill

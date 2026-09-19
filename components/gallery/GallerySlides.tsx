@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 
 export default function GallerySlides({
   GalleryImages,
@@ -18,7 +18,7 @@ export default function GallerySlides({
           // with it the scroll is forced to stop at the very next slide.
           className="relative aspect-[4/3] w-[86%] shrink-0 snap-center snap-always overflow-hidden rounded-2xl bg-black/5 sm:aspect-[3/2]"
         >
-          <Image
+          <Photo
             src={slide.src}
             alt={slide.alt}
             className="object-cover"
