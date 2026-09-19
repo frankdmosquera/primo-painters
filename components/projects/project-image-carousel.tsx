@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { GalleryImage } from "./gallery-image";
+import { Photo } from "@/components/Photo";
 // import { ProjectThumbnailStrip } from "./project-thumbnail-strip";
 import type { Project } from "@/data/projectsData";
 import { ProjectThumbnailStrip } from "./ProjectThumbnailStrip";
@@ -59,7 +59,7 @@ export function ProjectImageCarousel({
                 className="relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-md bg-muted"
                 aria-label={`Show image ${index + 2 > project.images.length ? 1 : index + 2}`}
               >
-                <GalleryImage
+                <Photo
                   src={image.src}
                   alt={image.alt}
                   width={1200}

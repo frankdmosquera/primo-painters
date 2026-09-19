@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import TrustBadges from "@/components/trust-badges";
 import HeroCallToAction from "./HeroCallToAction";
 import HeroPhoneMobile from "./HeroPhoneMobile";
@@ -23,7 +23,7 @@ export default function StandardHero({
       <section>
         <div className="relative h-[30rem]  ">
           {/* <div className="relative h-full w-full"> */}
-          <Image
+          <Photo
             src={imageSrc}
             alt="Hero Image"
             fill
@@ -56,7 +56,7 @@ export default function StandardHero({
 //  <div>
 //       <section className="relative h-[500px] md:h-[600px]">
 //         <div className="absolute inset-0">
-//           <Image
+//           <Photo
 //             src={imageSrc}
 //             alt="Hero Image"
 //             fill

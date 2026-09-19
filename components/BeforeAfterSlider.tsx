@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import { BeforeAfterSliderClient } from "./BeforeAfterSliderClient";
 
 interface BeforeAfterSliderProps {
@@ -38,7 +38,7 @@ export function BeforeAfterSlider({
       aspectClassName={aspectClassName}
       className={className}
       afterSlot={
-        <Image
+        <Photo
           src={afterImage}
           alt={afterAlt}
           fill
@@ -48,7 +48,7 @@ export function BeforeAfterSlider({
         />
       }
       beforeSlot={
-        <Image
+        <Photo
           src={beforeImage}
           alt={beforeAlt}
           fill

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import Link from "next/link";
 import "./homebanner.css";
 import Calendly from "../calendly";
@@ -13,7 +13,7 @@ const ServiceBanner = () => {
             behind a heading that asks about transforming an interior. The
             hero carries the after. Dark wood also holds white text better
             than the pale finished room did. */}
-        <Image
+        <Photo
           src="/interior-painting/trim-and-door-painting/tnd-img-9.jpg"
           alt=""
           fill

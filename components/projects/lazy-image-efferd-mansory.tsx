@@ -9,7 +9,7 @@
 import { cn } from "@/lib/utils";
 import { useInView } from "framer-motion";
 import React from "react";
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 type LazyImageProps = {
@@ -92,7 +92,7 @@ export function LazyImage({
           next.config sets unoptimized in development, so this makes no
           difference locally. It is the production build that changes.
         */
-        <Image
+        <Photo
           alt={alt}
           className={cn(
             "size-full object-cover transition-opacity duration-500",

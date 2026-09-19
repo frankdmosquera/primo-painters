@@ -1,6 +1,6 @@
 // import { GalleryHomeImages } from "@/data/images/general-images";
 // import ProjectSliderWrapper from "@/app/gallery/ProjectSliderWrapper";
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 import ProjectSliderWrapper from "./ProjectSliderWrapper";
 
 // The slot is measured, not guessed: this slider fills 66vw at 1024 and 46vw
@@ -22,7 +22,7 @@ export default function BigGalleryAccordion({
       <ProjectSliderWrapper>
         {GalleryImages?.map((img, index) => (
           <div key={index} className="relative h-full w-full">
-            <Image
+            <Photo
               src={img.src}
               alt={img.alt}
               fill

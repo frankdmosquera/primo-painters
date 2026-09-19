@@ -1,5 +1,5 @@
 import TrustBadges from "../trust-badges";
-import Image from "next/image";
+import { Photo } from "@/components/Photo";
 
 import { HeroHomeImg } from "@/data/images/general-images";
 import { HeroHomeButtons } from "./HeroHomeButtons";
@@ -27,7 +27,7 @@ const HomeHero = () => {
         value: h-[calc(100svh-var(--header-h))] here, -mt-[calc(100svh-var(--header-h))] below. Change one and change the other.
       */}
       <div className="sticky top-0 -z-10 h-[calc(100svh-var(--header-h))]">
-        <Image
+        <Photo
           src={HeroHomeImg.src}
           alt={HeroHomeImg.alt}
           fill
