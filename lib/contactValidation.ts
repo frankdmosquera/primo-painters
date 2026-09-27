@@ -1,11 +1,6 @@
-// Ported from the-latam-painters lib/contactFormSchema.ts, with one change
-// that matters: phone is required here, not optional.
-//
-// Primo's own route rejects a submission without it. app/api/sendEmail/route.ts
-// line 7 is `if (!name || !email || !message || !phone)`, and line 8 carries a
-// note reading "we need too add phone to the form". An optional phone would
-// have produced a form that validates fine and then fails at the API for some
-// visitors and not others, which is worse than asking for the number.
+// Ported from the-latam-painters on 2026-09-14, with one change that matters:
+// phone is required here, not optional. A lead without a number is not one the
+// business can call back.
 import { z } from "zod";
 
 export const contactFormSchema = z.object({
@@ -18,4 +13,4 @@ export const contactFormSchema = z.object({
   company: z.string().optional(),
 });
 
-export type ContactFormValues = z.infer<typeof contactFormSchema>;
+export type ContactValuesType = z.infer<typeof contactFormSchema>;
