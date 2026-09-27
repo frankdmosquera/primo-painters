@@ -1,20 +1,17 @@
 "use client";
 
-// Ported from the-latam-painters components/ContactForm.tsx.
-//
-// It replaces app/contact/ContactForm.tsx, which imports formik, yup and
-// sonner. None of the three are installed, which is why that form was
-// commented out: uncommenting it on 2026-09-14 produced a 500 with three
-// module-not-found errors. The old file is left on disk, untouched.
+// Ported from the-latam-painters components/ContactForm.tsx on 2026-09-14,
+// replacing the site's original Formik and Yup form, whose packages were
+// never installed here.
 //
 // This is the stack CLAUDE.md names: react-hook-form for the form, zod for
 // validation, shadcn field pieces wired the react-hook-form way.
 //
 // Three changes from LATAM's version, none of them cosmetic:
 //
-//   Phone is required, and the label no longer says "(optional)". Primo's
-//   route rejects a submission without it - app/api/sendEmail/route.ts line 7.
-//   Theirs is optional because their endpoint tolerates it.
+//   Phone is required, and the label no longer says "(optional)". A lead
+//   without a number is not one the business can call back. Theirs is
+//   optional because their endpoint tolerates it.
 //
 //   A failed send is shown. LATAM's onSubmit checks result.success and does
 //   nothing when it is false, so a visitor whose message failed to send sees
@@ -42,9 +39,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   contactFormSchema,
-  type ContactFormValues,
-} from "@/lib/contactFormSchema";
-import { submitContactForm } from "@/lib/submitContactForm";
+  type ContactValuesType,
+} from "@/lib/contactValidation";
+import { submitContactAction } from "@/actions/contactAction";
 
 export function ContactForm({
   className,
@@ -58,13 +55,13 @@ export function ContactForm({
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<ContactFormValues>({
+  } = useForm<ContactValuesType>({
     resolver: zodResolver(contactFormSchema),
   });
 
-  async function onSubmit(values: ContactFormValues) {
+  async function onSubmit(values: ContactValuesType) {
     setSendError(null);
-    const result = await submitContactForm(values);
+    const result = await submitContactAction(values);
 
     if (result.success) {
       setSubmitted(true);
