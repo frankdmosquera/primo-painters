@@ -48,6 +48,13 @@ const nextConfig: NextConfig = {
     unoptimized: process.env.NODE_ENV === "development",
     remotePatterns: [
       {
+        // Google-hosted reviewer avatars, from the Places fetch in lib/googleReviews.ts.
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
         protocol: 'https',
         hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com',
         port: '',

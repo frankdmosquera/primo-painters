@@ -45,12 +45,15 @@ const ENDPOINT = "https://places.googleapis.com/v1/places";
 /** One day. See the note above before changing it. */
 const REVALIDATE_SECONDS = 86_400;
 
+/** Fours and fives are shown; three and below are not. */
+const MIN_RATING = 4;
+
 export type GoogleReview = {
   rating: number;
   author: string;
   /** Link to the reviewer's Google profile, when Google supplies one. */
   authorUrl?: string;
-  /** Reviewer's avatar, hosted by Google. */
+  /** A real uploaded photo hosted by Google, or nothing. See uploadedPhoto. */
   photoUrl?: string;
   /** Google's own wording, e.g. "a month ago". Not a date we format. */
   relativeTime: string;
@@ -94,6 +97,22 @@ type PlacesResponse = {
   }[];
 };
 
+/**
+ * A real photograph, or nothing.
+ *
+ * Google never reports "no avatar". For anyone who has not uploaded a
+ * picture it generates one, a flat coloured circle with their first letter,
+ * and returns that like any other image. So the card always received a valid
+ * src, the initials fallback never fired, and the section showed circles in
+ * Google's palette rather than this site's.
+ *
+ * The two are told apart by the path. An uploaded photo is served from
+ * `/a-/`; a generated one from `/a/`. Ported from face-and-body.
+ */
+function uploadedPhoto(uri: string | undefined) {
+  return uri?.includes("googleusercontent.com/a-/") ? uri : undefined;
+}
+
 export async function getGoogleReviews(): Promise<GoogleReviewsResult> {
   const key = process.env.GOOGLE_MAPS_API_KEY;
   const placeId = siteConfig.reviews.placeId;
@@ -118,11 +137,17 @@ export async function getGoogleReviews(): Promise<GoogleReviewsResult> {
     const reviews: GoogleReview[] = (data.reviews ?? [])
       // A review can be a star rating with no words. Nothing to show.
       .filter((review) => review.text?.text)
+      // Fours and fives only. A three or below is a real review and it stays
+      // on the listing where anyone can read it. The rating and the count
+      // above the section are Google's unfiltered numbers, and the link goes
+      // straight to the listing. This section is the testimonial wall, not
+      // the record.
+      .filter((review) => (review.rating ?? 0) >= MIN_RATING)
       .map((review) => ({
         rating: review.rating ?? 0,
         author: review.authorAttribution?.displayName ?? "Google reviewer",
         authorUrl: review.authorAttribution?.uri,
-        photoUrl: review.authorAttribution?.photoUri,
+        photoUrl: uploadedPhoto(review.authorAttribution?.photoUri),
         relativeTime: review.relativePublishTimeDescription ?? "",
         text: review.text?.text ?? "",
       }));
