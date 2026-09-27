@@ -84,6 +84,9 @@ export default async function Home() {
       />
       <HomeHero />
       <OurServices />
+      {/* Real Google reviews, read server side and revalidated daily, in the
+          carousel ported from face-and-body. */}
+      <Reviews />
       <WhyChooseUs />
 
       {/*
@@ -116,9 +119,7 @@ export default async function Home() {
         </div>
       </section>
       {/* <div className="flex flex-col "> */}
-      {/* Real Google reviews, read server side and revalidated daily, in the
-          carousel ported from face-and-body. */}
-      <Reviews />
+
       {/* <ServiceBanner /> */}
       <CalgaryPainting />
       <OurProcessHome />
