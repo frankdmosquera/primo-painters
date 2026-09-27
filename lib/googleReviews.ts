@@ -32,8 +32,16 @@ import { siteConfig } from "@/data/siteConfig";
  * this, one build is one Google call per page that uses it, on every push.
  *
  * And the number is not arbitrary. Reviews come from Place Details Enterprise +
- * Atmosphere, 1,000 calls a month free and then $25 per 1,000. Once a day is
- * about 30 a month. Do the arithmetic again before lowering it.
+ * Atmosphere: 1,000 calls a month free, then $25 per 1,000, and the free 1,000
+ * is per Google Cloud BILLING ACCOUNT, shared by every project linked to it,
+ * not per project or per key (checked against the pricing page 2026-09-27).
+ * Once an hour is about 720 a month, so one site can poll hourly for free and
+ * a second on the same billing account cannot. Do the arithmetic again before
+ * lowering it or before pointing another site at the same billing account.
+ *
+ * Hourly rather than daily since 2026-09-27, so a new review reaches the page
+ * within the hour. The proper trigger, Google telling us when a review lands,
+ * is parked: it needs the owner sign-in and Business Profile API approval.
  *
  * NEVER THROWS. Every failure path returns empty rather than raising. A dead
  * key, a rotated place id, a Google outage or a quota stop should make the
@@ -42,8 +50,8 @@ import { siteConfig } from "@/data/siteConfig";
 
 const ENDPOINT = "https://places.googleapis.com/v1/places";
 
-/** One day. See the note above before changing it. */
-const REVALIDATE_SECONDS = 86_400;
+/** One hour. See the note above before changing it. */
+const REVALIDATE_SECONDS = 3_600;
 
 /** Fours and fives are shown; three and below are not. */
 const MIN_RATING = 4;
