@@ -235,6 +235,15 @@
 }
 
 @theme {
+  /**
+   * The dark band, borrowed from face-and-body on 2026-09-27 for the reviews
+   * section. A brand band rather than a theme surface: same values in both
+   * projects so the section reads the same on both sites.
+   */
+  --color-dark-surface: #2a2723;
+  --color-on-dark: #f7f2ea;
+  --color-on-dark-muted: #b8b0a4;
+
   --animate-book-pulse: book-pulse 2.4s ease-in-out infinite;
 
   @keyframes book-pulse {

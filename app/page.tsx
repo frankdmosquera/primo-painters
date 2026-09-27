@@ -5,7 +5,7 @@ import HomeHero from "@/components/heros/HomeHero";
 import WhyChooseUs from "@/components/whyChooseUs";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import OurServices from "@/components/our-services";
-import GoogleReviews from "@/components/google-reviews";
+import { Reviews } from "@/components/reviews/Reviews";
 import { CalgaryPainting } from "@/components/calgary-painting";
 import { OurProcessHome } from "@/components/home/OurProcessHome";
 import FaqSection from "@/components/Faq";
@@ -116,10 +116,9 @@ export default async function Home() {
         </div>
       </section>
       {/* <div className="flex flex-col "> */}
-      {/* Real Google reviews, read server side and revalidated daily.
-          components/GoogleReviewCarousel3.tsx is still on disk with its 20
-          fabricated reviews. It is unlinked from here, not deleted. */}
-      <GoogleReviews />
+      {/* Real Google reviews, read server side and revalidated daily, in the
+          carousel ported from face-and-body. */}
+      <Reviews />
       {/* <ServiceBanner /> */}
       <CalgaryPainting />
       <OurProcessHome />
