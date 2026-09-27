@@ -8,6 +8,7 @@ import {
 import { ReviewsCarousel } from "@/components/reviews/ReviewsCarousel";
 import { siteConfig } from "@/data/siteConfig";
 import { getGoogleReviews } from "@/lib/googleReviews";
+import { relativeTime } from "@/lib/relativeTime";
 
 /**
  * The Google reviews, in the carousel from face-and-body components/home/Reviews.tsx,
@@ -47,7 +48,11 @@ export async function Reviews() {
   const cards: ReviewCardDataType[] = live.reviews.map((review) => ({
     text: review.text,
     author: review.author,
-    date: review.relativeTime,
+    // Formatted here from the exact publish time, so "2 days ago" rather than
+    // Google's coarse "in the last week". Google's phrase is the fallback.
+    date: review.publishTime
+      ? relativeTime(review.publishTime)
+      : review.relativeTime,
     rating: review.rating,
     avatarUrl: review.photoUrl,
   }));

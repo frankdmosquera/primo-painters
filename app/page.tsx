@@ -13,14 +13,16 @@ import { ProjectGalleryGrid } from "@/components/projects/project-gallery-grid";
 import { getProjects } from "@/data/projectsData";
 import FinalCTA from "@/components/FinalCTA";
 
-// How often this page regenerates, and with it the Google reviews it renders.
-// It lives here rather than on the fetch because caching a page and fetching
-// data are two different jobs: lib/googleReviews.ts just fetches, and every
-// page that renders the section sets its own interval.
+// How often this page regenerates. It lives here rather than on the fetch
+// because caching a page and fetching data are two different jobs:
+// lib/googleReviews.ts fetches, and caches Google's answer for a day, so this
+// number does not change how often Google is called. About 30 calls a month
+// either way.
 //
-// 86,400 is a day. Reviews are billed per call on Google's dearest SKU, so this
-// number is the difference between about 30 calls a month and a bill.
-export const revalidate = 86400;
+// 3,600 is an hour. The review cards say "3 hours ago" from the exact publish
+// time, and a page rebuilt once a day would carry that phrase for a day. An
+// hourly rebuild reads the stored reviews and only re-does the wording.
+export const revalidate = 3600;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -84,7 +86,7 @@ export default async function Home() {
       />
       <HomeHero />
       <OurServices />
-      {/* Real Google reviews, read server side and revalidated daily, in the
+      {/* Real Google reviews, read server side once a day, worded hourly, in the
           carousel ported from face-and-body. */}
       <Reviews />
       <WhyChooseUs />

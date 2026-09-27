@@ -55,8 +55,14 @@ export type GoogleReview = {
   authorUrl?: string;
   /** A real uploaded photo hosted by Google, or nothing. See uploadedPhoto. */
   photoUrl?: string;
-  /** Google's own wording, e.g. "a month ago". Not a date we format. */
+  /**
+   * Google's own phrase, e.g. "in the last week". Coarse: anything under
+   * seven days gets that same phrase. Kept as the fallback when publishTime
+   * is missing.
+   */
   relativeTime: string;
+  /** The exact publish time, ISO 8601. The card formats this, not relativeTime. */
+  publishTime?: string;
   text: string;
 };
 
@@ -88,6 +94,7 @@ type PlacesResponse = {
   reviews?: {
     rating?: number;
     relativePublishTimeDescription?: string;
+    publishTime?: string;
     text?: { text?: string };
     authorAttribution?: {
       displayName?: string;
@@ -149,6 +156,7 @@ export async function getGoogleReviews(): Promise<GoogleReviewsResult> {
         authorUrl: review.authorAttribution?.uri,
         photoUrl: uploadedPhoto(review.authorAttribution?.photoUri),
         relativeTime: review.relativePublishTimeDescription ?? "",
+        publishTime: review.publishTime,
         text: review.text?.text ?? "",
       }));
 
