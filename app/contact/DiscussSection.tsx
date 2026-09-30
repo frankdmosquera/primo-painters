@@ -4,6 +4,9 @@ import PhoneLogo from "../../public/icons/Call-Phone.png";
 import DirectionLogo from "../../public/icons/Direction-logo.webp";
 import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "@/data/siteConfig";
+
+const { email } = siteConfig.business;
 
 const DiscussSection = () => {
   return (
@@ -27,7 +30,7 @@ const DiscussSection = () => {
           </div>
           <h3 className="text-[#000000] md:text-4xl sm:text-[20px] font-medium cursor-pointer">
             <Link
-              aria-label="Primo Painting at 403-903-7517"
+              aria-label={`Call ${siteConfig.business.name} at 403-903-7517`}
               href="tel:+14039037517"
             >
               CALL US
@@ -39,7 +42,7 @@ const DiscussSection = () => {
           {" "}
           {/* Margin for small screens */}
           <div className="icon mb-4">
-            <Link href="mailto:info@primopainting.ca">
+            <Link href={`mailto:${email}`}>
               <Image
                 src={EmailLogo}
                 alt="Email Us"
@@ -50,8 +53,8 @@ const DiscussSection = () => {
           </div>
           <h3 className="text-[#000000] md:text-4xl sm:text-[20px] font-medium cursor-pointer">
             <Link
-              href="mailto:info@primopainting.ca"
-              aria-label="Mail Primo Painting at info@primopainting.ca"
+              href={`mailto:${email}`}
+              aria-label={`Email ${siteConfig.business.name} at ${email}`}
             >
               EMAIL US
             </Link>
