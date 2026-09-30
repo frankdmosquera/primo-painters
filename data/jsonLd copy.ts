@@ -1,28 +1,30 @@
+import { siteConfig } from "./siteConfig";
+
 export const jsonLd = {
   "@context": "https://schema.org",
   "@type": "HousePainter",
 
-  "@id": "https://www.primopainting.ca/#business",
+  "@id": `${siteConfig.business.website}/#business`,
 
-  name: "Primo Painting",
+  name: siteConfig.business.name,
 
-  url: "https://www.primopainting.ca/",
+  url: siteConfig.business.website,
 
   image: [
-    "https://www.primopainting.ca/logo.svg",
-    // "https://www.primopainting.ca/images/best-of-the-best-homestars-award-winner-2024-white-version.png",
-    // "https://www.primopainting.ca/images/bbb-A+-alberta-colour-painting.webp",
-    // "https://www.primopainting.ca/images/google-reviews-4.9-rating.png",
+    `${siteConfig.business.website}${siteConfig.branding.logo}`,
+    // "https://primopainters.ca/images/best-of-the-best-homestars-award-winner-2024-white-version.png",
+    // "https://primopainters.ca/images/bbb-A+-alberta-colour-painting.webp",
+    // "https://primopainters.ca/images/google-reviews-4.9-rating.png",
   ],
 
-  logo: "https://www.primopainting.ca/logo.svg",
+  logo: `${siteConfig.business.website}${siteConfig.branding.logo}`,
 
   description:
-    "Primo Painting provides professional interior and exterior painting services in Calgary and surrounding areas.",
+    "Primo Painters provides professional interior and exterior painting services in Calgary and surrounding areas.",
 
   telephone: "+1-403-903-7517",
 
-  email: "info@primopainting.ca",
+  email: siteConfig.business.email,
 
   priceRange: "$$",
 
