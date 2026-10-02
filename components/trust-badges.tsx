@@ -1,5 +1,8 @@
-import googleLogo from "@/public/SVGs/logos/googleLogo.svg";
-import logo3 from "@/public/SVGs/logos/logo3.svg";
+// The -optimized copies are the originals with only the embedded PNG
+// swapped: 3000px wide down to 360 (3x the 120px badge) and a 256 colour
+// palette. Same SVG, same geometry. 63KB of first paint becomes 22KB.
+import googleLogo from "@/public/SVGs/logos/googleLogo-optimized.svg";
+import logo3 from "@/public/SVGs/logos/logo3-optimized.svg";
 
 /**
  * Plain <img>, not next/image. Both badges are SVGs, so the optimiser has
