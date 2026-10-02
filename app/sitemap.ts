@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/siteConfig";
+import { getProjects } from "@/data/projectsData";
 
 /**
  * Generates the website sitemap.
@@ -38,5 +39,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    // Read from the same list app/projects/[slug] builds its pages from, so
+    // a new project is in the sitemap the moment its page exists.
+    ...getProjects().map((project) => ({
+      url: `${baseUrl}/projects/${project.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
   ];
 }
