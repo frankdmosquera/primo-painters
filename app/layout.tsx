@@ -11,7 +11,12 @@ import { Header } from "@/components/Header";
 import { CalendlyProvider } from "@/components/calendly-provider";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+// Not preloaded. shadcn's --font-sans and --font-heading point here, but the
+// body sets Roboto and h1-h6 set Poppins, so no visible text on the home page
+// renders in Geist. Preloaded, it was 29KB fetched at high priority before
+// first paint and never used. Without the preload the file still downloads
+// the moment any text does use it.
+const geist = Geist({subsets:['latin'],variable:'--font-sans',preload:false});
 
 
 // Body text. 500 is here because globals.css sets the body to that weight.
