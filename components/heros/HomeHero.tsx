@@ -35,7 +35,11 @@ const HomeHero = () => {
           // wash is a large part of why their hero reads as art-directed
           // rather than as a stock photo behind text.
           className="object-cover brightness-[.7] grayscale-50 sepia-20 hue-rotate-[-10deg]"
-          priority
+          // The page's LCP image. priority is deprecated in Next 16, and its
+          // docs recommend eager plus fetchPriority over a preload for a hero.
+          // Both are needed: fetchPriority alone leaves next/image lazy.
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
         />
 
